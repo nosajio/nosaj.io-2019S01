@@ -8,6 +8,7 @@ export interface RoutesType {
   component: React.ComponentType;
 }
 
+// The following routes will be mapped onto <Route /> components as props
 const routes: RoutesType[] = [
   {
     exact: true,
