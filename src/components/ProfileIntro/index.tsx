@@ -8,8 +8,6 @@ interface ProfileIntroProps {
 const ProfileIntro: React.SFC<ProfileIntroProps> = ({ className }) => {
   return (
     <ProfileIntroFrame className={className}>
-      <ProfileIntroImg src="/jason-howmans.png" />
-
       <ProfileIntroCard>
         <p>Nice to meet you, I’m Jason. I started nosaj.io after a decade designing
         and building websites and apps for The BBC, William Hill Online, Utility
@@ -17,6 +15,8 @@ const ProfileIntro: React.SFC<ProfileIntroProps> = ({ className }) => {
         efficiently plan, prototype, design and build growth-driven web
         products.</p>
       </ProfileIntroCard>
+      <ProfileIntroImg src="/jason-howmans.png" />
+
     </ProfileIntroFrame>
   );
 };

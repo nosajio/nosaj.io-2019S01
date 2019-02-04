@@ -16,7 +16,7 @@ const Section = styled.section(
     withCols = 12,
     topGap = 2,
     bottomGap = 2,
-    maxWidth = 1600
+    maxWidth = 1440
   }: SectionProps) => `
   ${theme.innergrid(withCols)}
   position: relative;
