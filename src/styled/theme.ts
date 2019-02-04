@@ -6,7 +6,7 @@ import ms, { ModScale } from './modularscale';
 export interface Theme {
   // colors: object;
   grid(...args: any): number;
-  gridcss(...args: any): string;
+  gridcss(cols?: number, unit?: string): string;
   innergrid(...args: any): string;
   fonts: Fonts;
   // ms = modular scale

@@ -6,7 +6,7 @@ import Button from '../Button';
 
 export const OpenerFrame = styled.div(
   ({ theme }: { theme: Theme }) => `
-  grid-column: 2 / 10;
+  grid-column: 2 / 12;
   position: relative;
   margin-top: 14vh;
 `
@@ -21,23 +21,17 @@ export const OpenerHR = styled.div`
 `;
 
 export const OpenerHeadline = styled.h1(
-  ({ theme: { ms, fonts } }: { theme: Theme }) => `
+  ({ theme: { ms, fonts, grid } }: { theme: Theme }) => `
   position: relative;
+  width: 100%;
+  max-width: ${grid(7)}vw;
   font-family: ${fonts.c.family};
   font-size: ${ms.rem(4)};
   font-weight: ${fonts.c.weight.heavyCondensed};
   text-transform: uppercase;
   line-height: 1;
-  grid-column: 1 / 9;
 `
 );
-
-export const WavesFixed = styled(Waves)`
-  z-index: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-`;
 
 export const OpenerLinks = styled.div`
   display: flex;

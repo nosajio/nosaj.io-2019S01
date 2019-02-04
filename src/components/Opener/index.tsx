@@ -5,8 +5,7 @@ import {
   OpenerHeadline,
   OpenerHR,
   OpenerLink,
-  OpenerLinks,
-  WavesFixed
+  OpenerLinks
 } from './styled';
 
 interface OpenerProps {
@@ -15,18 +14,15 @@ interface OpenerProps {
 
 const Opener: React.FunctionComponent<OpenerProps> = ({ headline }) => {
   return (
-    <>
-      <WavesFixed />
-      <OpenerFrame>
-        <OpenerHR />
-        <OpenerHeadline>{headline}</OpenerHeadline>
-        <OpenerLinks>
-          <OpenerLink to="#work">Explore my work</OpenerLink>
-          <OpenerLink to="/services">How I help startups</OpenerLink>
-          <OpenerButton to="/contact">Hire me for your next project</OpenerButton>
-        </OpenerLinks>
-      </OpenerFrame>
-    </>
+    <OpenerFrame>
+      <OpenerHR />
+      <OpenerHeadline>{headline}</OpenerHeadline>
+      <OpenerLinks>
+        <OpenerLink to="#work">Explore my work</OpenerLink>
+        <OpenerLink to="/services">How I help startups</OpenerLink>
+        <OpenerButton to="/contact">Hire me for your next project</OpenerButton>
+      </OpenerLinks>
+    </OpenerFrame>
   );
 };
 
