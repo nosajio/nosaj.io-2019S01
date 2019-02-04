@@ -6,14 +6,18 @@ export interface ModScale {
 }
 
 const modularScaleExponent = 1.5;
+const modularScaleDecimalPlaces = 5;
 
 // Modular scale done the functional way ;)
-const msfn: ModScale["fn"] = (step: number = 1) =>
-  step === 0
-    ? 1
-    : Array.from(Array(Math.abs(step)))
-        .fill(modularScaleExponent)
-        .reduce((n, e) => (step > 0 ? n * e : n / e), 1);
+const msfn: ModScale['fn'] = (step: number = 1) => {
+  const o =
+    step === 0
+      ? 1
+      : Array.from(Array(Math.abs(step)))
+          .fill(modularScaleExponent)
+          .reduce((n, e) => (step > 0 ? n * e : n / e), 1);
+  return parseFloat(o.toFixed(modularScaleDecimalPlaces));
+};
 
 const ms: ModScale = {
   fn: (...args) => msfn(...args),

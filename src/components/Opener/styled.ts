@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Theme } from '../../styled/theme';
 import CapsLink from '../CapsLink';
 import Waves from '../Waves';
+import Button from '../Button';
 
 export const OpenerFrame = styled.div(
   ({ theme }: { theme: Theme }) => `
@@ -41,11 +42,18 @@ export const WavesFixed = styled(Waves)`
 export const OpenerLinks = styled.div`
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
   margin-top: ${({ theme }: { theme: Theme }) => theme.ms.rem(2)};
 `;
 
 export const OpenerLink = styled(CapsLink)(
   ({ theme }: { theme: Theme }) => `
-  & + & { margin-left: ${theme.ms.rem(3)}; }
+  * + & { margin-left: ${theme.ms.rem(3)}; }
+`
+);
+
+export const OpenerButton = styled(Button)(
+  ({ theme }: { theme: Theme }) => `
+  * + & { margin-left: ${theme.ms.rem(3)}; }
 `
 );
