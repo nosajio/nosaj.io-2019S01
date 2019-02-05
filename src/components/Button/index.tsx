@@ -5,7 +5,7 @@ interface ButtonProps {
   to: string;
 }
 
-const Button: React.SFC<ButtonProps> = ({ to, ...passProps }) => {
+const Button: React.FunctionComponent<ButtonProps> = ({ to, ...passProps }) => {
   return <RegularButton to={to} {...passProps} />;
 };
 

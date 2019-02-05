@@ -9,7 +9,6 @@ export interface Theme {
   gridcss(cols?: number, unit?: string): string;
   innergrid(...args: any): string;
   fonts: Fonts;
-  // ms = modular scale
   ms: ModScale;
 }
 
