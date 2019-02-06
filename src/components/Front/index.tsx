@@ -1,11 +1,10 @@
 import * as React from 'react';
 import BigTestimonial, { BigTestimonialProps } from '../BigTestimonial';
+import { default as H } from '../Heading';
 import Opener from '../Opener';
 import Page from '../Page';
+import FrontProjects from './Projects';
 import { FrontMain, NosajIntro, WavesFixed } from './styled';
-import { default as H } from '../Heading';
-
-export interface FrontProps {}
 
 const testimonials: BigTestimonialProps['quotes'] = [
   {
@@ -19,6 +18,8 @@ const testimonials: BigTestimonialProps['quotes'] = [
     )
   }
 ];
+
+export interface FrontProps {}
 
 class Front extends React.Component<FrontProps, any> {
   public render() {
@@ -39,6 +40,7 @@ class Front extends React.Component<FrontProps, any> {
             Selected Works
           </H>
         </Page.Section>
+        <FrontProjects />
       </FrontMain>
     );
   }

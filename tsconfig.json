@@ -20,6 +20,10 @@
     "jsx": "preserve"
   },
   "include": [
-    "src"
+    "src/**/*",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx"
   ]
 }

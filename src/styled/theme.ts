@@ -7,7 +7,7 @@ export interface Theme {
   // colors: object;
   grid(...args: any): number;
   gridcss(cols?: number, unit?: string): string;
-  innergrid(...args: any): string;
+  innergrid(cols: number, unit?: string): string;
   fonts: Fonts;
   ms: ModScale;
 }
