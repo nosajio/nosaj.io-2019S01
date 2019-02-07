@@ -5,6 +5,7 @@ import Opener from '../Opener';
 import Page from '../Page';
 import FrontProjects from './Projects';
 import { FrontMain, NosajIntro, WavesFixed } from './styled';
+import Thanks from './Thanks';
 
 const testimonials: BigTestimonialProps['quotes'] = [
   {
@@ -35,12 +36,15 @@ class Front extends React.Component<FrontProps, any> {
         <Page.Section topGap={4}>
           <BigTestimonial column={[4, 10]} quotes={testimonials} />
         </Page.Section>
-        <Page.Section topGap={4}>
+        <Page.Grid topGap={4}>
           <H type="h2" column={[1, 5]}>
             Selected Works
           </H>
-        </Page.Section>
+        </Page.Grid>
         <FrontProjects />
+        <Page.Section topGap={4}>
+          <Thanks column={[2, 12]} />
+        </Page.Section>
       </FrontMain>
     );
   }

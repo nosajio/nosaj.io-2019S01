@@ -1,9 +1,10 @@
-import { Link, LinkProps } from 'react-router-dom';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { StyledWithProps } from '../../types/styled';
-import { Theme } from '../../styled/theme';
 import { ProjectProps } from '.';
 import borderUnderline from '../../styled/border-underline';
+import { Theme } from '../../styled/theme';
+import { StyledWithProps, ThemeProps } from '../../types/styled';
 
 const gridMax = 'grid-column: 2 / 12;';
 const getColor = (
@@ -12,8 +13,8 @@ const getColor = (
   d: string = ''
 ): string => (c && c[t] ? String(c[t]) : d);
 
-export type ProjectStyledProps = HTMLElement & {
-  theme: Theme;
+export type ProjectStyledProps = ThemeProps & {
+  // theme: Theme;
   withColors?: ProjectProps['colors'];
 };
 
@@ -52,7 +53,11 @@ export const ProjectLinks: StyledWithProps<ProjectStyledProps> = styled.div`
   margin-top: ${({ theme }: ProjectStyledProps) => theme.ms.rem(1)};
 `;
 
-export const ProjectLink: StyledWithProps<ProjectStyledProps> = styled(Link)`
+export const ProjectLink: StyledWithProps<ProjectStyledProps> = styled(
+  // Remap the props on Link so the typechecker doesn't complain about
+  // unrecognized props.
+  ({ withColors, ...rest }) => React.createElement(Link, { ...rest })
+)`
   ${({ theme: { ms }, withColors }: ProjectStyledProps) => `
       color: ${getColor(
         withColors,

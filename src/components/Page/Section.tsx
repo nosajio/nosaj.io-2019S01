@@ -10,22 +10,26 @@ export type SectionProps = {
   maxWidth: number;
 };
 
-const Section = styled.section(
-  ({
-    theme,
-    withCols = 12,
-    topGap = 2,
-    bottomGap = 2,
-    maxWidth = 1440
-  }: SectionProps) => `
-  ${theme.innergrid(withCols)}
-  position: relative;
-  padding: 0 ${halfMarginPrcnt}%;
-  max-width: ${maxWidth}px;
-  margin: ${topGap > 0 ? theme.ms.rem(topGap) : '0'} auto ${
-    bottomGap > 0 ? theme.ms.rem(bottomGap) : '0'
-  } auto;
-`
-);
+const gridBodyStyles = ({
+  theme,
+  withCols = 12,
+  topGap = 2,
+  bottomGap = 2,
+  maxWidth = 1440
+}: SectionProps): string => `
+${theme.innergrid(withCols)}
+position: relative;
+padding: 0 ${halfMarginPrcnt}%;
+max-width: ${maxWidth}px;
+margin: ${topGap > 0 ? theme.ms.rem(topGap) : '0'} auto ${
+  bottomGap > 0 ? theme.ms.rem(bottomGap) : '0'
+} auto;
+`;
+
+const Section = styled.section((props: SectionProps) => gridBodyStyles(props));
+
+// Grid is the same as section in every way except that a <div /> will be used
+// instead of a <section />
+export const Grid = styled.div((props: SectionProps) => gridBodyStyles(props));
 
 export default Section;
