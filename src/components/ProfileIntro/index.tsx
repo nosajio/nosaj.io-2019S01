@@ -12,7 +12,7 @@ const ProfileIntro: React.FunctionComponent<ProfileIntroProps> = ({
     <ProfileIntroFrame className={className}>
       <ProfileIntroCard>
         <p>
-          Nice to meet you, I’m Jason. I started nosaj.io after a decade
+          Nice to meet you, I’m Jason. I started nosaj.io after over a decade
           designing and building websites and apps for The BBC, William Hill
           Online, Utility Warehouse, Channel 4, and more. Today I work closely
           with startups to efficiently plan, prototype, design and build

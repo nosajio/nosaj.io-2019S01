@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { Theme } from '../../styled/theme';
 import Page from '../Page';
-import Waves from '../Waves';
 import ProfileIntro from '../ProfileIntro';
+import Waves from '../Waves';
 
 export const FrontMain = styled(Page)``;
 
 export const WavesFixed = styled(Waves)`
-  z-index: 0;
+  z-index: ${({ theme }: { theme: Theme }) => theme.layers.background};
   position: absolute;
   top: 0;
   left: 0;

@@ -1,62 +1,24 @@
 import * as React from 'react';
-import Project, { ProjectProps } from '../Project';
-
-const projects: ProjectProps[] = [
-  {
-    colors: {
-      background: '#16345C',
-      foreground: '#42DAD3'
-    },
-    title:
-      'The worlds first Intellectual Property analysis and trading platform.',
-    clientName: 'Tradespace Inc',
-    links: [
-      {
-        label: 'Read Tradespace Case Study',
-        path: '/p/tradespace-inc'
-      }
-    ]
-  },
-  {
-    colors: {
-      background: '#1973E6',
-      foreground: 'white'
-    },
-    title:
-      'A-Level computer science made easy with Just A-Level — an online teaching service for college students.',
-    clientName: 'Just A-Level',
-    links: [
-      {
-        label: 'Read Just A-Level Case Study',
-        path: '/p/just-a-level'
-      }
-    ]
-  },
-  {
-    colors: {
-      background: '#111',
-      foreground: '#F6E75E'
-    },
-    title:
-      'The easy way to find affordable live/work spaces in London.',
-    clientName: 'live/work search',
-    links: [
-      {
-        label: 'Read live/work search Case Study',
-        path: '/p/just-a-level'
-      }
-    ]
-  }
-];
+import Project from '../Project';
+import projects, { FrontProjectsData } from './data/projects';
+import InterruptBanner from '../InterruptBanner';
+import Heading from '../Heading';
 
 interface FrontProjectsProps {}
 
 const FrontProjects: React.FunctionComponent<FrontProjectsProps> = props => {
   return (
     <section>
-      {projects.map((p, i) => (
-        <Project key={`project-${i}`} {...p} />
-      ))}
+      {projects.map((p, i) =>
+        '_interrupt' in p ? (
+          <InterruptBanner key={`project-${i}`}>
+            <Heading type="h3">{p.title}</Heading>
+            <p>{p.body}</p>
+          </InterruptBanner>
+        ) : (
+          <Project key={`project-${i}`} {...p} />
+        )
+      )}
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BigTestimonialProps } from '../BigTestimonial';
+import { BigTestimonialProps } from '../../BigTestimonial';
 
 const testimonials: BigTestimonialProps['quotes'] = [
   {
