@@ -1,37 +1,99 @@
+import * as React from 'react';
 import { Link } from 'react-router-dom';
-import styled, { AnyStyledComponent } from 'styled-components';
+import styled from 'styled-components';
+import { Fonts } from '../../styled/fonts';
+import { ModScale } from '../../styled/modularscale';
 import { Theme } from '../../styled/theme';
+
+export enum ButtonSizes {
+  small = 's',
+  medium = 'm',
+  large = 'l'
+}
 
 export interface ButtonBaseProps {
   theme: Theme;
+  bgColor?: string;
+  fgColor?: string;
+  withSize?: ButtonSizes;
+  withCondensedFont: Boolean;
   to?: string;
   href?: string;
 }
 
+const paddingForSize = (s: ButtonSizes, ms: ModScale): string => {
+  switch (s) {
+    case ButtonSizes.large:
+      return `calc(${ms.rem(-1)} - 2px) ${ms.rem(1)} ${ms.rem(-1)}`;
+    case ButtonSizes.medium:
+      return `calc(${ms.rem(-1)} - 2px) ${ms.rem(1)} ${ms.rem(-1)}`;
+    case ButtonSizes.small:
+      return `calc(${ms.rem(-3)} - 1px) 1rem ${ms.rem(-3)}`;
+  }
+};
+
+const fontSizeforSize = (s: ButtonSizes, ms: ModScale): string => {
+  switch (s) {
+    case ButtonSizes.large:
+      return ms.rem(1);
+    case ButtonSizes.medium:
+      return '1rem';
+    case ButtonSizes.small:
+      return '1rem';
+  }
+};
+
+const buttonFontFamily = (condensed: Boolean = false, fonts: Fonts) => {
+  switch (condensed) {
+    case true:
+      return fonts.c.family;
+    default:
+      return fonts.a.family;
+  }
+};
+const buttonFontWeight = (condensed: Boolean = false, fonts: Fonts) => {
+  switch (condensed) {
+    case true:
+      return fonts.c.weight.heavyCondensed;
+    default:
+      return fonts.a.weight.bold;
+  }
+};
+
 export const ButtonBase = ({ to }: ButtonBaseProps) =>
   styled(to ? Link : 'a')(
-    ({ theme }: ButtonBaseProps) => `
+    ({ theme, bgColor, fgColor }: ButtonBaseProps) => `
     display: inline-block;
     border-radius: 50px;
-    background: black;
-    color: white;
+    background: ${bgColor ? bgColor : 'black'};
+    color: ${fgColor ? fgColor : 'white'};
   `
   );
 
-export const RegularButton = styled(Link)(
-  ({ theme }: ButtonBaseProps) => `
-    color: red;
+export const RegularButton = styled(
+  // Remap the props on Link so the typechecker doesn't complain about
+  // unrecognized props.
+  ({ bgColor, fgColor, withCondensedFont, withSize, ...rest }) =>
+    React.createElement(Link, { ...rest })
+)(
+  ({
+    theme,
+    bgColor,
+    fgColor,
+    withCondensedFont,
+    withSize = ButtonSizes.medium
+  }: ButtonBaseProps) => `
     display: inline-block;
+    background: ${bgColor ? bgColor : 'black'};
+    color: ${fgColor ? fgColor : 'white'};
     border-radius: 50px;
-    background: black;
-    color: white;
     text-transform: uppercase;
     text-decoration: none;
-    padding: calc(${theme.ms.rem(-1)} - 2px) ${theme.ms.rem(1)} ${theme.ms.rem(
-    -1
-  )};
-    font: ${theme.fonts.c.weight.heavyCondensed} ${theme.ms.rem(1)} ${
-    theme.fonts.c.family
-  };
+    padding: ${paddingForSize(withSize, theme.ms)};
+    box-shadow: 0 3px 18px 2px rgba(0, 0, 0, 0.18);
+    font: ${buttonFontWeight(withCondensedFont, theme.fonts)} ${fontSizeforSize(
+    withSize,
+    theme.ms
+  )} ${buttonFontFamily(withCondensedFont, theme.fonts)};
 `
 );

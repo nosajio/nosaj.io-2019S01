@@ -7,6 +7,7 @@ import {
   OpenerLink,
   OpenerLinks
 } from './styled';
+import { ButtonSizes } from '../Button/styled';
 
 interface OpenerProps {
   headline: string;
@@ -20,7 +21,9 @@ const Opener: React.FunctionComponent<OpenerProps> = ({ headline }) => {
       <OpenerLinks>
         <OpenerLink to="#work">Explore my work</OpenerLink>
         <OpenerLink to="/services">How I help startups</OpenerLink>
-        <OpenerButton to="/contact">Hire me for your next project</OpenerButton>
+        <OpenerButton condensed size={ButtonSizes.large} to="/contact">
+          Hire me for your next project
+        </OpenerButton>
       </OpenerLinks>
     </OpenerFrame>
   );

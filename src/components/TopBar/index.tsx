@@ -1,20 +1,24 @@
 import * as React from 'react';
-import { TBarBtn, TBarFrame, TBarLink, TBarLogo, TBarNav } from './styled';
 import Logo from '../Logo';
+import { TBarBtn, TBarFrame, TBarLink, TBarLogo, TBarNav } from './styled';
 
-interface TopBarProps {}
+interface TopBarProps {
+  showNav?: boolean;
+}
 
-const TopBar: React.FunctionComponent<TopBarProps> = props => {
+const TopBar: React.FunctionComponent<TopBarProps> = ({ showNav = true }) => {
   return (
     <TBarFrame>
       <TBarLogo to="/">
         <Logo />
       </TBarLogo>
-      <TBarNav>
+      <TBarNav isVisible={showNav}>
         <TBarLink to="/#work">Work</TBarLink>
         <TBarLink to="/services">How I Help Startups</TBarLink>
         <TBarLink to="/contact">Contact</TBarLink>
-        <TBarBtn to="/contact">Hire Me</TBarBtn>
+        <TBarBtn bgColor="#FFE793" fgColor="black" to="/contact">
+          Hire me for your next project
+        </TBarBtn>
       </TBarNav>
     </TBarFrame>
   );
