@@ -12,11 +12,14 @@ import {
 
 export type ProjectLink = {
   label: string;
-  path: string;
+  path?: string;
+  url?: string;
 };
 
 export type ProjectImage = {
-  path: string;
+  src: string;
+  maxWidth?: string;
+  justify?: 'flex-start' | 'flex-end' | 'center';
 };
 
 export interface ProjectProps {
@@ -25,6 +28,7 @@ export interface ProjectProps {
   clientName?: string;
   links?: Array<ProjectLink>;
   images?: Array<ProjectImage>;
+  paddingBottom?: boolean;
   colors?: {
     background: string;
     text?: string;
@@ -38,11 +42,16 @@ const Project: React.FunctionComponent<ProjectProps> = ({
   clientName,
   links,
   images,
-  colors
+  colors,
+  paddingBottom = true
 }) => {
   return (
-    <ProjectFrame className={className} withColors={colors}>
-      <Page.Section>
+    <ProjectFrame
+      className={className}
+      withColors={colors}
+      withPaddingBottom={paddingBottom}
+    >
+      <Page.Section bottomGap={0}>
         {clientName && (
           <ProjectClientName withColors={colors}>
             {clientName}
@@ -51,21 +60,37 @@ const Project: React.FunctionComponent<ProjectProps> = ({
         <ProjectHeadline>{title}</ProjectHeadline>
         {links && (
           <ProjectLinks>
-            {links.map(l => (
-              <ProjectLink
-                key={`project-link-${l.path}`}
-                to={l.path}
-                withColors={colors}
-              >
-                {l.label}
-              </ProjectLink>
-            ))}
+            {links.map(l =>
+              l.path ? (
+                <ProjectLink
+                  key={`project-link-${l.path}`}
+                  to={l.path}
+                  withColors={colors}
+                >
+                  {l.label}
+                </ProjectLink>
+              ) : l.url ? (
+                <ProjectLink
+                  key={`project-link-${l.label}`}
+                  href={l.url}
+                  target="_blank"
+                  withColors={colors}
+                >
+                  {l.label}
+                </ProjectLink>
+              ) : null
+            )}
           </ProjectLinks>
         )}
         {images && (
           <ProjectImages>
             {images.map(im => (
-              <ProjectImage key={`project-img-${im.path}`} src={im.path} />
+              <ProjectImage
+                key={`project-img-${im.src}`}
+                src={im.src}
+                withMaxWidth={im.maxWidth || null}
+                withJustification={im.justify}
+              />
             ))}
           </ProjectImages>
         )}

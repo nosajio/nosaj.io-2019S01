@@ -26,8 +26,8 @@ export const ProfileIntroCard = styled.div`
   grid-column: 2 / 11;
   grid-row: 1;
   width: 100%;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
   box-shadow: 0 6px 30px 5px rgba(0, 0, 0, 0.22);
   border-radius: 12px;
 

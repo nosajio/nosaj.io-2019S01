@@ -8,7 +8,7 @@ export const IBFrame: StyledWithProps<IBStyledProps> = styled.section`
     ${theme.innergrid(12)}
     padding: ${theme.ms.rem(4)} 0;
   `}
-  background: #EDEBF9 no-repeat url('/bg/waves-blue.svg') center / cover;
+  background: #1B0D73 no-repeat url('/bg/waves-blue.svg') center / cover;
 `;
 
 export const IBCard: StyledWithProps<IBStyledProps> = styled.div`

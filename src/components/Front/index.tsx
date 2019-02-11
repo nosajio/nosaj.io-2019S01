@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  ScrollContext,
-  ScrollProviderValue
-} from '../../contexts/ScrollEventsContext';
 import BigTestimonial from '../BigTestimonial';
+import Footer from '../Footer';
 import { default as H } from '../Heading';
 import Opener from '../Opener';
 import Page from '../Page';
@@ -19,32 +16,27 @@ class Front extends React.Component<FrontProps, any> {
   public render() {
     return (
       <FrontMain>
-        <ScrollContext.Consumer>
-          {({ state: { scrollY } }: ScrollProviderValue) => (
-            <>
-              <TopBar showNav={scrollY > 50} />
-              <WavesFixed />
-              <Page.Section>
-                <Opener headline="I help startups solve problems and forge great software" />
-              </Page.Section>
-              <Page.Section topGap={6}>
-                <NosajIntro />
-              </Page.Section>
-              <Page.Section topGap={4}>
-                <BigTestimonial column={[4, 10]} quotes={testimonials} />
-              </Page.Section>
-              <Page.Grid topGap={4}>
-                <H type="h2" column={[1, 5]}>
-                  Selected Works
-                </H>
-              </Page.Grid>
-              <FrontProjects />
-              <Page.Section topGap={4}>
-                <Thanks column={[2, 12]} />
-              </Page.Section>
-            </>
-          )}
-        </ScrollContext.Consumer>
+        <TopBar />
+        <WavesFixed />
+        <Page.Section>
+          <Opener headline="I help startups solve problems and forge great software" />
+        </Page.Section>
+        <Page.Section topGap={6}>
+          <NosajIntro />
+        </Page.Section>
+        <Page.Section topGap={4}>
+          <BigTestimonial column={[4, 10]} quotes={testimonials} />
+        </Page.Section>
+        <Page.Grid topGap={4}>
+          <H type="h2" column={[1, 5]}>
+            Selected Works
+          </H>
+        </Page.Grid>
+        <FrontProjects />
+        <Page.Section topGap={4}>
+          <Thanks column={[2, 12]} />
+        </Page.Section>
+        <Footer />
       </FrontMain>
     );
   }

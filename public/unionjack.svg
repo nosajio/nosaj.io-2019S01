@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27">
+  <g fill="none" fill-rule="evenodd">
+    <polygon fill="#FFF" points="0 27 27 27 27 0 0 0"/>
+    <polygon fill="#CF142B" points="10.787 0 10.787 10.794 0 10.794 0 16.192 10.787 16.192 10.787 27 16.185 27 16.185 16.192 27 16.192 27 10.794 16.185 10.794 16.185 0"/>
+    <polygon fill="#00247D" points="18 0 18 9 27 4.357 27 0"/>
+    <polygon fill="#00247D" points="18 27 27 27 27 22.643 18 18"/>
+    <polygon fill="#00247D" points="0 22.629 0 27 9 27 9 18"/>
+    <polygon fill="#00247D" points="0 0 0 4.371 9 9 9 0"/>
+    <polygon fill="#CF142B" points="20 9 22.802 9 27 6.605 27 5"/>
+    <polygon fill="#CF142B" points="6.974 18 4.171 18 0 20.387 0 22 7 18"/>
+    <polygon fill="#CF142B" points="0 8.337 1.327 9 4 9 0 7"/>
+    <polygon fill="#CF142B" points="22 18 27 20 27 18.674 25.313 18"/>
+  </g>
+</svg>

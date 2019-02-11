@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ProjectProps } from '.';
+import { ProjectImage as ProjectImageType, ProjectProps } from '.';
 import borderUnderline from '../../styled/border-underline';
-import { Theme } from '../../styled/theme';
 import { StyledWithProps, ThemeProps } from '../../types/styled';
 
 const gridMax = 'grid-column: 2 / 12;';
@@ -16,11 +15,14 @@ const getColor = (
 export type ProjectStyledProps = ThemeProps & {
   // theme: Theme;
   withColors?: ProjectProps['colors'];
+  withMaxWidth?: ProjectImageType['maxWidth'];
+  withPaddingBottom?: ProjectProps['paddingBottom'];
+  withJustification?: ProjectImageType['justify'];
 };
 
 export const ProjectFrame: StyledWithProps<ProjectStyledProps> = styled.article`
-  ${({ theme: { ms }, withColors }: ProjectStyledProps) => `
-    padding: ${ms.rem(3)} 0;
+  ${({ theme: { ms }, withColors, withPaddingBottom }: ProjectStyledProps) => `
+    padding: ${ms.rem(3)} 0 ${withPaddingBottom ? ms.rem(3) : '0'};
     background: ${getColor(withColors, 'background', 'transparent')};
     color: ${getColor(withColors, 'text', 'white')};
   `}
@@ -56,7 +58,8 @@ export const ProjectLinks: StyledWithProps<ProjectStyledProps> = styled.div`
 export const ProjectLink: StyledWithProps<ProjectStyledProps> = styled(
   // Remap the props on Link so the typechecker doesn't complain about
   // unrecognized props.
-  ({ withColors, ...rest }) => React.createElement(Link, { ...rest })
+  ({ withColors, ...rest }) =>
+    React.createElement(rest.href ? 'a' : Link, { ...rest })
 )`
   ${({ theme: { ms }, withColors }: ProjectStyledProps) => `
       color: ${getColor(
@@ -77,10 +80,23 @@ export const ProjectLink: StyledWithProps<ProjectStyledProps> = styled(
   font-size: 1rem;
   letter-spacing: 2px;
   text-transform: uppercase;
+  cursor: pointer;
 `;
 
-export const ProjectImages = styled.div`
+export const ProjectImages: StyledWithProps<ProjectStyledProps> = styled.div`
   ${gridMax}
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: ${({ theme }: ProjectStyledProps) => theme.ms.rem(3)};
 `;
 
-export const ProjectImage = styled.img``;
+export const ProjectImage: StyledWithProps<ProjectStyledProps> = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: ${({ withMaxWidth }: ProjectStyledProps) =>
+    withMaxWidth ? withMaxWidth : '100%'};
+  justify-self: ${({ withJustification }: ProjectStyledProps) =>
+    withJustification ? withJustification : 'center'};
+`;
