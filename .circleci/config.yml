@@ -24,6 +24,13 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
       
+      - run: 
+        name: Install awscli
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r awscli>=1.15.50
+
       - run:
           name: Build the docker image and tag
           command: |
