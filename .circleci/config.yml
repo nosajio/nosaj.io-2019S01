@@ -23,10 +23,9 @@ jobs:
             mv /tmp/docker/* /usr/bin
 
       - run:
-          name: Build the docker image and tag
+          name: Build the docker image
           command: |
-            docker build -t $IMAGE_NAME .
-            docker tag $IMAGE_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
+            docker build -t $IMAGE_NAME:latest .
       
       - run:
           name: Save image to an archive
@@ -68,6 +67,7 @@ jobs:
           command: |
             . venv/bin/activate
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+            docker tag $IMAGE_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
             docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
     
 
