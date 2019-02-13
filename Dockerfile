@@ -1,5 +1,7 @@
 FROM node:10.15.1 as builder
 
+RUN echo $REACT_APP_CDN_URL
+
 RUN mkdir /usr/src/www
 WORKDIR /usr/src/www
 

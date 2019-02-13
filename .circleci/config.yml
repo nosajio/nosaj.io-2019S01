@@ -36,6 +36,7 @@ jobs:
           name: Build the docker image
           command: |
             cat $BASH_ENV
+            echo $REACT_APP_CDN_URL
             docker build -t $IMAGE_NAME:latest .
       
       - run:
