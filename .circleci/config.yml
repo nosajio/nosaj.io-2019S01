@@ -3,12 +3,14 @@ jobs:
   build:
     branches:
       only: master
-    # docker:
-    #   - image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
-    #     aws_auth:
-    #       aws_access_key_id: $AWS_ACCESS_KEY_ID
-    #       aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
-    #   - working_directory: /usr/src/www
+    docker:
+      - image: node:10.15.1
+      - image: nginx:alpine
+      # - image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
+      #   aws_auth:
+      #     aws_access_key_id: $AWS_ACCESS_KEY_ID
+      #     aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
+    working_directory: /usr/src/www
     steps: 
       - checkout
       - setup_remote_docker
