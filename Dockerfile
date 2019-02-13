@@ -1,12 +1,12 @@
 FROM node:10.15.1 as builder
 
-RUN echo $REACT_APP_CDN_URL
-
 RUN mkdir /usr/src/www
 WORKDIR /usr/src/www
 
 ENV PATH /usr/src/www/node_modules/.bin:$PATH
-ENV REACT_APP_CDN_URL ${REACT_APP_CDN_URL}
+
+RUN echo "${REACT_APP_CDN_URL}\n" >> .env
+RUN echo "production\n" >> .env`
 
 COPY package.json /usr/src/www/package.json
 
