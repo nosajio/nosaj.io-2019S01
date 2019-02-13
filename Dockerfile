@@ -10,7 +10,6 @@ COPY package.json /usr/src/www/package.json
 # Intall and build for production
 RUN npm install react-scripts -g
 RUN npm install
-
 COPY . /usr/src/www
 RUN npm run build
 
