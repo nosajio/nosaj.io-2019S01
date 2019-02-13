@@ -1,0 +1,15 @@
+version: 2
+jobs: 
+  build:
+    docker:
+      - image: node:10.15.1
+      - working_directory: /usr/src/www
+    steps: 
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build the docker image and tag
+          command: |
+            docker build -t $IMAGE_NAME .
+            docker tag $IMAGE_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
+            docker push $IMAGE_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
