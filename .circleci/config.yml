@@ -3,10 +3,10 @@ jobs:
   build:
     docker:
       - image: node:10.15.1
-          environment:
-            REACT_APP_CDN_URL: $REACT_APP_CDN_URL
-            NODE_ENV: production
       - image: nginx:alpine
+        environment:
+          REACT_APP_CDN_URL: $REACT_APP_CDN_URL
+          NODE_ENV: production
       # - image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
       #   aws_auth:
       #     aws_access_key_id: $AWS_ACCESS_KEY_ID
