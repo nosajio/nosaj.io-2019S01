@@ -19,7 +19,7 @@ class Front extends React.Component<FrontProps, any> {
         <TopBar />
         <WavesFixed />
         <Page.Section>
-          <Opener headline="I help startups solve problems and forge great software" />
+          <Opener headline="I help startups solve problems & forge great software" />
         </Page.Section>
         <Page.Section topGap={6}>
           <NosajIntro />
