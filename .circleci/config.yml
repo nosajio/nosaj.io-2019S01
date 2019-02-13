@@ -1,9 +1,12 @@
 version: 2
 jobs: 
   build:
+    branches:
+      only: master
     docker:
       - image: node:10.15.1
       - working_directory: /usr/src/www
+      - image: nginx:alpine
     steps: 
       - checkout
       - setup_remote_docker
