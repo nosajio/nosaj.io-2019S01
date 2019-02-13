@@ -4,9 +4,8 @@ jobs:
     branches:
       only: master
     docker:
-      - image: node:10.15.1
+      - image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
       - working_directory: /usr/src/www
-      - image: nginx:alpine
     steps: 
       - checkout
       - setup_remote_docker
