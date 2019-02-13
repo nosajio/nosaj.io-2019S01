@@ -4,11 +4,14 @@ jobs:
     docker:
       - image: node:10.15.1
       - image: nginx:alpine
+      - image: circleci/python:3.6.1
       # - image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
       #   aws_auth:
       #     aws_access_key_id: $AWS_ACCESS_KEY_ID
       #     aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
     working_directory: /usr/src/www
+    environment:
+      AWS_DEFAULT_OUTPUT: json
     steps: 
       - checkout
       - setup_remote_docker
@@ -34,22 +37,6 @@ jobs:
             mkdir docker-image
             docker save -o docker-image/image.tar $IMAGE_NAME
 
-      - persist_to_workspace:
-          root: .
-          paths:
-            - docker-image
-
-  deploy:
-    docker:
-      - image: circleci/python:3.6.1
-    environment:
-      AWS_DEFAULT_OUTPUT: json
-    steps:
-      - checkout
-      - setup_remote_docker
-      - attach_workspace:
-          at: workspace
-
       - run:
           name: Install awscli
           command: |
@@ -61,7 +48,7 @@ jobs:
       - run:
           name: Load image
           command: |
-            docker load --input workspace/docker-image/image.tar
+            docker load --input docker-image/image.tar
 
       - run:
           name: Push image to ECR
@@ -69,16 +56,47 @@ jobs:
             . venv/bin/activate
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
             docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
+
+#   deploy:
+#     docker:
+#       - image: circleci/python:3.6.1
+#     environment:
+#       AWS_DEFAULT_OUTPUT: json
+#     steps:
+#       - checkout
+#       - setup_remote_docker
+#       - attach_workspace:
+#           at: workspace
+
+#       - run:
+#           name: Install awscli
+#           command: |
+#             apt-get install python3-venv
+#             python3 -m venv venv
+#             . venv/bin/activate
+#             pip install -r awscli>=1.15.50
+
+#       - run:
+#           name: Load image
+#           command: |
+#             docker load --input workspace/docker-image/image.tar
+
+#       - run:
+#           name: Push image to ECR
+#           command: |
+#             . venv/bin/activate
+#             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+#             docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
     
 
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+# workflows:
+#   version: 2
+#   build-deploy:
+#     jobs:
+#       - build
+#       - deploy:
+#           requires:
+#             - build
+#           filters:
+#             branches:
+#               only: master
