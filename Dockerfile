@@ -5,8 +5,8 @@ WORKDIR /usr/src/www
 
 ENV PATH /usr/src/www/node_modules/.bin:$PATH
 
-RUN echo "${REACT_APP_CDN_URL}\n" >> .env
-RUN echo "production\n" >> .env`
+RUN echo "REACT_APP_CDN_URL=${REACT_APP_CDN_URL}\n" >> .env
+RUN echo "NODE_ENV=production\n" >> .env`
 
 COPY package.json /usr/src/www/package.json
 
