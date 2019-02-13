@@ -29,7 +29,7 @@ class Front extends React.Component<FrontProps, any> {
         </Page.Section>
         <Page.Grid topGap={4}>
           <H type="h2" column={[1, 5]}>
-            Selected Works
+            Selected Work
           </H>
         </Page.Grid>
         <FrontProjects />
