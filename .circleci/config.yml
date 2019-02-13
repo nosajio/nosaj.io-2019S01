@@ -56,7 +56,7 @@ jobs:
             # apt-get install python3-venv
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r awscli>=1.15.50
+            pip install awscli>=1.15.50
 
       - run:
           name: Load image
