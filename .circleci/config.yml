@@ -12,7 +12,7 @@ jobs:
     steps: 
       - checkout
       - setup_remote_docker
-        docker_layer_caching: true
+          docker_layer_caching: true
       
       - run:
           name: Install Docker client
@@ -61,7 +61,8 @@ jobs:
       - run:
           name: Install awscli
           command: |
-            python3.6 -m venv venv
+            apt-get install python3-venv
+            python3 -m venv venv
             . venv/bin/activate
             pip install -r awscli>=1.15.50
 
