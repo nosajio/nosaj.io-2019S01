@@ -12,6 +12,7 @@ jobs:
     steps: 
       - checkout
       - setup_remote_docker
+        docker_layer_caching: true
       
       - run:
           name: Install Docker client
@@ -56,19 +57,18 @@ jobs:
       - setup_remote_docker
       - attach_workspace:
           at: workspace
-          
+
       - run:
           name: Install awscli
           command: |
-            python3 -m venv venv
+            python3.6 -m venv venv
             . venv/bin/activate
             pip install -r awscli>=1.15.50
-            
+
       - run:
           name: Load image
           command: |
             docker load --input workspace/docker-image/image.tar
-
 
       - run:
           name: Push image to ECR
