@@ -5,9 +5,9 @@ WORKDIR /usr/src/www
 
 ENV PATH /usr/src/www/node_modules/.bin:$PATH
 
+# Make sure env vars are present
 ARG CDN_URL
 ENV REACT_APP_CDN_URL=${CDN_URL}
-RUN echo ${REACT_APP_CDN_URL}
 RUN echo "REACT_APP_CDN_URL=${CDN_URL}\n" >> .env
 RUN echo "NODE_ENV=production\n" >> .env
 
