@@ -4,10 +4,6 @@ jobs:
     docker:
       - image: node:10.15.1
       - image: nginx:alpine
-      # - image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:latest
-      #   aws_auth:
-      #     aws_access_key_id: $AWS_ACCESS_KEY_ID
-      #     aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
     working_directory: /usr/src/www
     steps: 
       - checkout
@@ -79,7 +75,8 @@ jobs:
       - run:
           name: Force ECS update
           command: |
-            aws ecs update-service --force-new-deployment --service $ECS_SERVICE_NAME
+            . venv/bin/activate
+            aws ecs update-service --force-new-deployment --service $ECS_SERVICE_NAME --cluster $ECS_CLUSTER_NAME
     
 
 workflows:
