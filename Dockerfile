@@ -3,10 +3,9 @@ FROM node:10.15.1 as builder
 RUN mkdir /usr/src/www
 WORKDIR /usr/src/www
 
-ENV PATH /usr/src/www/node_modules/.bin:$PATH
-
 # Make sure env vars are present
 ARG CDN_URL
+ENV PATH /usr/src/www/node_modules/.bin:$PATH
 ENV REACT_APP_CDN_URL=${CDN_URL}
 RUN echo "REACT_APP_CDN_URL=${CDN_URL}\n" >> .env
 RUN echo "NODE_ENV=production\n" >> .env
