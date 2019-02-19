@@ -19,10 +19,13 @@ RUN npm install
 COPY . /usr/src/www
 RUN npm run build
 
+# Copy to www dir
+COPY ./build/ /usr/www/
+
 # Nginx setup for production
-FROM nginx:alpine
-RUN rm -rf /etc/nginx/conf.d
-COPY conf /etc/nginx
-COPY --from=builder /usr/src/www/build /usr/share/nginx/html
-EXPOSE 8080
-CMD ["nginx", "-g", "daemon off;"]
+# FROM nginx:alpine
+# RUN rm -rf /etc/nginx/conf.d
+# COPY conf /etc/nginx
+# COPY --from=builder /usr/src/www/build /usr/share/nginx/html
+# EXPOSE 8080
+# CMD ["nginx", "-g", "daemon off;"]
