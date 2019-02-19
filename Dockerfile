@@ -21,7 +21,7 @@ RUN npm run build
 
 # Copy to www dir (the shared dir)
 RUN mkdir /usr/www
-COPY /usr/src/www/build/ /usr/www/
+RUN cp -a /usr/src/www/build/. /usr/www/
 
 # Nginx setup for production
 # FROM nginx:alpine
