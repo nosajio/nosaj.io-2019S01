@@ -19,8 +19,9 @@ RUN npm install
 COPY . /usr/src/www
 RUN npm run build
 
-# Copy to www dir
-COPY ./build/ /usr/www/
+# Copy to www dir (the shared dir)
+RUN mkdir /usr/www
+COPY /usr/src/www/build/ /usr/www/
 
 # Nginx setup for production
 # FROM nginx:alpine
