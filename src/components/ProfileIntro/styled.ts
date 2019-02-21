@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const ProfileIntroFrame = styled.div`
   ${({ theme }: { theme: Theme }) => theme.innergrid(10)}
-  grid-column: 2 / 12;
+  grid-column: main;
   align-items: start;
 `;
 

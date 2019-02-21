@@ -21,8 +21,8 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({
       <TBarNav isLight={light} isVisible={showNav}>
         <TBarLink to="/#work">Work</TBarLink>
         <TBarLink to="/services">How I Help Startups</TBarLink>
-        <TBarLink to="/contact">Contact</TBarLink>
-        <TBarBtn bgColor="#FFE793" fgColor="black" to="/contact">
+        <TBarLink to="#contact">Contact</TBarLink>
+        <TBarBtn caps bgColor="#FFE793" fgColor="black" to="#contact">
           Hire me for your next project
         </TBarBtn>
       </TBarNav>

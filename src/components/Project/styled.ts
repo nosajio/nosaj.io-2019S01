@@ -42,7 +42,7 @@ export const ProjectClientName: StyledWithProps<
 `;
 
 export const ProjectHeadline: StyledWithProps<ProjectStyledProps> = styled.div`
-  grid-column: 2 / 10;
+  grid-column: main;
   ${({ theme: { ms, fonts }, withColors }: ProjectStyledProps) => `
     font: ${fonts.c.weight.bold} ${ms.rem(2)} ${fonts.c.family};
 `}

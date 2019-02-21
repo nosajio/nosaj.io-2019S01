@@ -49,5 +49,8 @@ export const cssinnergrid = (
     grid-template-columns: repeat(${cols}, 1fr);
     grid-auto-rows: auto;
     grid-column-gap: ${fullMarginPrcnt}${unit};
+    grid-template-areas: ". ${Array.from(Array(cols - 2))
+      .fill('main')
+      .join(' ')} .";
   `;
 };

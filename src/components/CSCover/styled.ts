@@ -25,7 +25,7 @@ export const CSCoverFrame: StyledWithProps<CSCoverStyledProps> = styled.header(
 
 export const CSCoverH1: StyledWithProps<CSCoverStyledProps> = styled.h1(
   ({ theme, textColor }: CSCoverStyledProps) => `
-  grid-column: 2 / 10;
+  grid-column: main;
   color: ${textColor || 'white'};
   font: ${theme.fonts.c.weight.heavyCondensed} 
     ${theme.ms.rem(4)} 

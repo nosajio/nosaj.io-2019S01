@@ -47,7 +47,7 @@ const projects: Array<FrontProjectsData> = [
       foreground: 'white'
     },
     title:
-      'A-Level computer science made easy with Just A-Level — an online teaching service for college students.',
+      'A-Level computer science made easy with Just A-Level — a learning platform for college students.',
     clientName: 'Just A-Level',
     images: [
       {
@@ -70,7 +70,7 @@ const projects: Array<FrontProjectsData> = [
       "Think I can help you in 2019? Contact me today to gurantee I'll be available.",
     cta: {
       label: "Let's talk",
-      path: '/contact'
+      path: '#contact'
     }
   },
   {

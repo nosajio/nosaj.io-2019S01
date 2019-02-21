@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 import { Theme } from '../../styled/theme';
-import CapsLink from '../CapsLink';
-import Waves from '../Waves';
 import Button from '../Button';
+import CapsLink from '../CapsLink';
 
 export const OpenerFrame = styled.div(
   ({ theme }: { theme: Theme }) => `
-  grid-column: 2 / 12;
+  grid-area: main;
   position: relative;
   margin-top: 14vh;
 `

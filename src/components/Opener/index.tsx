@@ -21,7 +21,7 @@ const Opener: React.FunctionComponent<OpenerProps> = ({ headline }) => {
       <OpenerLinks>
         <OpenerLink to="#work">Explore my work</OpenerLink>
         <OpenerLink to="/services">How I help startups</OpenerLink>
-        <OpenerButton condensed size={ButtonSizes.large} to="/contact">
+        <OpenerButton caps condensed size={ButtonSizes.large} to="/#contact">
           Hire me for your next project
         </OpenerButton>
       </OpenerLinks>
