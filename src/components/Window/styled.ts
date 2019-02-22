@@ -17,6 +17,7 @@ export const WindowView = styled.div`
   flex-flow: row nowrap;
   align-items: flex-start;
   justify-content: center;
+  padding-top: ${({ theme }: WindowStyledProps) => theme.ms.rem(4)};
   z-index: ${({ theme }: WindowStyledProps) => theme.layers.windows};  
 `;
 
@@ -27,7 +28,6 @@ export const WindowOverlay = styled.div`
   width: 100%;
   height: 100%;
   background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.77) 85%);
-  padding-top: ${({ theme }: WindowStyledProps) => theme.ms.rem(4)};
 `;
 
 export const WindowFrame: StyledWithProps<WindowStyledProps> = styled.div`
