@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../styled/theme';
+import FormLabel from '../Forms/Label';
 
 export interface FormInputProps {
   type?: 'text' | 'email' | 'textarea';
@@ -38,11 +39,6 @@ const InputField = styled.input`
 const InputTextarea = styled.textarea`
   ${inputBaseCSS}
 `;
-const InputLabel = styled.div`
-  font: ${({ theme }: FormInputStyledProps) =>
-    `${theme.fonts.c.weight.bold} ${theme.ms.rem(1)} ${theme.fonts.c.family}`};
-  margin-bottom: ${({ theme }: FormInputStyledProps) => theme.ms.rem(-3)};
-`;
 
 const FormInput: React.FunctionComponent<FormInputProps> = ({
   onChange,
@@ -72,7 +68,7 @@ const FormInput: React.FunctionComponent<FormInputProps> = ({
   }
   return (
     <InputFrame className={className}>
-      {label ? <InputLabel>{label}</InputLabel> : null}
+      {label ? <FormLabel>{label}</FormLabel> : null}
       {Field}
     </InputFrame>
   );

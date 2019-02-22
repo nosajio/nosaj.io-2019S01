@@ -7,22 +7,31 @@ type WindowStyledProps = {
   theme: Theme;
 };
 
-export const WindowOverlay = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: flex-start;
-  justify-content: center;
+export const WindowView = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: ${({ theme }: WindowStyledProps) => theme.layers.windows};  
+`;
+
+export const WindowOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.77) 85%);
   padding-top: ${({ theme }: WindowStyledProps) => theme.ms.rem(4)};
-  z-index: ${({ theme }: WindowStyledProps) => theme.layers.windows};
 `;
 
 export const WindowFrame: StyledWithProps<WindowStyledProps> = styled.div`
+  position: relative;
   width: 100%;
   max-width: 1200px;
   background: ${({ theme: { colors } }: WindowStyledProps) =>
