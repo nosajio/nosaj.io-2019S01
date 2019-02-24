@@ -87,3 +87,12 @@ export const ContactSuccessMsg = styled.h1`
     text-shadow: 0 4px 6px rgba(0, 0, 0, .2);
   `}
 `;
+
+export const InvalidMsg = styled.div`
+  grid-column: 1 / 3;
+  grid-row: 1;
+  ${({ theme: { fonts, colors, ms } }: ContactStyledProps) => `
+    font: ${fonts.c.weight.bold} ${ms.rem(1)} ${fonts.c.family};
+    color: ${colors.yellow.bright};
+  `}
+`;

@@ -15,7 +15,8 @@ import {
   NameField,
   SubjectField,
   ContactSuccessFrame,
-  ContactSuccessMsg
+  ContactSuccessMsg,
+  InvalidMsg
 } from './styled';
 
 const subjects = [
@@ -32,6 +33,7 @@ const subjects = [
 const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
   history
 }) => {
+  const [invalidState, setInvalidState] = React.useState(false);
   const [sentState, setSentState] = React.useState(false);
   const [nameVal, setNameVal] = React.useState('');
   const [emailVal, setEmailVal] = React.useState('');
@@ -44,10 +46,21 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
         history.replace(history.location.pathname);
       };
 
-  const handleSubmitForm = (): void => {
-    sendMessage(nameVal, emailVal, subjectVal, messageVal).then(r =>
-      setSentState(true)
-    );
+  const isFormValid = () => {
+    if (!sentState && (!nameVal || !emailVal)) {
+      return false;
+    }
+    return true;
+  }
+  
+  const handleSubmitForm = async (): Promise<void> => {
+    if (! isFormValid()) {
+      setInvalidState(true);
+      return;
+    }
+    await sendMessage(nameVal, emailVal, subjectVal, messageVal)
+    setSentState(true);
+    setInvalidState(false);
   };
 
   // Automatically close the contact route n seconds after the form has been
@@ -74,20 +87,21 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
         </ContactSuccessFrame>
       )}
       <Window isGone={sentState} onClose={() => removeContactFromUrl()}>
-        <ContactH1>Hey, nice to meet you :)</ContactH1>
+        <ContactH1>Hey, nice to meet you 👋</ContactH1>
         <ContactForm>
+          {invalidState && (<InvalidMsg>Please make sure the name and email fields are both filled out</InvalidMsg>)}
+          <SubjectField
+            name="subject"
+            label="Subject"
+            options={subjects}
+            onChange={v => setSubjectVal(String(v.value))}
+          />
           <NameField name="name" label="Name" onChange={v => setNameVal(v)} />
           <EmailField
             name="email"
             type="email"
             label="Email"
             onChange={v => setEmailVal(v)}
-          />
-          <SubjectField
-            name="subject"
-            label="Subject"
-            options={subjects}
-            onChange={v => setSubjectVal(String(v.value))}
           />
           <MessageField
             name="message"
