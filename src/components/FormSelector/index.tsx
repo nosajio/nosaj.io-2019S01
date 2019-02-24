@@ -9,7 +9,9 @@ type FormSelectorSelectable = {
 };
 
 interface FormSelectorProps {
+  name: string;
   className?: string;
+  onChange?: (v: FormSelectorSelectable) => void;
   label: string;
   options: FormSelectorSelectable[];
 }
@@ -17,9 +19,14 @@ interface FormSelectorProps {
 const FormSelector: React.FunctionComponent<FormSelectorProps> = ({
   label,
   options,
+  onChange,
   className
 }) => {
   const [selectedState, setSelectedState] = React.useState(options[0]);
+  const selectOption = (o: FormSelectorSelectable) => {
+    setSelectedState(o);
+    onChange ? onChange(o) : noop();
+  };
   return (
     <SelectorFrame className={className}>
       <FormLabel>{label}</FormLabel>
@@ -28,9 +35,9 @@ const FormSelector: React.FunctionComponent<FormSelectorProps> = ({
           <SelectorSelectable
             tabIndex="0"
             key={`selectable-${o.value}`}
-            onClick={() => setSelectedState(o)}
+            onClick={() => selectOption(o)}
             onKeyUp={(e: React.KeyboardEvent) =>
-              (e.key === 'Enter' || e.key === ' ') && setSelectedState(o)
+              (e.key === 'Enter' || e.key === ' ') && selectOption(o)
             }
             isSelected={o.value === selectedState.value}
           >

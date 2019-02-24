@@ -8,6 +8,7 @@ export interface FormInputProps {
   label?: string;
   onChange(v: string): void;
   className?: string;
+  name: string;
 }
 
 interface FormInputStyledProps {
@@ -30,9 +31,7 @@ const inputBaseCSS = css`
   }
 `;
 
-const InputFrame = styled.label`
-
-`;
+const InputFrame = styled.label``;
 const InputField = styled.input`
   ${inputBaseCSS}
 `;
@@ -41,6 +40,7 @@ const InputTextarea = styled.textarea`
 `;
 
 const FormInput: React.FunctionComponent<FormInputProps> = ({
+  name,
   onChange,
   label,
   className = '',
@@ -54,12 +54,17 @@ const FormInput: React.FunctionComponent<FormInputProps> = ({
   switch (type) {
     case 'textarea':
       Field = (
-        <InputTextarea onChange={e => setVal(e.target.value)} value={val} />
+        <InputTextarea
+          name={name}
+          onChange={e => setVal(e.target.value)}
+          value={val}
+        />
       );
       break;
     default:
       Field = (
         <InputField
+          name={name}
           type={type}
           value={val}
           onChange={e => setVal(e.target.value)}
