@@ -13,6 +13,7 @@ jobs:
           name: Env
           command: |
             echo "export REACT_APP_CDN_URL=$REACT_APP_CDN_URL" >> $BASH_ENV
+            echo "export REACT_APP_RMAIL_URL=$REACT_APP_RMAIL_URL" >> $BASH_ENV
             echo "export NODE_ENV=production" >> $BASH_ENV
             source $BASH_ENV
       
