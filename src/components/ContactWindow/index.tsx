@@ -53,7 +53,7 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
   // Automatically close the contact route n seconds after the form has been
   // submitted
   const killClock = 8 * 1000; // ms = seconds * 1000
-  let killTimeout: NodeJS.Timeout;
+  let killTimeout: any;
   React.useEffect(() => {
     if (killTimeout || !sentState) {
       return;
