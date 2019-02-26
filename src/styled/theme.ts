@@ -20,6 +20,7 @@ const colors = {
   },
   blue: {
     pastel: '#D0EAFE',
+    bright: '#184AD8',
     greyDark: '#3D3E55',
     black: '#1E1E29'
   },

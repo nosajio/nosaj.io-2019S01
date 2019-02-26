@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Theme } from '../../styled/theme';
 import { StyledWithProps } from '../../types/styled';
 import Page from '../Page';
+import QuotesCarousel from '../QuotesCarousel';
 
 export interface ServicesStyledProps {
   theme: Theme;
@@ -49,4 +50,9 @@ export const ServicesLogoImg: StyledWithProps<ServicesStyledProps> = styled.img`
     marginTop ? `margin-top: ${marginTop};` : ''}
   ${({ alignSelf }: ServicesStyledProps) =>
     alignSelf ? `align-self: ${alignSelf};` : ''}
+`;
+
+// Testimonials - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+export const ServicesQuotesCarousel = styled(QuotesCarousel)`
+  margin-top: ${({ theme }: ServicesStyledProps) => theme.ms.rem(4)};
 `;
