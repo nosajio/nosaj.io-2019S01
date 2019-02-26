@@ -37,7 +37,9 @@ export const ServicesOpenerHead = styled.h1`
 
 // Logos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 export const ServicesLogosFrame = styled.div`
-  grid-column: main;
+  width: 100%;
+  max-width: ${({ theme }: ServicesStyledProps) => theme.layout.maxWidth}px;
+  margin: 0 auto;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;

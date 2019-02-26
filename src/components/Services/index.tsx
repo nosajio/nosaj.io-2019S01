@@ -25,15 +25,13 @@ const Services: React.FunctionComponent<ServicesProps> = props => {
     <ServicesMain>
       <TopBar />
       <ServicesOpener text="I can help you build & ship your product" />
-      <Page.Section>
-        <ServicesLogos />
-      </Page.Section>
+      <ServicesLogos />
       <ServicesQuotesCarousel
         quotes={testimonials}
         backgroundColor={theme.colors.blue.bright}
         textColor="white"
       />
-      <Page.Section></Page.Section>
+      <Page.Section />
     </ServicesMain>
   );
 };
