@@ -36,7 +36,6 @@ class Front extends React.Component<FrontProps, any> {
         <Page.Section topGap={4}>
           <Thanks column={[2, 12]} />
         </Page.Section>
-        <Footer />
       </FrontMain>
     );
   }

@@ -7,20 +7,18 @@ export type SectionProps = {
   topGap: number;
   bottomGap: number;
   withCols: number;
-  maxWidth: number;
 };
 
 const gridBodyStyles = ({
   theme,
   withCols = 12,
   topGap = 2,
-  bottomGap = 2,
-  maxWidth = 1440
+  bottomGap = 2
 }: SectionProps): string => `
 ${theme.innergrid(withCols)}
 position: relative;
 padding: 0 ${halfMarginPrcnt}%;
-max-width: ${maxWidth}px;
+max-width: ${theme.layout.maxWidth}px;
 margin: ${topGap > 0 ? theme.ms.rem(topGap) : '0'} auto ${
   bottomGap > 0 ? theme.ms.rem(bottomGap) : '0'
 } auto;

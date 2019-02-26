@@ -10,7 +10,8 @@ export const tradeGothic: FontSignature = {
   weight: {
     light: 300,
     regular: 400,
-    bold: 700
+    bold: 700,
+    heavy: 800
   }
 };
 export const tradeGothicCompressed: FontSignature = {

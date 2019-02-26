@@ -6,6 +6,7 @@ import ms, { ModScale } from './modularscale';
 export interface Theme {
   colors: { [name: string]: any };
   layers: { [name: string]: number };
+  layout: { maxWidth: number };
   grid(...args: any): number;
   gridcss(cols?: number, unit?: string): string;
   innergrid(cols: number, unit?: string): string;
@@ -40,6 +41,9 @@ const theme: Theme = {
     background: 0
   },
   colors,
+  layout: {
+    maxWidth: 1440
+  },
   grid: (...args: any) => gridfn(...args),
   gridcss: (...args: any) => gridcss(...args),
   innergrid: (...args: any) => cssinnergrid(...args),

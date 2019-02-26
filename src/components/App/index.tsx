@@ -5,6 +5,7 @@ import ScrollProvider from '../../contexts/ScrollEventsContext';
 import GlobalStyle from '../../styled/globals';
 import theme from '../../styled/theme';
 import ContactWindow from '../ContactWindow';
+import Footer from '../Footer';
 import HashRoute from '../HashRoute';
 import routes from './routes';
 
@@ -24,6 +25,7 @@ class App extends React.Component<AppProps, any> {
             </Switch>
             {/* Show the contact window above whichever view is matched above */}
             <HashRoute path="#contact" component={ContactWindow} />
+            <Footer />
           </ScrollProvider>
         </Router>
       </ThemeProvider>

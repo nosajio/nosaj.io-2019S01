@@ -1,5 +1,6 @@
 import CaseStudy from '../CaseStudy';
 import Front from '../Front';
+import Services from '../Services';
 
 const exact = true;
 
@@ -26,6 +27,13 @@ const routes: RoutesType[] = [
     title: 'Case Study',
     path: '/w/:slug',
     component: CaseStudy
+  },
+  {
+    exact,
+    key: 'services-route',
+    title: 'How I help startups',
+    path: '/services',
+    component: Services
   }
 ];
 
