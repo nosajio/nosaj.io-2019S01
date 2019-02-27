@@ -15,6 +15,7 @@ import {
   ServicesQuotesCarousel,
   SplatBGSection
 } from './styled';
+import FloatingCTA from '../FloatingCTA';
 
 interface ServicesProps {}
 
@@ -96,6 +97,15 @@ const Services: React.FunctionComponent<ServicesProps> = props => {
           </ServicesContentAside>
         </Page.Section>
       </SplatBGSection>
+      <FloatingCTA
+        content={[
+          {
+            type: 'button',
+            label: 'Send Jason a message',
+            props: { to: '#contact' }
+          }
+        ]}
+      />
     </ServicesMain>
   );
 };
