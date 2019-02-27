@@ -5,7 +5,14 @@ import 'normalize.css';
 const GlobalStyles = createGlobalStyle`
    /* Make everything border-box for logical sizing */
    *, *::before, *::after { box-sizing: border-box; }
-  :root { font: 112.5% ${fonts.a.family}; line-height: 1.5; }
+  :root { 
+    font: 112.5% ${fonts.a.family}; 
+    line-height: 1.5; 
+    text-rendering: geometricPrecision; 
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+  }
   body { color: #000; }
 
   /* Lock the body */
