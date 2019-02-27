@@ -33,7 +33,7 @@ const QuotesCarousel: React.FunctionComponent<QuotesCarouselProps> = ({
     <QCBackground withBG={backgroundColor} className={className}>
       <QCFrame withFG={textColor}>
         {quotes.map((q, i) => (
-          <QCQuoteFrame>
+          <QCQuoteFrame key={`quote-${i}`}>
             <QCQuoteShape />
             <QCAuthor>
               <div>{q.author.name}</div>

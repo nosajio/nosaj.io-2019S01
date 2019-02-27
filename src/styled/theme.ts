@@ -29,6 +29,7 @@ const colors = {
     pastel: '#E7DDF6',
     bright: '#9355F6'
   },
+  blackish: '#151628',
   black: '#000'
 };
 

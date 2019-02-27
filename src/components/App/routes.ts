@@ -31,7 +31,7 @@ const routes: RoutesType[] = [
   {
     exact,
     key: 'services-route',
-    title: 'How I help startups',
+    title: 'Services',
     path: '/services',
     component: Services
   }
