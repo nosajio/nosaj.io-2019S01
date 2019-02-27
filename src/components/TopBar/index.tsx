@@ -22,9 +22,9 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({
         <TBarLink to="/#work">Work</TBarLink>
         <TBarLink to="/services">Services for startups</TBarLink>
         <TBarLink to="#contact">Contact</TBarLink>
-        <TBarBtn caps bgColor="#FFE793" fgColor="black" to="#contact">
+        {/* <TBarBtn caps bgColor="#FFE793" fgColor="black" to="#contact">
           Hire me for your next project
-        </TBarBtn>
+        </TBarBtn> */}
       </TBarNav>
     </TBarFrame>
   );

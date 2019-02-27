@@ -1,6 +1,6 @@
-import CaseStudy from '../CaseStudy';
 import Front from '../Front';
 import Services from '../Services';
+import TradespaceProject from '../Tradespace';
 
 const exact = true;
 
@@ -23,10 +23,10 @@ const routes: RoutesType[] = [
   },
   {
     exact,
-    key: 'case-study-route',
-    title: 'Case Study',
-    path: '/w/:slug',
-    component: CaseStudy
+    key: 'tradespace-route',
+    title: 'Tradespace inc IP Platform Case Study',
+    path: '/project/tradespace',
+    component: TradespaceProject
   },
   {
     exact,

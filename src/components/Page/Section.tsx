@@ -18,6 +18,7 @@ const gridBodyStyles = ({
 ${theme.innergrid(withCols)}
 position: relative;
 padding: 0 ${halfMarginPrcnt}%;
+width: 100%;
 max-width: ${theme.layout.maxWidth}px;
 margin: ${topGap > 0 ? theme.ms.rem(topGap) : '0'} auto ${
   bottomGap > 0 ? theme.ms.rem(bottomGap) : '0'
