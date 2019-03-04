@@ -8,6 +8,7 @@ import ContactWindow from '../ContactWindow';
 import Footer from '../Footer';
 import HashRoute from '../HashRoute';
 import routes from './routes';
+import ScrollToTopAuto from '../ScrollToTopAuto';
 
 export interface AppProps {}
 
@@ -17,6 +18,7 @@ class App extends React.Component<AppProps, any> {
       <ThemeProvider theme={theme}>
         <Router>
           <ScrollProvider>
+            <ScrollToTopAuto />
             <GlobalStyle />
             <Switch>
               {routes.map(r => (
