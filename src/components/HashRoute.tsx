@@ -1,8 +1,15 @@
 import * as React from 'react';
-import { Route, RouteChildrenProps, RouteComponentProps } from 'react-router';
+import {
+  Route,
+  RouteComponentProps,
+  RouterProps,
+  StaticContext
+} from 'react-router';
+import noop from '../utils/noop';
 
 interface HashRouteProps {
-  component: React.ReactType
+  component?: React.ReactType;
+  render?: (props: RouteComponentProps<any, StaticContext, any>) => any;
   path: string;
 }
 
@@ -11,18 +18,21 @@ interface HashRouteProps {
 const HashRoute: React.FunctionComponent<HashRouteProps> = ({
   component: Component,
   path,
+  render = noop,
   ...passProps
 }) => {
   if (!path) {
     return null;
   }
-  return (
+  return Component ? (
     <Route
       component={({ location, ...props }: RouteComponentProps) =>
         location.hash === path ? <Component {...props} /> : null
       }
       {...passProps}
     />
+  ) : (
+    <Route render={location.hash === path ? render : undefined} />
   );
 };
 

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import BigTestimonial from '../BigTestimonial';
-import Footer from '../Footer';
 import { default as H } from '../Heading';
 import Opener from '../Opener';
 import Page from '../Page';
@@ -8,7 +7,6 @@ import TopBar from '../TopBar';
 import testimonials from './data/testimonials';
 import FrontProjects from './Projects';
 import { FrontMain, NosajIntro, WavesFixed } from './styled';
-import Thanks from './Thanks';
 
 export interface FrontProps {}
 
@@ -32,10 +30,8 @@ class Front extends React.Component<FrontProps, any> {
             Selected Works
           </H>
         </Page.Grid>
+        <a id="work-anchor" />
         <FrontProjects />
-        <Page.Section topGap={4}>
-          <Thanks column={[2, 12]} />
-        </Page.Section>
       </FrontMain>
     );
   }

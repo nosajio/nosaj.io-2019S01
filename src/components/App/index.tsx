@@ -25,6 +25,20 @@ class App extends React.Component<AppProps, any> {
             </Switch>
             {/* Show the contact window above whichever view is matched above */}
             <HashRoute path="#contact" component={ContactWindow} />
+            {/* Autoscroll to work on homepage */}
+            <HashRoute
+              path="#work"
+              render={() => {
+                window.setTimeout(() => {
+                  const el = document.getElementById('work-anchor');
+                  if (!el) {
+                    return null;
+                  }
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 200);
+                return null;
+              }}
+            />
             <Footer />
           </ScrollProvider>
         </Router>
