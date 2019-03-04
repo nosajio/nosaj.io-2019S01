@@ -40,7 +40,7 @@ const whyStartupsHireMe: BulletCardProps['children'] = [
 const principles: BulletCardProps['children'] = [
   'Always be honest. Projects go smoother when everybody has accurate information.',
   'Focus on being indespensable to the team.',
-  'Stay humble; the team likely knows more about the problem space and I do.',
+  'Stay humble; learn from the team as they know more about the problem space than me.',
   'Work hard to ensure the project is a success.'
 ];
 

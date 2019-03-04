@@ -49,7 +49,7 @@ const BulletCardList = styled.ul`
   }
 
   li + li {
-    margin-top: ${({ theme }: { theme: Theme }) => theme.ms.rem(-1)};
+    margin-top: ${({ theme }: { theme: Theme }) => theme.ms.rem(-2)};
   }
 `;
 

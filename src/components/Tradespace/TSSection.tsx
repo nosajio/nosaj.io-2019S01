@@ -1,10 +1,12 @@
 import * as React from 'react';
 import Page from '../Page';
 import styled from 'styled-components';
+import { Theme } from '../../styled/theme';
 
 interface TSSectionProps {
   className?: string;
   children: React.ReactNode;
+  // Append elements to the section container
   appendedElements?: React.ReactNode[];
 }
 
@@ -15,7 +17,9 @@ const TSSection: React.FunctionComponent<TSSectionProps> = ({
 }) => {
   return (
     <S className={className}>
-      <Page.Grid>{children}</Page.Grid>
+      <Page.Grid topGap={0} bottomGap={0}>
+        {children}
+      </Page.Grid>
       {appendedElements && appendedElements.map(el => el)}
     </S>
   );
@@ -28,5 +32,6 @@ const S = styled.section`
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
+  padding: ${({ theme }: { theme: Theme }) => theme.ms.rem(3)};
   overflow: hidden;
 `;
