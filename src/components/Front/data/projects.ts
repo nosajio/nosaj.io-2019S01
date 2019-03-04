@@ -37,7 +37,7 @@ const projects: Array<FrontProjectsData> = [
     links: [
       {
         label: 'Read Tradespace Case Study',
-        path: '/w/tradespace'
+        path: '/project/tradespace'
       }
     ]
   },
