@@ -1,6 +1,19 @@
 import { fonts, Fonts } from './fonts';
-import { gridcss, gridfn, cssinnergrid } from './grid';
+import { cssinnergrid, gridcss, gridfn } from './grid';
+import createMediaqueries, { MediaQueryIndex } from './mediaqueries';
 import ms, { ModScale } from './modularscale';
+
+const mq = createMediaqueries([
+  {
+    name: 'large',
+    min: 1440
+  },
+  {
+    name: 'medium',
+    min: 700,
+    max: 1339
+  }
+]);
 
 // Define shape of theme object
 export interface Theme {
@@ -12,6 +25,7 @@ export interface Theme {
   innergrid(cols: number, unit?: string): string;
   fonts: Fonts;
   ms: ModScale;
+  mq: MediaQueryIndex;
 }
 
 const colors = {
@@ -49,7 +63,8 @@ const theme: Theme = {
   grid: (...args: any) => gridfn(...args),
   gridcss: (...args: any) => gridcss(...args),
   innergrid: (...args: any) => cssinnergrid(...args),
-  fonts
+  fonts,
+  mq
 };
 
 export default theme;
