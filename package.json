@@ -9,7 +9,7 @@
     "@types/react": "^16.8.1",
     "@types/react-dom": "16.0.11",
     "@types/react-router-dom": "^4.3.1",
-    "@types/styled-components": "^4.1.6",
+    "@types/styled-components": "^4.1.11",
     "axios": "^0.18.0",
     "lodash.debounce": "^4.0.8",
     "normalize.css": "^8.0.1",

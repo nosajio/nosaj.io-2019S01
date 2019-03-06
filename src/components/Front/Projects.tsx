@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Project from '../Project';
-import projects, { FrontProjectsData } from './data/projects';
-import InterruptBanner from '../InterruptBanner';
 import Heading from '../Heading';
+import InterruptBanner from '../InterruptBanner';
+import Project from '../Project';
+import projects from './data/projects';
 
 interface FrontProjectsProps {}
 

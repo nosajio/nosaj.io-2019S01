@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Theme } from '../../styled/theme';
+import { media, Theme } from '../../styled/theme';
 import Button from '../Button';
 import CapsLink from '../CapsLink';
 
@@ -23,12 +23,16 @@ export const OpenerHeadline = styled.h1(
   ({ theme: { ms, fonts, grid } }: { theme: Theme }) => `
   position: relative;
   width: 100%;
-  max-width: ${grid(7)}vw;
+  font-size: ${ms.rem(2)};
   font-family: ${fonts.c.family};
-  font-size: ${ms.rem(4)};
   font-weight: ${fonts.c.weight.heavyCondensed};
   text-transform: uppercase;
   line-height: 1;
+  ${media.large`
+    font-size: ${({ theme }: { theme: Theme }) => theme.ms.rem(4)};
+    max-width: ${({ theme }: { theme: Theme }) => theme.grid(7)}vw;
+    color: ${() => 'black'};
+  `};
 `
 );
 
