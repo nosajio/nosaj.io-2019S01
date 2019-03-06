@@ -1,20 +1,29 @@
-import { BaseThemedCssFunction } from 'styled-components';
+import baseStyled, { ThemedStyledInterface } from 'styled-components';
 import { fonts, Fonts } from './fonts';
 import { cssinnergrid, gridcss, gridfn } from './grid';
 import ms, { ModScale } from './modularscale';
-import mediaQueryGenerator from './mediaqueries';
 
-export const media = mediaQueryGenerator([
-  {
-    name: 'large',
-    min: 1440
-  },
-  {
-    name: 'medium',
-    min: 700,
-    max: 1339
-  }
-]);
+// Re export `styled` with ThemedStyledInterface to tell typescript about
+// our theme signature
+export const styled = baseStyled as ThemedStyledInterface<Theme>;
+
+// Tell typescript about the colors and layers objects
+type ColorsType = { [K in keyof typeof colors]: typeof colors[K] };
+type LayersType = { [K in keyof typeof layers]: typeof layers[K] };
+
+// Define shape of theme object
+export interface Theme {
+  colors: ColorsType;
+  layers: LayersType;
+  layout: { maxWidth: number };
+  grid(...args: any): number;
+  gridcss(cols?: number, unit?: string): string;
+  innergrid(cols: number, unit?: string): string;
+  fonts: Fonts;
+  ms: ModScale;
+}
+
+// Define theme values below - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 const colors = {
   yellow: {
@@ -41,22 +50,6 @@ const layers = {
   contentMax: 4500,
   background: 0
 };
-
-// Tell typescript about the colors and layers objects
-type ColorsType = { [K in keyof typeof colors]: typeof colors[K] };
-type LayersType = { [K in keyof typeof layers]: typeof layers[K] };
-
-// Define shape of theme object
-export interface Theme {
-  colors: ColorsType;
-  layers: LayersType;
-  layout: { maxWidth: number };
-  grid(...args: any): number;
-  gridcss(cols?: number, unit?: string): string;
-  innergrid(cols: number, unit?: string): string;
-  fonts: Fonts;
-  ms: ModScale;
-}
 
 // Define the theme for
 const theme: Theme = {
