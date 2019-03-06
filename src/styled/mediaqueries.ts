@@ -1,31 +1,53 @@
-import { css, FlattenSimpleInterpolation } from 'styled-components';
+import { css, FlattenSimpleInterpolation, BaseThemedCssFunction } from 'styled-components';
 
-export type MediaQueryRule = {
+// This is the shape of the rules in the array passed to `mediaQueryGenerator()`,
+// and how mediaqueries are defined.
+export interface MediaQueryDefinition<K extends string = string> {
+  name: K;
   min?: number; // px
   max?: number; // px
-  name: string;
+}
+
+// The output object
+type MediaQueryDefinitionObject<K extends string> = {
+  [P in K]: BaseThemedCssFunction<any>
 };
 
-export type MediaQueryRuleFn = (...rules: any) => FlattenSimpleInterpolation;
+// Type helper fn to map keys <K> to a media query definition object's `name` field
+function asMediaQueryDefinition<K extends string>(
+  mqd: MediaQueryDefinition<K>
+): MediaQueryDefinition<K> {
+  return mqd;
+}
 
-export type MediaQueryIndex = {
-  [name: string]: MediaQueryRuleFn;
-};
+// Helper toremove complexity -> compose a media query CSS string for the passed 
+// rule's `min` and `max` values
+const mqRuleString = (r: MediaQueryDefinition<string>): string =>
+  `screen and ${r.min ? `(min-width: ${r.min}px)` : ''} ${
+    r.min && r.max ? 'and' : ''
+  } ${r.max ? `(max-width: ${r.max}px)` : ''}`;
 
-const mqRuleString = (r: MediaQueryRule): string =>
-  `${r.min ? `min-width: ${r.min}px` : ''} ${r.min && r.max ? 'and' : ''} ${
-    r.max ? `max-width: ${r.max}px` : ''
-  }`;
 
-const createMediaqueries = (rules: MediaQueryRule[]) =>
-  rules.reduce((mqs: MediaQueryIndex, r) => {
-    const mediaqueryFn = (first: any, ...rest: any[]) => css`
-      @media screen and (${mqRuleString(r)}) {
-        ${css(first, ...rest)}
-      }
-    `;
-    mqs[r.name] = mediaqueryFn;
-    return mqs;
-  }, {});
-
-export default createMediaqueries;
+// Takes an array of MediaQueryDefinitions and returns a styled-components 
+// themed helper as a property the each rule. Rules are accessed using the 
+// definition's `name` field as the key.
+export default function mediaQueryGenerator<K extends string>(
+  defs: Array<MediaQueryDefinition<K>>
+): MediaQueryDefinitionObject<K> {
+  const typedDefs = defs.map(r => asMediaQueryDefinition(r));
+  return typedDefs.reduce(
+    (mqs: MediaQueryDefinitionObject<K>, r) => {
+      const mqRules = mqRuleString(r);
+      mqs[r.name] = (
+        literals: any,
+        ...interpolations: any
+      ) => css`
+        @media ${mqRules} {
+          ${css(literals, ...interpolations)}
+        }
+      `;
+      return mqs;
+    },
+    {} as MediaQueryDefinitionObject<K>
+  );
+}

@@ -11,7 +11,7 @@ const ServicesOpener: React.FunctionComponent<ServicesOpenerProps> = ({
 }) => {
   return (
     <ServicesOpenerFrame>
-      <Page.Grid>
+      <Page.Grid topGap={0} bottomGap={0}>
         <ServicesOpenerHead>{text}</ServicesOpenerHead>
       </Page.Grid>
     </ServicesOpenerFrame>

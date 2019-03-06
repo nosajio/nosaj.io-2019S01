@@ -1,32 +1,30 @@
+import baseStyled, { ThemedStyledInterface } from 'styled-components';
 import { fonts, Fonts } from './fonts';
-import { cssinnergrid, gridcss, gridfn } from './grid';
-import createMediaqueries, { MediaQueryIndex } from './mediaqueries';
+import { cssinnergrid, gridcss, gridfn, cssMobileGrid } from './grid';
 import ms, { ModScale } from './modularscale';
 
-const mq = createMediaqueries([
-  {
-    name: 'large',
-    min: 1440
-  },
-  {
-    name: 'medium',
-    min: 700,
-    max: 1339
-  }
-]);
+// Re export `styled` with ThemedStyledInterface to tell typescript about
+// our theme signature
+export const styled = baseStyled as ThemedStyledInterface<Theme>;
+
+// Tell typescript about the colors and layers objects
+type ColorsType = { [K in keyof typeof colors]: typeof colors[K] };
+type LayersType = { [K in keyof typeof layers]: typeof layers[K] };
 
 // Define shape of theme object
 export interface Theme {
-  colors: { [name: string]: any };
-  layers: { [name: string]: number };
+  colors: ColorsType;
+  layers: LayersType;
   layout: { maxWidth: number };
   grid(...args: any): number;
   gridcss(cols?: number, unit?: string): string;
   innergrid(cols: number, unit?: string): string;
+  mobilegrid(): string;
   fonts: Fonts;
   ms: ModScale;
-  mq: MediaQueryIndex;
 }
+
+// Define theme values below - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 const colors = {
   yellow: {
@@ -47,15 +45,17 @@ const colors = {
   black: '#000'
 };
 
-// Define the theme for
+const layers = {
+  nav: 5000,
+  windows: 4900,
+  contentMax: 4500,
+  background: 0
+};
+
+// Assign values to the main theme object
 const theme: Theme = {
   ms,
-  layers: {
-    nav: 5000,
-    windows: 4900,
-    contentMax: 4500,
-    background: 0
-  },
+  layers,
   colors,
   layout: {
     maxWidth: 1440
@@ -63,8 +63,8 @@ const theme: Theme = {
   grid: (...args: any) => gridfn(...args),
   gridcss: (...args: any) => gridcss(...args),
   innergrid: (...args: any) => cssinnergrid(...args),
-  fonts,
-  mq
+  mobilegrid: () => cssMobileGrid(),
+  fonts
 };
 
 export default theme;
