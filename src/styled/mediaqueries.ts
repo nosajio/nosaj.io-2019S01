@@ -41,15 +41,4 @@ const createMediaqueries = (
     return mqs;
   }, {});
 
-// export const mqs = {
-//   large: (strs: TemplateStringsArray, ...interpolations: any[]) => {
-//     return css(strs, ...interpolations);
-//     // return css`
-//     //   @media screen and (min-width: 1440px) {
-//     //     ${css(strs, ...interpolations)}
-//     //   }
-//     // `;
-//   }
-// };
-
 export default createMediaqueries;
