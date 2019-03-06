@@ -19,22 +19,21 @@ export const OpenerHR = styled.div`
   background: black;
 `;
 
-export const OpenerHeadline = styled.h1(
-  ({ theme: { ms, fonts, grid } }: { theme: Theme }) => `
-  position: relative;
-  width: 100%;
-  font-size: ${ms.rem(2)};
-  font-family: ${fonts.c.family};
-  font-weight: ${fonts.c.weight.heavyCondensed};
-  text-transform: uppercase;
-  line-height: 1;
+export const OpenerHeadline = styled.h1`
+  ${({ theme: { ms, fonts, grid } }: { theme: Theme }) => `
+    position: relative;
+    width: 100%;
+    font-size: ${ms.rem(2)};
+    font-family: ${fonts.c.family};
+    font-weight: ${fonts.c.weight.heavyCondensed};
+    text-transform: uppercase;
+    line-height: 1;
+  `}
   ${media.large`
     font-size: ${({ theme }: { theme: Theme }) => theme.ms.rem(4)};
     max-width: ${({ theme }: { theme: Theme }) => theme.grid(7)}vw;
-    color: ${() => 'black'};
   `};
-`
-);
+`;
 
 export const OpenerLinks = styled.div`
   display: flex;

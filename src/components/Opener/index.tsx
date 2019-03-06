@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ButtonSizes } from '../Button/styled';
 import {
   OpenerButton,
   OpenerFrame,
@@ -7,7 +8,6 @@ import {
   OpenerLink,
   OpenerLinks
 } from './styled';
-import { ButtonSizes } from '../Button/styled';
 
 interface OpenerProps {
   headline: string;

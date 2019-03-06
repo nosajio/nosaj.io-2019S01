@@ -63,6 +63,6 @@ export const media = createMediaqueries([
     min: 700,
     max: 1339
   }
-], theme);
+]);
 
 export default theme;

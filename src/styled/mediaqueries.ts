@@ -1,5 +1,4 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
-import { Theme } from './theme';
 
 export type MediaQueryRule = {
   min?: number; // px
@@ -18,26 +17,17 @@ const mqRuleString = (r: MediaQueryRule): string =>
     r.min && r.max ? 'and' : ''
   } ${r.max ? `(max-width: ${r.max}px)` : ''}`;
 
-const createMediaqueries = (
-  rules: MediaQueryRule[],
-  theme: Theme
-): MediaQueryIndex =>
+const createMediaqueries = (rules: MediaQueryRule[]): MediaQueryIndex =>
   rules.reduce((mqs: MediaQueryIndex, r) => {
     const mqRules = mqRuleString(r);
-    mqs[r.name] = (literals: TemplateStringsArray, ...interpolations: any) => {
-      const ruleCSS = css`
-        @media ${mqRules} {
-          ${css(literals, ...interpolations)}
-        }
-      `;
-      // Manually resolve any unresolved template fns. For some reason
-      // styled-components has left it to me to call them... Perhaps I'm 
-      // missing something...
-      const resolvedCSS = ruleCSS.map((it: any) =>
-        typeof it === 'function' ? it({ theme }) : it
-      );
-      return resolvedCSS.join("");
-    };
+    mqs[r.name] = (
+      literals: TemplateStringsArray,
+      ...interpolations: any
+    ) => css`
+      @media ${mqRules} {
+        ${css(literals, ...interpolations)}
+      }
+    `;
     return mqs;
   }, {});
 
