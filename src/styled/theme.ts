@@ -16,18 +16,6 @@ export const media = mediaQueryGenerator([
   }
 ]);
 
-// Define shape of theme object
-export interface Theme {
-  colors: { [name: string]: any };
-  layers: { [name: string]: number };
-  layout: { maxWidth: number };
-  grid(...args: any): number;
-  gridcss(cols?: number, unit?: string): string;
-  innergrid(cols: number, unit?: string): string;
-  fonts: Fonts;
-  ms: ModScale;
-}
-
 const colors = {
   yellow: {
     bright: '#FFE793'
@@ -47,15 +35,33 @@ const colors = {
   black: '#000'
 };
 
+const layers = {
+  nav: 5000,
+  windows: 4900,
+  contentMax: 4500,
+  background: 0
+};
+
+// Tell typescript about the colors and layers objects
+type ColorsType = { [K in keyof typeof colors]: typeof colors[K] };
+type LayersType = { [K in keyof typeof layers]: typeof layers[K] };
+
+// Define shape of theme object
+export interface Theme {
+  colors: ColorsType;
+  layers: LayersType;
+  layout: { maxWidth: number };
+  grid(...args: any): number;
+  gridcss(cols?: number, unit?: string): string;
+  innergrid(cols: number, unit?: string): string;
+  fonts: Fonts;
+  ms: ModScale;
+}
+
 // Define the theme for
 const theme: Theme = {
   ms,
-  layers: {
-    nav: 5000,
-    windows: 4900,
-    contentMax: 4500,
-    background: 0
-  },
+  layers,
   colors,
   layout: {
     maxWidth: 1440

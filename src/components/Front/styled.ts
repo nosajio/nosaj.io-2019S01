@@ -11,7 +11,6 @@ export const WavesFixed = styled(Waves)`
   position: absolute;
   top: 0;
   left: 0;
-  ${media.large``}
 `;
 
 export const NosajIntro = styled(ProfileIntro)``;

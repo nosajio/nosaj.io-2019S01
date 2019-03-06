@@ -13,7 +13,7 @@ export const OpenerFrame = styled.div(
 
 export const OpenerHR = styled.div`
   width: ${({ theme }: { theme: Theme }) => theme.grid(4)}%;
-  margin-bottom: ${({ theme }: { theme: Theme }) => theme.ms.rem(1)};
+  margin-bottom: ${({ theme }: { theme: Theme }) => theme.ms.rem(1) };
   grid-column: 1 / 4;
   height: 10px;
   background: black;
