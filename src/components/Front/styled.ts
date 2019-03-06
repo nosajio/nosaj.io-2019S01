@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Theme } from '../../styled/theme';
+import { Theme, media } from '../../styled/theme';
 import Page from '../Page';
 import ProfileIntro from '../ProfileIntro';
 import Waves from '../Waves';
@@ -11,6 +11,7 @@ export const WavesFixed = styled(Waves)`
   position: absolute;
   top: 0;
   left: 0;
+  ${media.large``}
 `;
 
 export const NosajIntro = styled(ProfileIntro)``;

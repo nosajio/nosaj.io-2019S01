@@ -1,7 +1,20 @@
+import { BaseThemedCssFunction } from 'styled-components';
 import { fonts, Fonts } from './fonts';
 import { cssinnergrid, gridcss, gridfn } from './grid';
-import createMediaqueries from './mediaqueries';
 import ms, { ModScale } from './modularscale';
+import mediaQueryGenerator from './mediaqueries';
+
+export const media = mediaQueryGenerator([
+  {
+    name: 'large',
+    min: 1440
+  },
+  {
+    name: 'medium',
+    min: 700,
+    max: 1339
+  }
+]);
 
 // Define shape of theme object
 export interface Theme {
@@ -52,17 +65,5 @@ const theme: Theme = {
   innergrid: (...args: any) => cssinnergrid(...args),
   fonts
 };
-
-export const media = createMediaqueries([
-  {
-    name: 'large',
-    min: 1440
-  },
-  {
-    name: 'medium',
-    min: 700,
-    max: 1339
-  }
-]);
 
 export default theme;
