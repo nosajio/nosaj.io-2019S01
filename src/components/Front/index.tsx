@@ -6,7 +6,7 @@ import Page from '../Page';
 import TopBar from '../TopBar';
 import testimonials from './data/testimonials';
 import FrontProjects from './Projects';
-import { FrontMain, NosajIntro, WavesFixed } from './styled';
+import { FrontMain, NosajIntro, FrontWaves } from './styled';
 
 export interface FrontProps {}
 
@@ -14,8 +14,8 @@ class Front extends React.Component<FrontProps, any> {
   public render() {
     return (
       <FrontMain>
+        <FrontWaves />
         <TopBar />
-        <WavesFixed />
         <Page.Section>
           <Opener headline="I help startups solve problems & forge great software" />
         </Page.Section>
