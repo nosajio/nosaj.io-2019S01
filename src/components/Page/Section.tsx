@@ -24,21 +24,30 @@ const gridBodyStyles = ({
     ${bottomGap > 0 ? theme.ms.rem(bottomGap) : '0'} auto;
 `;
 
+const gridColumnStyles = ({ theme, withCols }: SectionProps) => `
+  // On small screens, use a simple one col grid
+  ${theme.mobilegrid()};    
+
+  // On large screens, use the default grid
+  ${media.medium`
+    ${theme.innergrid(withCols)}
+  `}
+`;
+
 const Section = styled.section((props: SectionProps) => {
   return css`
     ${gridBodyStyles(props)}
-    // On small screens, use a simple one col grid
-    ${({ theme }) => theme.mobilegrid()};    
-
-    // On large screens, use the default grid
-    ${media.large`
-      ${({ theme }) => theme.innergrid(props.withCols)}
-    `}
+    ${gridColumnStyles(props)}
   `;
 });
 
 // Grid is the same as section in every way except that a <div /> will be used
 // instead of a <section />
-export const Grid = styled.div((props: SectionProps) => gridBodyStyles(props));
+export const Grid = styled.div(
+  (props: SectionProps) => css`
+    ${gridBodyStyles(props)}
+    ${gridColumnStyles(props)}
+  `
+);
 
 export default Section;
