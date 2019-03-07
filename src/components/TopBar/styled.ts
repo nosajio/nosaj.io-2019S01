@@ -42,13 +42,10 @@ export const TBarLink: StyledWithProps<TBStyledProps> = styled(Link)`
 `;
 
 export const TBarNav: StyledWithProps<TBStyledProps> = styled.nav`
-
   ${TBarLink} {
-    color: ${({isLight}: TBStyledProps) => isLight ? '#fff' : '#000'};
+    color: ${({ isLight }: TBStyledProps) => (isLight ? '#fff' : '#000')};
   }
 `;
-
-
 
 export const TBarBtn = styled(Button)`
   ${TBarLink} + &,
