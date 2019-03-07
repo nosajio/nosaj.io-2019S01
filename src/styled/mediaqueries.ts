@@ -13,7 +13,7 @@ type MediaQueryDefinitionObject<K extends string> = {
   [P in K]: BaseThemedCssFunction<any>
 };
 
-// Type helper fn to map <K> to a media query definition object's `name` field
+// Type helper fn to map keys <K> to a media query definition object's `name` field
 function asMediaQueryDefinition<K extends string>(
   mqd: MediaQueryDefinition<K>
 ): MediaQueryDefinition<K> {

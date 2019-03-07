@@ -7,8 +7,7 @@ const media = mediaQueryGenerator([
   },
   {
     name: 'medium',
-    min: 700,
-    max: 1339
+    min: 700
   }
 ]);
 

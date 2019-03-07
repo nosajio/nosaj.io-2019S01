@@ -1,6 +1,6 @@
 import baseStyled, { ThemedStyledInterface } from 'styled-components';
 import { fonts, Fonts } from './fonts';
-import { cssinnergrid, gridcss, gridfn } from './grid';
+import { cssinnergrid, gridcss, gridfn, cssMobileGrid } from './grid';
 import ms, { ModScale } from './modularscale';
 
 // Re export `styled` with ThemedStyledInterface to tell typescript about
@@ -19,6 +19,7 @@ export interface Theme {
   grid(...args: any): number;
   gridcss(cols?: number, unit?: string): string;
   innergrid(cols: number, unit?: string): string;
+  mobilegrid(): string;
   fonts: Fonts;
   ms: ModScale;
 }
@@ -51,7 +52,7 @@ const layers = {
   background: 0
 };
 
-// Define the theme for
+// Assign values to the main theme object
 const theme: Theme = {
   ms,
   layers,
@@ -62,6 +63,7 @@ const theme: Theme = {
   grid: (...args: any) => gridfn(...args),
   gridcss: (...args: any) => gridcss(...args),
   innergrid: (...args: any) => cssinnergrid(...args),
+  mobilegrid: () => cssMobileGrid(),
   fonts
 };
 

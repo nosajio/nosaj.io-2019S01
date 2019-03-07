@@ -1,10 +1,10 @@
-import { Theme } from '../../styled/theme';
-import styled from 'styled-components';
+import { styled } from '../../styled/theme';
+import media from '../../styled/media';
 
 export const ProfileIntroFrame = styled.div`
-  ${({ theme }: { theme: Theme }) => theme.innergrid(10)}
-  grid-column: main;
+  ${({ theme }) => theme.innergrid(10)}
   align-items: start;
+  grid-column: main / main 2;
 `;
 
 export const ProfileIntroImg = styled.img`
@@ -12,36 +12,45 @@ export const ProfileIntroImg = styled.img`
   display: block;
   width: 100%;
   height: auto;
-  grid-column: 1 / 5;
   grid-row: 1;
+  grid-column: 3 / 9;
   box-shadow: 0 6px 30px 5px rgba(0, 0, 0, 0.22);
   border-radius: 12px;
-  ${({ theme }: { theme: Theme }) => `
-    top: -${theme.ms.rem(3)};
-    `}
+  top: -${({ theme }) => theme.ms.rem(2)};
+
+  ${media.medium`
+    grid-column: 1 / 5;
+    top: -${({ theme }) => theme.ms.rem(3)};
+  `}
 `;
 
 export const ProfileIntroCard = styled.div`
   position: relative;
-  grid-column: 2 / 11;
-  grid-row: 1;
   width: 100%;
   background: white;
+  grid-row: 2;
+  grid-column: main / main 2;
   color: black;
   box-shadow: 0 6px 30px 5px rgba(0, 0, 0, 0.22);
   border-radius: 12px;
+  padding: ${({ theme }) => theme.ms.rem(2)};
 
-  ${({ theme }: { theme: Theme }) => `
-    ${theme.innergrid(9)}
-    padding: ${theme.ms.rem(3)};
-    bottom: -${theme.ms.rem(3)};
+  ${media.large`
+    grid-row: 1;
+    grid-column: 2 / 11;
+    ${({ theme }) => `
+      ${theme.innergrid(9)}
+      padding: ${theme.ms.rem(3)};
+      bottom: -${theme.ms.rem(3)};
+    `}
   `}
 
   p {
     grid-column: 4 / 10;
     margin: 0;
-    ${({ theme }: { theme: Theme }) => `
-      font-size: ${theme.ms.rem(1)};
+    font-size: 1rem;
+    ${media.medium`
+      font-size: ${({ theme }) => theme.ms.rem(1)};
     `}
   }
 `;

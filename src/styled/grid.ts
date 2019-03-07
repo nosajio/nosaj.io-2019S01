@@ -44,13 +44,24 @@ export const cssinnergrid = (
   cols: number = maxCols,
   unit: string = '%'
 ): string => {
+  const colsValue =
+    cols === 12
+      ? // This is a special template for the 12 col grid, which is the foundational
+        // grid template used for layout
+        '1fr [main] 1fr 1fr [mid-start] 1fr 1fr 1fr 1fr 1fr 1fr [mid-end] 1fr 1fr [main] 1fr'
+      : // For all other col counts, do the usual repeat
+        `[main] repeat(${cols}, 1fr) [main]`;
   return `
     display: grid;
-    grid-template-columns: repeat(${cols}, 1fr);
+    grid-template-columns: ${colsValue};
     grid-auto-rows: auto;
     grid-column-gap: ${fullMarginPrcnt}${unit};
-    grid-template-areas: ". ${Array.from(Array(cols - 2))
-      .fill('main')
-      .join(' ')} .";
   `;
 };
+
+export const cssMobileGrid = (): string => `
+  display: grid;
+  grid-template-columns: 1rem [main mid] 1fr [mid main] 1rem;
+  grid-auto-rows: auto;
+  grid-column-gap: 0;
+`;

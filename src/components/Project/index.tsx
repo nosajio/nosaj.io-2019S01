@@ -88,7 +88,7 @@ const Project: React.FunctionComponent<ProjectProps> = ({
               <ProjectImage
                 key={`project-img-${im.src}`}
                 src={im.src}
-                withMaxWidth={im.maxWidth || null}
+                withMaxWidth={im.maxWidth || undefined}
                 withJustification={im.justify}
               />
             ))}

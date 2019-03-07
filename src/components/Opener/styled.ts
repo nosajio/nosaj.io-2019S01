@@ -5,18 +5,21 @@ import CapsLink from '../CapsLink';
 
 export const OpenerFrame = styled.div(
   ({ theme }) => `
-  grid-area: main;
+  grid-column: main / main 2;
   position: relative;
   margin-top: 14vh;
 `
 );
 
 export const OpenerHR = styled.div`
-  width: ${({ theme }) => theme.grid(4)}%;
   margin-bottom: ${({ theme }) => theme.ms.rem(1)};
-  grid-column: 1 / 4;
+  width: ${({ theme }) => theme.ms.rem(4)};
   height: 10px;
   background: black;
+
+  ${media.medium`
+    width: ${({ theme }) => theme.grid(4)}%;
+  `}
 `;
 
 export const OpenerHeadline = styled.h1`
@@ -36,20 +39,25 @@ export const OpenerHeadline = styled.h1`
 `;
 
 export const OpenerLinks = styled.div`
+  grid-column: main / main 2;
   display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
+  flex-flow: column nowrap;
   margin-top: ${({ theme }) => theme.ms.rem(2)};
+
+  ${media.large`
+    align-items: center;
+    flex-flow: row nowrap;
+  `}
 `;
 
-export const OpenerLink = styled(CapsLink)(
-  ({ theme }) => `
-  * + & { margin-left: ${theme.ms.rem(3)}; }
-`
-);
+export const OpenerLink = styled(CapsLink)`
+  ${media.large`
+    ${({ theme }) => `* + & { margin-left: ${theme.ms.rem(3)}; }`}
+  `}
+`;
 
-export const OpenerButton = styled(Button)(
-  ({ theme }) => `
-  * + & { margin-left: ${theme.ms.rem(3)}; }
-`
-);
+export const OpenerButton = styled(Button)`
+${media.large`
+  ${({ theme }) => `* + & { margin-left: ${theme.ms.rem(3)}; }`}
+`}
+`;

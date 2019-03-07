@@ -1,67 +1,62 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { ProjectImage as ProjectImageType, ProjectProps } from '.';
 import borderUnderline from '../../styled/border-underline';
-import { StyledWithProps, ThemeProps } from '../../types/styled';
+import { styled } from '../../styled/theme';
 
-const gridMax = 'grid-column: 2 / 12;';
 const getColor = (
   c: ProjectProps['colors'],
   t: 'background' | 'foreground' | 'text',
   d: string = ''
 ): string => (c && c[t] ? String(c[t]) : d);
 
-export type ProjectStyledProps = ThemeProps & {
-  // theme: Theme;
+export type ProjectStyledProps = {
   withColors?: ProjectProps['colors'];
   withMaxWidth?: ProjectImageType['maxWidth'];
   withPaddingBottom?: ProjectProps['paddingBottom'];
   withJustification?: ProjectImageType['justify'];
 };
 
-export const ProjectFrame: StyledWithProps<ProjectStyledProps> = styled.article`
-  ${({ theme: { ms }, withColors, withPaddingBottom }: ProjectStyledProps) => `
+export const ProjectFrame = styled.article<ProjectStyledProps>`
+  ${({ theme: { ms }, withColors, withPaddingBottom }) => `
     padding: ${ms.rem(3)} 0 ${withPaddingBottom ? ms.rem(3) : '0'};
     background: ${getColor(withColors, 'background', 'transparent')};
     color: ${getColor(withColors, 'text', 'white')};
   `}
 `;
 
-export const ProjectClientName: StyledWithProps<
-  ProjectStyledProps
-> = styled.div`
-  ${({ theme: { fonts, ms }, withColors }: ProjectStyledProps) => `
+export const ProjectClientName = styled.div<ProjectStyledProps>`
+  ${({ theme: { fonts, ms }, withColors }) => `
     color: ${getColor(withColors, 'foreground', 'transparent')};
     font-weight: ${fonts.a.weight.light};
     margin-bottom: ${ms.rem(-1)};
     `}
-  ${gridMax}
+  grid-column: main / main 2;
   text-transform: uppercase;
   letter-spacing: 5px;
 `;
 
-export const ProjectHeadline: StyledWithProps<ProjectStyledProps> = styled.div`
-  grid-column: main;
-  ${({ theme: { ms, fonts }, withColors }: ProjectStyledProps) => `
+export const ProjectHeadline = styled.div<ProjectStyledProps>`
+  grid-column: main / main 2;
+  ${({ theme: { ms, fonts }, withColors }) => `
     font: ${fonts.c.weight.bold} ${ms.rem(2)} ${fonts.c.family};
 `}
 `;
 
-export const ProjectLinks: StyledWithProps<ProjectStyledProps> = styled.div`
-  ${gridMax}
+export const ProjectLinks = styled.div<ProjectStyledProps>`
+  grid-column: main / main 2;
   display: flex;
   flex-flow: row nowrap;
-  margin-top: ${({ theme }: ProjectStyledProps) => theme.ms.rem(1)};
+  margin-top: ${({ theme }) => theme.ms.rem(1)};
 `;
 
-export const ProjectLink: StyledWithProps<ProjectStyledProps> = styled(
+export const ProjectLink = styled(
   // Remap the props on Link so the typechecker doesn't complain about
   // unrecognized props.
   ({ withColors, ...rest }) =>
     React.createElement(rest.href ? 'a' : Link, { ...rest })
-)`
-  ${({ theme: { ms }, withColors }: ProjectStyledProps) => `
+)<ProjectStyledProps>`
+  ${({ theme: { ms }, withColors }) => `
       color: ${getColor(
         withColors,
         'foreground',
@@ -83,20 +78,19 @@ export const ProjectLink: StyledWithProps<ProjectStyledProps> = styled(
   cursor: pointer;
 `;
 
-export const ProjectImages: StyledWithProps<ProjectStyledProps> = styled.div`
-  ${gridMax}
+export const ProjectImages = styled.div<ProjectStyledProps>`
+  grid-column: main / main 2;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin-top: ${({ theme }: ProjectStyledProps) => theme.ms.rem(3)};
+  margin-top: ${({ theme }) => theme.ms.rem(3)};
 `;
 
-export const ProjectImage: StyledWithProps<ProjectStyledProps> = styled.img`
+export const ProjectImage = styled.img<ProjectStyledProps>`
   display: block;
   width: 100%;
   height: 100%;
-  max-width: ${({ withMaxWidth }: ProjectStyledProps) =>
-    withMaxWidth ? withMaxWidth : '100%'};
-  justify-self: ${({ withJustification }: ProjectStyledProps) =>
+  max-width: ${({ withMaxWidth }) => (withMaxWidth ? withMaxWidth : '100%')};
+  justify-self: ${({ withJustification }) =>
     withJustification ? withJustification : 'center'};
 `;
