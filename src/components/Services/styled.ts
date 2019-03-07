@@ -1,8 +1,7 @@
-import styled from 'styled-components';
-import { Theme } from '../../styled/theme';
-import { StyledWithProps } from '../../types/styled';
+import { Theme, styled } from '../../styled/theme';
 import Page from '../Page';
 import QuotesCarousel from '../QuotesCarousel';
+import media from '../../styled/media';
 
 export interface ServicesStyledProps {
   theme: Theme;
@@ -19,44 +18,60 @@ export const ServicesOpenerFrame = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 70vh;
-  padding: ${({ theme }: ServicesStyledProps) =>
-    `${theme.ms.rem(5)} 0 ${theme.ms.rem(6)}`};
   background: no-repeat url('/bg/waves-skew.svg') bottom / cover;
+
+  ${media.medium`
+    padding: ${({ theme }) => `${theme.ms.rem(5)} 0 ${theme.ms.rem(6)}`};
+  `}
 `;
 
 export const ServicesOpenerHead = styled.h1`
-  grid-column: 2 / 12;
+  grid-column: main / main 2;
   text-align: center;
-  ${({ theme }: ServicesStyledProps) => `
+  ${({ theme }) => `
     font: 
       ${theme.fonts.a.weight.heavy} 
-      ${theme.ms.rem(4)} 
+      ${theme.ms.rem(3)} 
       ${theme.fonts.a.family};
   `}
+
+  ${media.medium` font-size: ${({ theme }) => theme.ms.rem(4)};`}
 `;
 
 // Logos - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 export const ServicesLogosFrame = styled.div`
   width: 100%;
-  max-width: ${({ theme }: ServicesStyledProps) => theme.layout.maxWidth}px;
+  max-width: ${({ theme }) => theme.layout.maxWidth}px;
   margin: 0 auto;
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
+  flex: 0 1 auto;
+  justify-content: space-evenly;
   align-items: center;
+  flex-flow: row wrap;
+  ${media.large`
+    flex-flow: row nowrap;
+    justify-content: space-around;
+  `}
 `;
 
-export const ServicesLogoImg: StyledWithProps<ServicesStyledProps> = styled.img`
+export const ServicesLogoImg = styled.img<ServicesStyledProps>`
   display: block;
-  ${({ marginTop }: ServicesStyledProps) =>
-    marginTop ? `margin-top: ${marginTop};` : ''}
-  ${({ alignSelf }: ServicesStyledProps) =>
-    alignSelf ? `align-self: ${alignSelf};` : ''}
+  margin: 0.5rem;
+  max-width: 34%;
+  opacity: 0.8;
+  ${({ alignSelf }) => (alignSelf ? `align-self: ${alignSelf};` : '')}
+
+  ${media.large<ServicesStyledProps>`
+    margin: 0;
+    max-width: 100%;
+    opacity: 1;
+    ${({ marginTop }) => (marginTop ? `margin-top: ${marginTop};` : '')}
+  `}
 `;
 
 // Testimonials - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 export const ServicesQuotesCarousel = styled(QuotesCarousel)`
-  margin-top: ${({ theme }: ServicesStyledProps) => theme.ms.rem(4)};
+  margin-top: ${({ theme }) => theme.ms.rem(4)};
 `;
 
 // Main part - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -70,11 +85,11 @@ export const SplatBGSection = styled.div`
 export const ServicesBigText = styled.h1`
   grid-row: 1;
   grid-column: main / 8;
-  ${({ theme }: ServicesStyledProps) => `
+  ${({ theme }) => `
     font: 
-    ${theme.fonts.a.weight.heavy} 
-    ${theme.ms.rem(3)} 
-    ${theme.fonts.a.family};
+      ${theme.fonts.a.weight.heavy} 
+      ${theme.ms.rem(3)} 
+      ${theme.fonts.a.family};
     line-height: ${theme.ms.rem(3)};
     color: ${theme.colors.blackish};
     margin-top: ${theme.ms.rem(2)};
@@ -85,14 +100,15 @@ export const ServicesBigText = styled.h1`
     display: block;
     max-width: 147px;
     height: 12px;
-    margin-bottom: ${({ theme }: ServicesStyledProps) => theme.ms.rem(1)};
-    background: ${({ theme }: ServicesStyledProps) => theme.colors.blue.bright};
+    margin-bottom: ${({ theme }) => theme.ms.rem(1)};
+    background: ${({ theme }) => theme.colors.blue.bright};
   }
 `;
 
 export const ServicesBigTextCite = styled.div`
+  grid-row: 1;
   text-transform: uppercase;
-  ${({ theme }: ServicesStyledProps) => `
+  ${({ theme }) => `
     color: ${theme.colors.blue.bright};
     font: 
       ${theme.fonts.c.weight.condensed} 
@@ -101,29 +117,38 @@ export const ServicesBigTextCite = styled.div`
   `}
 
   ${ServicesBigText} > & {
-    margin-top: ${({ theme }: ServicesStyledProps) => theme.ms.rem(1)};
+    margin-top: ${({ theme }) => theme.ms.rem(1)};
   }
 `;
 
 export const ServicesBodyText = styled.article`
-  grid-column: main / 7;
-  margin-top: ${({ theme }: ServicesStyledProps) => theme.ms.rem(3)};
+  margin-top: ${({ theme }) => theme.ms.rem(3)};
+  grid-row: 3;
+  grid-column: main / main 2;
 
   p {
-    color: ${({ theme }: ServicesStyledProps) => theme.colors.blackish};
-    ${({ theme }: ServicesStyledProps) => `
+    color: ${({ theme }) => theme.colors.blackish};
+    ${({ theme }) => `
       font-size: ${theme.ms.rem(1)};
     `}
     margin: 0;
   }
 
   p + p {
-    margin-top: ${({ theme }: ServicesStyledProps) => theme.ms.rem(2)};
+    margin-top: ${({ theme }) => theme.ms.rem(2)};
   }
+
+  ${media.medium`
+    grid-row: 2;
+    grid-column: main / 7;
+  `}
 `;
 
 export const ServicesContentAside = styled.aside`
   grid-row: 2;
-  grid-column: 8 / main;
-  padding-top: ${({ theme }: ServicesStyledProps) => theme.ms.rem(2)};
+  grid-column: main / main 2;
+  padding-top: ${({ theme }) => theme.ms.rem(2)};
+  ${media.medium`
+    grid-column: 8 / main 2;
+  `}
 `;

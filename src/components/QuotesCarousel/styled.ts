@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Theme } from '../../styled/theme';
 import { StyledWithProps } from '../../types/styled';
 import Page from '../Page';
+import media from '../../styled/media';
 
 export interface QCStyledProps {
   theme: Theme;
@@ -23,7 +24,10 @@ export const QCQuoteFrame = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  grid-column: 3 / 11;
+  grid-column: main / main 2;
+  ${media.medium`
+    grid-column: 3 / 11;
+  `}
 `;
 export const QCQuoteShape = styled.div`
   width: 34px;
