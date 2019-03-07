@@ -5,7 +5,7 @@ import ProfileIntro from '../ProfileIntro';
 export const FrontMain = styled(Page)``;
 
 export const FrontWaves = styled.div`
-  background: no-repeat url('/bg/waves-front-grad.svg') top left / cover;
+  background: no-repeat url('/bg/waves-front-grad.svg') bottom left / cover;
   position: absolute;
   top: 0;
   left: 0;

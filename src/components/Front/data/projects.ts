@@ -64,16 +64,6 @@ const projects: Array<FrontProjectsData> = [
     ]
   },
   {
-    _interrupt,
-    title: 'Let’s make something happen',
-    body:
-      "Think I can help you in 2019? Contact me today to gurantee I'll be available.",
-    cta: {
-      label: "Let's talk",
-      path: '#contact'
-    }
-  },
-  {
     colors: {
       background: '#FFD0BC',
       foreground: '#9D7003',
@@ -94,6 +84,16 @@ const projects: Array<FrontProjectsData> = [
         url: cdnURL('2009S01/work/beachfix/beachfix-flow.mp4')
       }
     ]
+  },
+  {
+    _interrupt,
+    title: 'Let’s make something happen',
+    body:
+      "Think I can help you in 2019? Contact me today to gurantee I'll be available.",
+    cta: {
+      label: "Let's talk",
+      path: '#contact'
+    }
   }
 ];
 

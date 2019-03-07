@@ -3,6 +3,9 @@ import Heading from '../Heading';
 import InterruptBanner from '../InterruptBanner';
 import Project from '../Project';
 import projects from './data/projects';
+import Button from '../Button';
+import theme from '../../styled/theme';
+import { ButtonSizes } from '../Button/styled';
 
 interface FrontProjectsProps {}
 
@@ -14,6 +17,16 @@ const FrontProjects: React.FunctionComponent<FrontProjectsProps> = props => {
           <InterruptBanner key={`project-${i}`}>
             <Heading type="h3">{p.title}</Heading>
             <p>{p.body}</p>
+            {p.cta && (
+              <Button
+                to={p.cta.path}
+                size={ButtonSizes.large}
+                fgColor="black"
+                bgColor="white"
+              >
+                {p.cta.label}
+              </Button>
+            )}
           </InterruptBanner>
         ) : (
           <Project key={`project-${i}`} {...p} />
