@@ -9,12 +9,12 @@ export const IBFrame = styled.section`
       ${theme.innergrid(12)}
       `}
   `}
-  padding: ${({ theme }) => theme.ms.rem(4)} 0;
-  background: #1B0D73 no-repeat url('/bg/waves-blue.svg') center / cover;
+  padding: ${({ theme }) => theme.ms.rem(5)} 0;
+  background: #7f82bf no-repeat url('/bg/waves-blue.svg') center / cover;
 `;
 
 export const IBCard = styled.div`
-  background: black;
+  background: ${({ theme }) => theme.colors.blackish};
   grid-column: main / main 2;
   color: white;
   text-align: center;

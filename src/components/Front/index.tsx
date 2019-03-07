@@ -26,7 +26,7 @@ class Front extends React.Component<FrontProps, any> {
           <BigTestimonial column={['mid']} quotes={testimonials} />
         </Page.Section>
         <Page.Grid topGap={4}>
-          <H type="h2" column={['main', 'main 2']}>
+          <H type="h2" column={[1, 'main 2']}>
             Selected Works
           </H>
         </Page.Grid>
