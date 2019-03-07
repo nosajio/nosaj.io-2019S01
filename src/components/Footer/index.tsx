@@ -19,7 +19,11 @@ const Footer: React.FunctionComponent<FooterProps> = props => {
       </FooterCopyright>
       <FooterLogo />
       <FooterMadeInEngland>
-        <img src="/unionjack.svg" alt="Made in England" title="Made in England" /> 
+        <img
+          src="/unionjack.svg"
+          alt="Made in England"
+          title="Made in England"
+        />
       </FooterMadeInEngland>
     </FooterFrame>
   );
