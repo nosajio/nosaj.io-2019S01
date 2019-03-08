@@ -7,7 +7,7 @@ interface TSSectionProps {
   className?: string;
   children: React.ReactNode;
   // Append elements to the section container
-  appendedElements?: React.ReactNode[];
+  appendedElements?: React.ReactElement<any>[];
 }
 
 const TSSection: React.FunctionComponent<TSSectionProps> = ({
@@ -20,7 +20,10 @@ const TSSection: React.FunctionComponent<TSSectionProps> = ({
       <Page.Grid topGap={0} bottomGap={0}>
         {children}
       </Page.Grid>
-      {appendedElements && appendedElements.map(el => el)}
+      {appendedElements &&
+        appendedElements.map((el, i) =>
+          React.cloneElement(el, { key: `appended-${i}` })
+        )}
     </S>
   );
 };
