@@ -4,8 +4,8 @@ import noop from '../utils/noop';
 
 // useMedia is a hook to use matchMedia functionality
 const useMedia = (rule: MediaQueryRules): boolean => {
-  const [matches, setMatches] = useState<boolean>(false);
   const mq = matchMedia(rule);
+  const [matches, setMatches] = useState<boolean>(mq.matches);
   const eventHandler = (e: MediaQueryListEvent) => {
     matches !== e.matches ? setMatches(e.matches) : noop();
   };
