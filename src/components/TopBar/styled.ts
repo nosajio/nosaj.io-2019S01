@@ -1,18 +1,15 @@
 import { Link } from 'react-router-dom';
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { halfMarginPrcnt } from '../../styled/grid';
-import { Theme } from '../../styled/theme';
-import { StyledWithProps } from '../../types/styled';
-import Button from '../Button';
+import media from '../../styled/media';
+import { styled, Theme } from '../../styled/theme';
 
 export interface TBStyledProps {
-  theme: Theme;
-  withPadding?: string;
   isVisible?: boolean;
   isLight?: boolean;
+  withText?: string;
 }
 
-export const TBarFrame: StyledWithProps<TBStyledProps> = styled.header`
+export const TBarFrame = styled.header<TBStyledProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -22,35 +19,49 @@ export const TBarFrame: StyledWithProps<TBStyledProps> = styled.header`
   justify-content: space-between;
   align-items: flex-start;
   transition: all 300ms ease-in-out;
-  ${({ theme, withPadding }: TBStyledProps) => `
-    z-index: ${theme.layers.nav};
-    padding: ${withPadding || `${halfMarginPrcnt}vw`};
-    transition: all 200ms ease-in-out;
+  padding: 1rem;
+
+  ${media.large`
+    padding: ${halfMarginPrcnt}vw
   `}
 `;
 
 export const TBarLogo = styled(Link)``;
 
-export const TBarLink: StyledWithProps<TBStyledProps> = styled(Link)`
-  ${({ theme }: TBStyledProps) => `
-    margin: 0 ${theme.ms.fn(2) / 2}rem;
-    font: ${theme.fonts.a.weight.bold} 1rem ${theme.fonts.a.family};
-    `}
-  display: inline-block;
-  text-transform: uppercase;
-  text-decoration: none;
-`;
+export const ToggleNav = styled.div<TBStyledProps>`
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: ${({ theme }) => theme.layers.ceiling};
+  display: flex;
+  flex-flow: column nowrap;
+  cursor: pointer;
 
-export const TBarNav: StyledWithProps<TBStyledProps> = styled.nav`
-  ${TBarLink} {
-    color: ${({ isLight }: TBStyledProps) => (isLight ? '#fff' : '#000')};
+  &::after {
+    content: '${({ withText }) => (withText ? withText : 'Nav')}';
+    text-transform: uppercase;
+    font: ${({
+      theme: {
+        ms,
+        fonts: { c: font }
+      }
+    }) => `${font.weight.condensed} 1rem ${font.family}`};
   }
 `;
 
-export const TBarBtn = styled(Button)`
-  ${TBarLink} + &,
-  & + & {
-    margin-left: ${({ theme }: TBStyledProps) =>
-      (theme.ms.fn(2) - theme.ms.fn(1)) / 2}rem;
+export const ToggleNavBars = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  height: ${({ theme }) => theme.ms.rem(-1)};
+  margin-bottom: ${({ theme }) => theme.ms.rem(-3)};
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: black;
   }
 `;

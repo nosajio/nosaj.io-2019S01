@@ -28,6 +28,10 @@ function asMediaQueryDefinition<K extends string>(
   return mqd;
 }
 
+export const defineMediaQueries = <K extends string>(
+  defs: Array<MediaQueryDefinition<K>>
+): Array<MediaQueryDefinition<K>> => defs.map(r => asMediaQueryDefinition(r));
+
 // Helper toremove complexity -> compose a media query CSS string for the passed
 // rule's `min` and `max` values
 const mqRuleString = (r: MediaQueryRules): string =>
@@ -35,7 +39,7 @@ const mqRuleString = (r: MediaQueryRules): string =>
     r.min && r.max ? 'and' : ''
   } ${r.max ? `(max-width: ${r.max}px)` : ''}`;
 
-// matchMedia is a helper that takes a MediaQueryRules object and returns truthy 
+// matchMedia is a helper that takes a MediaQueryRules object and returns truthy
 // if the query is a match. Returns false for no match.
 export const matchMedia = (r: MediaQueryRules): MediaQueryList => {
   const rule = mqRuleString(r);
@@ -48,8 +52,7 @@ export const matchMedia = (r: MediaQueryRules): MediaQueryList => {
 export default function mediaQueryGenerator<K extends string>(
   defs: Array<MediaQueryDefinition<K>>
 ): MediaQueryDefinitionObject<K> {
-  const typedDefs = defs.map(r => asMediaQueryDefinition(r));
-  return typedDefs.reduce(
+  return defs.reduce(
     (mqs: MediaQueryDefinitionObject<K>, r, i) => {
       const mqRules = mqRuleString(r);
       mqs[r.name] = (literals: any, ...interpolations: any) => css`

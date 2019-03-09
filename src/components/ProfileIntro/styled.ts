@@ -14,7 +14,7 @@ export const ProfileIntroImg = styled.img`
   height: auto;
   grid-row: 1;
   grid-column: 3 / 9;
-  box-shadow: 0 6px 30px 5px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 6px 30px 3px rgba(0, 0, 0, 0.22);
   border-radius: 12px;
   top: ${({ theme }) => theme.ms.rem(2)};
 
@@ -31,7 +31,7 @@ export const ProfileIntroCard = styled.div`
   grid-row: 2;
   grid-column: main / main 2;
   color: black;
-  box-shadow: 0 6px 30px 5px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 6px 25px 5px rgba(0, 0, 0, 0.20);
   border-radius: 12px;
   padding: ${({ theme }) => `calc(${theme.ms.rem(3)} + 1rem) ${theme.ms.rem(2)} ${theme.ms.rem(2)}`};
 

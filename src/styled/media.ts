@@ -1,6 +1,9 @@
-import mediaQueryGenerator, { MediaQueryDefinition } from './mediaqueries';
+import mediaQueryGenerator, {
+  MediaQueryDefinition,
+  defineMediaQueries
+} from './mediaqueries';
 
-export const mediaRules: MediaQueryDefinition[] = [
+export const mediaRules = defineMediaQueries([
   {
     name: 'large',
     min: 1440
@@ -9,7 +12,7 @@ export const mediaRules: MediaQueryDefinition[] = [
     name: 'medium',
     min: 700
   }
-];
+]);
 
 const media = mediaQueryGenerator(mediaRules);
 

@@ -1,18 +1,15 @@
-import styled, {
-  ThemedStyledInterface,
-  StyledFunction,
-  StyledComponent,
-  StyledInterface,
-  AnyStyledComponent
-} from 'styled-components';
-import { CapsLinkProps } from '.';
 import { Link } from 'react-router-dom';
-import { Theme } from '../../styled/theme';
+import { AnyStyledComponent } from 'styled-components';
+import { CapsLinkProps } from '.';
+import { styled } from '../../styled/theme';
 
 export const capsLinkElement = (props: CapsLinkProps): AnyStyledComponent =>
-  styled(props.to ? Link : 'span')(
-    ({ theme }: { theme: Theme }) => `
+  styled(props.to ? Link : 'a')(
+    ({ theme }) => `
   color: black;
   text-transform: uppercase;
-  font: ${theme.fonts.c.weight.heavyCondensed} ${theme.ms.rem(1)} ${theme.fonts.c.family};
-`);
+  font: ${theme.fonts.c.weight.heavyCondensed} ${theme.ms.rem(1)} ${
+      theme.fonts.c.family
+    };
+`
+  );

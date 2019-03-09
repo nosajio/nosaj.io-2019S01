@@ -28,7 +28,7 @@ export const OpenerHeadline = styled.h1`
   text-transform: uppercase;
   line-height: 1;
   ${({ theme: { ms, fonts } }) => `
-    font-size: ${ms.rem(2)};
+    font-size: ${ms.rem(3)};
     font-family: ${fonts.c.family};
     font-weight: ${fonts.c.weight.heavyCondensed};
   `}
@@ -43,21 +43,31 @@ export const OpenerLinks = styled.div`
   display: flex;
   flex-flow: column nowrap;
   margin-top: ${({ theme }) => theme.ms.rem(2)};
+  align-items: flex-start;
 
-  ${media.large`
+  ${media.medium`
     align-items: center;
     flex-flow: row nowrap;
   `}
 `;
 
 export const OpenerLink = styled(CapsLink)`
-  ${media.large`
-    ${({ theme }) => `* + & { margin-left: ${theme.ms.rem(3)}; }`}
+  * + & {
+    margin-top: ${({ theme }) => theme.ms.rem(1)};
+  }
+  ${media.medium`
+    ${({ theme }) => `* + & { 
+      margin: 0 0 0 ${theme.ms.rem(3)}; 
+      font-size: ${theme.ms.rem(1)};
+    }`}
   `}
 `;
 
 export const OpenerButton = styled(Button)`
-${media.large`
-  ${({ theme }) => `* + & { margin-left: ${theme.ms.rem(3)}; }`}
-`}
+  * + & {
+    margin-top: ${({ theme }) => theme.ms.rem(1)};
+  }
+  ${media.medium`
+    ${({ theme }) => `* + & { margin: 0 0 0 ${theme.ms.rem(3)}; }`}
+  `}
 `;
