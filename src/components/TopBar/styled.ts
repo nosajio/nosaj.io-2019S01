@@ -1,18 +1,16 @@
 import { Link } from 'react-router-dom';
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { halfMarginPrcnt } from '../../styled/grid';
-import { Theme } from '../../styled/theme';
-import { StyledWithProps } from '../../types/styled';
+import { styled, Theme } from '../../styled/theme';
 import Button from '../Button';
+import media from '../../styled/media';
 
 export interface TBStyledProps {
   theme: Theme;
-  withPadding?: string;
   isVisible?: boolean;
   isLight?: boolean;
 }
 
-export const TBarFrame: StyledWithProps<TBStyledProps> = styled.header`
+export const TBarFrame = styled.header<TBStyledProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -22,17 +20,18 @@ export const TBarFrame: StyledWithProps<TBStyledProps> = styled.header`
   justify-content: space-between;
   align-items: flex-start;
   transition: all 300ms ease-in-out;
-  ${({ theme, withPadding }: TBStyledProps) => `
-    z-index: ${theme.layers.nav};
-    padding: ${withPadding || `${halfMarginPrcnt}vw`};
-    transition: all 200ms ease-in-out;
+  padding: 1rem;
+  z-index: ${({ theme }) => theme.layers.nav};
+
+  ${media.large`
+    padding: ${halfMarginPrcnt}vw
   `}
 `;
 
 export const TBarLogo = styled(Link)``;
 
-export const TBarLink: StyledWithProps<TBStyledProps> = styled(Link)`
-  ${({ theme }: TBStyledProps) => `
+export const TBarLink = styled(Link)`
+  ${({ theme }) => `
     margin: 0 ${theme.ms.fn(2) / 2}rem;
     font: ${theme.fonts.a.weight.bold} 1rem ${theme.fonts.a.family};
     `}
@@ -41,16 +40,37 @@ export const TBarLink: StyledWithProps<TBStyledProps> = styled(Link)`
   text-decoration: none;
 `;
 
-export const TBarNav: StyledWithProps<TBStyledProps> = styled.nav`
+export const TBarNav = styled.nav<TBStyledProps>`
   ${TBarLink} {
-    color: ${({ isLight }: TBStyledProps) => (isLight ? '#fff' : '#000')};
+    color: ${({ isLight }) => (isLight ? '#fff' : '#000')};
   }
 `;
 
 export const TBarBtn = styled(Button)`
   ${TBarLink} + &,
   & + & {
-    margin-left: ${({ theme }: TBStyledProps) =>
-      (theme.ms.fn(2) - theme.ms.fn(1)) / 2}rem;
+    margin-left: ${({ theme }) => (theme.ms.fn(2) - theme.ms.fn(1)) / 2}rem;
+  }
+`;
+
+export const ToggleMobileNav = styled.div`
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  width: ${({ theme }) => theme.ms.rem(2)};
+  height: ${({ theme }) => theme.ms.rem(1)};
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background: black;
+    outline: 2px solid white;
   }
 `;

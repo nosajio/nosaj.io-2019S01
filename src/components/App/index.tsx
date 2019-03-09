@@ -9,6 +9,7 @@ import Footer from '../Footer';
 import HashRoute from '../HashRoute';
 import routes from './routes';
 import ScrollToTopAuto from '../ScrollToTopAuto';
+import NavigationDisplayProvider from '../../contexts/NavigationDisplayContext';
 
 export interface AppProps {}
 
@@ -18,30 +19,32 @@ class App extends React.Component<AppProps, any> {
       <ThemeProvider theme={theme}>
         <Router>
           <ScrollProvider>
-            <ScrollToTopAuto />
-            <GlobalStyle />
-            <Switch>
-              {routes.map(r => (
-                <Route {...r} />
-              ))}
-            </Switch>
-            {/* Show the contact window above whichever view is matched above */}
-            <HashRoute path="#contact" component={ContactWindow} />
-            {/* Autoscroll to work on homepage */}
-            <HashRoute
-              path="#work"
-              render={() => {
-                window.setTimeout(() => {
-                  const el = document.getElementById('work-anchor');
-                  if (!el) {
-                    return null;
-                  }
-                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 200);
-                return null;
-              }}
-            />
-            <Footer />
+            <NavigationDisplayProvider>
+              <ScrollToTopAuto />
+              <GlobalStyle />
+              <Switch>
+                {routes.map(r => (
+                  <Route {...r} />
+                ))}
+              </Switch>
+              {/* Show the contact window above whichever view is matched above */}
+              <HashRoute path="#contact" component={ContactWindow} />
+              {/* Autoscroll to work on homepage */}
+              <HashRoute
+                path="#work"
+                render={() => {
+                  window.setTimeout(() => {
+                    const el = document.getElementById('work-anchor');
+                    if (!el) {
+                      return null;
+                    }
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 200);
+                  return null;
+                }}
+              />
+              <Footer />
+            </NavigationDisplayProvider>
           </ScrollProvider>
         </Router>
       </ThemeProvider>

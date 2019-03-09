@@ -10,7 +10,7 @@ interface MediaProps {
 const Media: React.FunctionComponent<MediaProps> = ({ min, max, children }) => {
   if (!(min || max)) return null;
   const match = useMedia({ min, max });
-  return match ? children : null;
+  return match ? (children ? children : null) : null;
 };
 
 export default Media;
