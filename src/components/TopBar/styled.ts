@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import { halfMarginPrcnt } from '../../styled/grid';
-import { styled, Theme } from '../../styled/theme';
-import Button from '../Button';
 import media from '../../styled/media';
+import { styled, Theme } from '../../styled/theme';
 
 export interface TBStyledProps {
-  theme: Theme;
   isVisible?: boolean;
   isLight?: boolean;
+  withText?: string;
 }
 
 export const TBarFrame = styled.header<TBStyledProps>`
@@ -21,7 +20,6 @@ export const TBarFrame = styled.header<TBStyledProps>`
   align-items: flex-start;
   transition: all 300ms ease-in-out;
   padding: 1rem;
-  z-index: ${({ theme }) => theme.layers.nav};
 
   ${media.large`
     padding: ${halfMarginPrcnt}vw
@@ -30,47 +28,40 @@ export const TBarFrame = styled.header<TBStyledProps>`
 
 export const TBarLogo = styled(Link)``;
 
-export const TBarLink = styled(Link)`
-  ${({ theme }) => `
-    margin: 0 ${theme.ms.fn(2) / 2}rem;
-    font: ${theme.fonts.a.weight.bold} 1rem ${theme.fonts.a.family};
-    `}
-  display: inline-block;
-  text-transform: uppercase;
-  text-decoration: none;
-`;
-
-export const TBarNav = styled.nav<TBStyledProps>`
-  ${TBarLink} {
-    color: ${({ isLight }) => (isLight ? '#fff' : '#000')};
-  }
-`;
-
-export const TBarBtn = styled(Button)`
-  ${TBarLink} + &,
-  & + & {
-    margin-left: ${({ theme }) => (theme.ms.fn(2) - theme.ms.fn(1)) / 2}rem;
-  }
-`;
-
-export const ToggleMobileNav = styled.div`
+export const ToggleMobileNav = styled.div<TBStyledProps>`
   position: fixed;
   top: 1rem;
   right: 1rem;
+  z-index: ${({ theme }) => theme.layers.ceiling};
+  display: flex;
+  flex-flow: column nowrap;
+  cursor: pointer;
+
+  &::after {
+    content: '${({ withText }) => (withText ? withText : 'Nav')}';
+    text-transform: uppercase;
+    font: ${({
+      theme: {
+        ms,
+        fonts: { c: font }
+      }
+    }) => `${font.weight.condensed} 1rem ${font.family}`};
+  }
+`;
+
+export const ToggleMobileNavBars = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  width: ${({ theme }) => theme.ms.rem(2)};
-  height: ${({ theme }) => theme.ms.rem(1)};
-  cursor: pointer;
+  height: ${({ theme }) => theme.ms.rem(-1)};
+  margin-bottom: ${({ theme }) => theme.ms.rem(-3)};
 
   &::before,
   &::after {
     content: '';
     display: block;
     width: 100%;
-    height: 5px;
+    height: 3px;
     background: black;
-    outline: 2px solid white;
   }
 `;

@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import NavigationDisplayProvider, {
+  NavigationDisplayContext
+} from '../../contexts/NavigationDisplayContext';
 import ScrollProvider from '../../contexts/ScrollEventsContext';
 import GlobalStyle from '../../styled/globals';
 import theme from '../../styled/theme';
 import ContactWindow from '../ContactWindow';
 import Footer from '../Footer';
 import HashRoute from '../HashRoute';
-import routes from './routes';
+import NavigationMobile from '../NavigationMobile';
 import ScrollToTopAuto from '../ScrollToTopAuto';
-import NavigationDisplayProvider from '../../contexts/NavigationDisplayContext';
+import routes from './routes';
 
 export interface AppProps {}
 
@@ -44,6 +47,18 @@ class App extends React.Component<AppProps, any> {
                 }}
               />
               <Footer />
+              {/* Show the nav when its context is set to active. TODO if
+               *  there's a time when more global state is needed, refactor
+               *  the nav showing state into a homogenous global state context
+               *  instead.
+               */}
+              <NavigationDisplayContext.Consumer>
+                {({ isNavActive, hideNav }) =>
+                  isNavActive && (
+                    <NavigationMobile onClickLink={() => hideNav()} />
+                  )
+                }
+              </NavigationDisplayContext.Consumer>
             </NavigationDisplayProvider>
           </ScrollProvider>
         </Router>

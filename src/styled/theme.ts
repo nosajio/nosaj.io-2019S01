@@ -46,7 +46,8 @@ const colors = {
 };
 
 const layers = {
-  nav: 5000,
+  ceiling: 9000,
+  nav: 5500,
   windows: 4900,
   contentMax: 4500,
   background: 0
