@@ -28,7 +28,7 @@ export const TBarFrame = styled.header<TBStyledProps>`
 
 export const TBarLogo = styled(Link)``;
 
-export const ToggleMobileNav = styled.div<TBStyledProps>`
+export const ToggleNav = styled.div<TBStyledProps>`
   position: fixed;
   top: 1rem;
   right: 1rem;
@@ -49,7 +49,7 @@ export const ToggleMobileNav = styled.div<TBStyledProps>`
   }
 `;
 
-export const ToggleMobileNavBars = styled.div`
+export const ToggleNavBars = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;

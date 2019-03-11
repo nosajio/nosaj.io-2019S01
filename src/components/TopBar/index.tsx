@@ -7,8 +7,8 @@ import NavigationDesktop from '../NavigationDesktop';
 import {
   TBarFrame,
   TBarLogo,
-  ToggleMobileNav,
-  ToggleMobileNavBars
+  ToggleNav,
+  ToggleNavBars
 } from './styled';
 
 interface TopBarProps {
@@ -24,12 +24,12 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({ light = false }) => {
         <Logo color={light ? '#fff' : '#000'} />
       </TBarLogo>
       <Media max={mobileNavBp}>
-        <ToggleMobileNav
+        <ToggleNav
           withText={isNavActive ? 'Close' : 'Nav'}
           onClick={() => toggleNav()}
         >
-          {!isNavActive && <ToggleMobileNavBars />}
-        </ToggleMobileNav>
+          {!isNavActive && <ToggleNavBars />}
+        </ToggleNav>
       </Media>
       <Media min={mobileNavBp + 1}>
         <NavigationDesktop />

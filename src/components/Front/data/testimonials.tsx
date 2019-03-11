@@ -4,7 +4,7 @@ import { BigTestimonialProps } from '../../BigTestimonial';
 const testimonials: BigTestimonialProps['quotes'] = [
   {
     quote:
-      '[Jason is] a one man startup machine - with a record of designing and building a huge range of websites from scratch...',
+      'Jason is a one man startup machine, with a record of designing and building a huge range of websites from scratch...',
     from: (
       <>
         Elliot O’Connor – Investor, <a href="">Firstminute Capital</a> &
