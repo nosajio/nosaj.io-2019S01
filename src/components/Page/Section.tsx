@@ -24,9 +24,9 @@ const gridBodyStyles = ({
     ${bottomGap > 0 ? theme.ms.rem(bottomGap) : '0'} auto;
 `;
 
-const gridColumnStyles = ({ theme, withCols }: SectionProps) => `
+const gridColumnStyles = ({ theme, withCols }: SectionProps) => css`
   // On small screens, use a simple one col grid
-  ${theme.mobilegrid()};    
+  ${theme.mobilegrid()};
 
   // On large screens, use the default grid
   ${media.medium`
@@ -43,11 +43,11 @@ const Section = styled.section((props: SectionProps) => {
 
 // Grid is the same as section in every way except that a <div /> will be used
 // instead of a <section />
-export const Grid = styled.div(
-  (props: SectionProps) => css`
+export const Grid = styled.div((props: SectionProps) => {
+  return css`
     ${gridBodyStyles(props)}
     ${gridColumnStyles(props)}
-  `
-);
+  `;
+});
 
 export default Section;

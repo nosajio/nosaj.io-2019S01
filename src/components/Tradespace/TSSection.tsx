@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Page from '../Page';
-import styled from 'styled-components';
-import { Theme } from '../../styled/theme';
+import { styled } from '../../styled/theme';
+import media from '../../styled/media';
 
 interface TSSectionProps {
   className?: string;
@@ -35,6 +35,14 @@ const S = styled.section`
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
-  padding: ${({ theme }: { theme: Theme }) => theme.ms.rem(3)};
   overflow: hidden;
+  padding: ${({ theme }) => `${theme.ms.rem(2)} 0`};
+
+  ${media.medium`
+    padding: ${({ theme }) => `${theme.ms.rem(3)} 0`};
+  `}
+
+  ${media.large`
+
+  `}
 `;

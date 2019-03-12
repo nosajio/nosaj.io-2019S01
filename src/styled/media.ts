@@ -10,7 +10,7 @@ export const mediaRules = defineMediaQueries([
   },
   {
     name: 'medium',
-    min: 700
+    min: 770
   }
 ]);
 
