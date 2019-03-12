@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { halfMarginPrcnt } from '../../styled/grid';
 import media from '../../styled/media';
-import { styled, Theme } from '../../styled/theme';
+import { styled } from '../../styled/theme';
 
 export interface TBStyledProps {
   isVisible?: boolean;
@@ -26,7 +26,22 @@ export const TBarFrame = styled.header<TBStyledProps>`
   `}
 `;
 
-export const TBarLogo = styled(Link)``;
+export const TBarLogo = styled.div``;
+
+export const LogoLink = styled(Link)`
+  text-decoration: none;
+`;
+
+export const UnderLogoText = styled.div`
+  margin-top: ${({ theme }) => theme.ms.rem(-2)};
+  padding-top: ${({ theme }) => theme.ms.rem(-4)};
+  text-transform: uppercase;
+  width: 100%;
+  min-width: ${({ theme }) => theme.grid(1)}vw;
+  border-top: 1px solid black;
+  font: ${({ theme: { fonts } }) =>
+    `${fonts.c.weight.condensed} 15px ${fonts.c.family}`};
+`;
 
 export const ToggleNav = styled.div<TBStyledProps>`
   position: fixed;

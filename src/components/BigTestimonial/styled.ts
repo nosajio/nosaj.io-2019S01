@@ -6,6 +6,7 @@ export const BigTestimonialFrame = styled.blockquote`
   flex-flow: column nowrap;
   padding: 0;
   margin: 0;
+  text-align: center;
 `;
 
 export const BigTestimonialQuote = styled.p`

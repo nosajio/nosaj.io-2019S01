@@ -51,21 +51,21 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
       return false;
     }
     return true;
-  }
-  
+  };
+
   const handleSubmitForm = async (): Promise<void> => {
-    if (! isFormValid()) {
+    if (!isFormValid()) {
       setInvalidState(true);
       return;
     }
-    await sendMessage(nameVal, emailVal, subjectVal, messageVal)
+    await sendMessage(nameVal, emailVal, subjectVal, messageVal);
     setSentState(true);
     setInvalidState(false);
   };
 
-  // Automatically close the contact route n seconds after the form has been
-  // submitted
-  const killClock = 8 * 1000; // ms = seconds * 1000
+  // Automatically close the contact route after n seconds. Used after the form
+  // has been submitted
+  const killClock = 8 * 1000; // n = ms = seconds * 1000
   let killTimeout: any;
   React.useEffect(() => {
     if (killTimeout || !sentState) {
@@ -89,7 +89,11 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
       <Window isGone={sentState} onClose={() => removeContactFromUrl()}>
         <ContactH1>Hey, nice to meet you 👋</ContactH1>
         <ContactForm>
-          {invalidState && (<InvalidMsg>Please make sure the name and email fields are both filled out</InvalidMsg>)}
+          {invalidState && (
+            <InvalidMsg>
+              Please make sure the name and email fields are both filled out
+            </InvalidMsg>
+          )}
           <SubjectField
             name="subject"
             label="Subject"

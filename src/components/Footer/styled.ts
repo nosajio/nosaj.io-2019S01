@@ -4,6 +4,7 @@ import { styled } from '../../styled/theme';
 export const FooterFrame = styled.footer`
   ${({ theme }) => theme.mobilegrid()}
   ${media.medium`${({ theme }) => theme.innergrid(12)}`}
+  grid-row-gap: ${({ theme }) => theme.ms.rem(2)};
   
   margin: ${({ theme }) => `${theme.ms.rem(4)} auto ${theme.ms.rem(2)}`};
   text-transform: uppercase;
