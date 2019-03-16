@@ -5,6 +5,7 @@ import noop from '../../utils/noop';
 
 interface WindowProps {
   children: React.ReactNode;
+  padding?: number | string;
   isGone?: boolean; // Move the window out of view
   onClose?(): void;
 }
@@ -12,6 +13,7 @@ interface WindowProps {
 const Window: React.FunctionComponent<WindowProps> = ({
   children,
   isGone = false,
+  padding = 2,
   onClose
 }) => {
   const safeOnClose = onClose ? onClose : noop;
@@ -22,7 +24,9 @@ const Window: React.FunctionComponent<WindowProps> = ({
   return (
     <WindowView>
       <WindowOverlay onClick={() => safeOnClose()} />
-      <WindowFrame isGone={isGone}>{children}</WindowFrame>
+      <WindowFrame withPadding={padding} isGone={isGone}>
+        {children}
+      </WindowFrame>
     </WindowView>
   );
 };

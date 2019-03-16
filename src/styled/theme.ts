@@ -27,10 +27,14 @@ export interface Theme {
 // Define theme values below - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 const colors = {
+  red: {
+    bright: '#ff5e5e'
+  },
   yellow: {
     bright: '#FFE793'
   },
   blue: {
+    offwhite: '#EDEBF9',
     pastel: '#D0EAFE',
     bright: '#184AD8',
     greyDark: '#3D3E55',
@@ -39,8 +43,10 @@ const colors = {
   purple: {
     offwhite: '#D7BFFF',
     pastel: '#E7DDF6',
+    neutral: '#D9C4FA',
     bright: '#9355F6'
   },
+  grey: '#575763',
   blackish: '#151628',
   black: '#000'
 };

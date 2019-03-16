@@ -2,7 +2,7 @@ import { styled } from '../../styled/theme';
 import media from '../../styled/media';
 
 type WindowStyledProps = {
-  padding?: string | number;
+  withPadding?: string | number;
   isGone?: boolean;
 };
 
@@ -14,10 +14,12 @@ export const WindowView = styled.div`
   height: 100vh;
   display: flex;
   flex-flow: row nowrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding-top: ${({ theme }) => theme.ms.rem(4)};
+  /* padding-top: ${({ theme }) => theme.ms.rem(4)}; */
   z-index: ${({ theme }) => theme.layers.windows};
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 export const WindowOverlay = styled.div`
@@ -26,24 +28,30 @@ export const WindowOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.77) 85%);
+  background: radial-gradient(
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.8) 85%
+  );
 `;
 
 export const WindowFrame = styled.div<WindowStyledProps>`
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  background: ${({ theme: { colors } }) => colors.blue.black};
-  color: white;
+  max-width: 900px;
+  // background-image: linear-gradient(-180deg, #323242 0%, #08080b 100%);
+  border: 1px solid ${({ theme }) => theme.colors.blue.offwhite};
+  background: white;
+  color: black;
   box-shadow: 0 7px 40px 3px rgba(49, 31, 75, 0.49);
   border-radius: 12px;
   transition: all 300ms;
-  border: 2px solid ${({ theme }) => theme.colors.purple.bright};
-  padding: ${({ theme, padding }) =>
-    typeof padding === 'number'
-      ? theme.ms.rem(padding)
-      : typeof padding === 'string'
-      ? padding
+  padding: ${({ theme, withPadding }) =>
+    typeof withPadding === 'number'
+      ? withPadding === 0
+        ? '0'
+        : theme.ms.rem(withPadding)
+      : typeof withPadding === 'string'
+      ? withPadding
       : theme.ms.rem(1)};
   ${({ isGone = false }) =>
     isGone
@@ -54,11 +62,13 @@ export const WindowFrame = styled.div<WindowStyledProps>`
 
   ${media.medium<WindowStyledProps>`
     border-radius: 24px;
-    padding: ${({ theme, padding }) =>
-      typeof padding === 'number'
-        ? theme.ms.rem(padding)
-        : typeof padding === 'string'
-        ? padding
+    padding: ${({ theme, withPadding }) =>
+      typeof withPadding === 'number'
+        ? withPadding === 0
+          ? '0'
+          : theme.ms.rem(withPadding)
+        : typeof withPadding === 'string'
+        ? withPadding
         : theme.ms.rem(2)};
   `}
 `;

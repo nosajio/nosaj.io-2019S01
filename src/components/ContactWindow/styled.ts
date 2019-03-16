@@ -1,10 +1,8 @@
-import { keyframes } from 'styled-components';
-import { styled } from '../../styled/theme';
-import Button from '../Button';
-import { ButtonSizes } from '../Button/styled';
-import FormInput from '../FormInput';
-import FormSelector from '../FormSelector';
+import { css, keyframes } from 'styled-components';
 import media from '../../styled/media';
+import { styled } from '../../styled/theme';
+import FormSelector from '../FormSelector';
+import SlickInput from '../SlickInput';
 
 export interface ContactStyledProps {}
 
@@ -16,50 +14,76 @@ export const ContactForm = styled.form`
   grid-auto-rows: auto;
 
   ${media.medium`
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: ${({ theme }) => theme.ms.rem(2)};
     grid-row-gap: ${({ theme }) => theme.ms.rem(1)};
   `}
 `;
 
-export const ContactH1 = styled.h1`
-  ${({ theme: { fonts, ms } }) => `
-    margin-bottom: ${ms.rem(2)};
-    font: ${fonts.c.weight.bold} ${ms.rem(2)} ${fonts.c.family};
+export const ContactInputs = styled.div`
+  ${media.medium`
+    padding: ${({ theme }) => theme.ms.rem(2)};
   `}
 `;
 
-export const NameField = styled(FormInput)``;
-export const EmailField = styled(FormInput)``;
+export const ContactH1 = styled.h1`
+  text-align: center;
+  ${({ theme: { fonts, ms } }) => `
+    margin-bottom: ${ms.rem(2)};
+    font: ${fonts.a.weight.heavy} ${ms.rem(2)} ${fonts.a.family};
+  `}
+`;
+
+const fieldBaseStyles = css`
+  margin-bottom: ${({ theme }) => theme.ms.rem(1)};
+  ${media.large`
+    margin-bottom: ${({ theme }) => theme.ms.rem(3)};
+  `}
+`;
+
+export const NameField = styled(SlickInput)`
+  ${fieldBaseStyles}
+`;
+export const EmailField = styled(SlickInput)`
+  ${fieldBaseStyles}
+`;
 export const SubjectField = styled(FormSelector)`
-  grid-column: 1 / 3;
+  ${fieldBaseStyles}
 `;
-export const MessageField = styled(FormInput)`
-  grid-column: 1 / 3;
-  textarea {
-    min-height: ${({ theme }) => theme.ms.rem(6)};
-  }
-`;
+export const MessageField = styled(SlickInput)``;
 export const ContactActions = styled.div`
   display: flex;
+  flex-flow: column nowrap;
   align-items: center;
   justify-content: space-between;
-  grid-column: 1 / 3;
 `;
-export const ContactSendButton = styled(Button).attrs({
-  size: ButtonSizes.large
-})`
-  padding-left: ${({ theme }) => theme.ms.rem(3)};
-  padding-right: ${({ theme }) => theme.ms.rem(3)};
+
+export const ContactSendButton = styled.button`
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 1rem 0;
+  width: 100%;
+  background: #dbdbdb;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font: ${({ theme: { ms, fonts } }) =>
+    `${fonts.a.weight.bold} ${ms.rem(2)} ${fonts.a.family}`};
+`;
+
+export const ETA = styled.span`
+  font-size: 1rem;
+  font-weight: ${({ theme }) => theme.fonts.a.weight.regular};
+  color: #818181;
 `;
 
 export const DontLikeForms = styled.div`
   font-family: TradeGothicNextLTPro-Rg;
   font-size: 1rem;
-  color: ${({ theme }) => theme.colors.purple.offwhite};
+  color: ${({ theme }) => theme.colors.blackish};
+  margin: ${({ theme }) => `1rem 0 ${theme.ms.rem(1)}`};
 
   a {
-    color: ${({ theme }) => theme.colors.purple.pastel};
+    color: ${({ theme }) => theme.colors.purple.bright};
   }
 `;
 
@@ -93,10 +117,9 @@ export const ContactSuccessMsg = styled.h1`
 `;
 
 export const InvalidMsg = styled.div`
-  grid-column: 1 / 3;
   grid-row: 1;
   ${({ theme: { fonts, colors, ms } }) => `
     font: ${fonts.c.weight.bold} ${ms.rem(1)} ${fonts.c.family};
-    color: ${colors.yellow.bright};
+    color: ${colors.red.bright};
   `}
 `;

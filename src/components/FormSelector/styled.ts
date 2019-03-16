@@ -22,20 +22,21 @@ export const SelectorSelectable: StyledWithProps<
     cursor: pointer;
     grid-row: 1;
     outline: none;
-    color: white;
+    color: black;
     border: 2px solid transparent;
     font-size: ${theme.ms.rem(1)};
     padding: ${theme.ms.rem(-1)} 1rem;
     border-radius: 12px;
+    transition: all 200ms ease;
 
     &:focus { border-color: #726388 }
     
     ${
       isSelected
         ? `
-      background: ${theme.colors.blue.greyDark};
-      border-color: #726388;
-      box-shadow: 0 5px 17px 1px rgba(49, 31, 75, 0.17);
+      color: ${theme.colors.blackish};
+      background: ${theme.colors.purple.neutral};
+      border-color: transparent;
       
       &:focus { border-color: ${theme.colors.purple.bright} }
   `
