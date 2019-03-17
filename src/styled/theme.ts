@@ -46,7 +46,10 @@ const colors = {
     neutral: '#D9C4FA',
     bright: '#9355F6'
   },
-  grey: '#575763',
+  grey: {
+    neutral: '#575763',
+    light: '#dbdbdb'
+  },
   blackish: '#151628',
   black: '#000'
 };

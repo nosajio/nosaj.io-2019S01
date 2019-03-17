@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ProjectImage as ProjectImageType, ProjectProps } from '.';
 import borderUnderline from '../../styled/border-underline';
 import { styled } from '../../styled/theme';
+import media from '../../styled/media';
 
 const getColor = (
   c: ProjectProps['colors'],
@@ -42,9 +43,13 @@ export const ProjectClientName = styled.div<ProjectStyledProps>`
 
 export const ProjectHeadline = styled.div<ProjectStyledProps>`
   grid-column: main / main 2;
-  ${({ theme: { ms, fonts }, withColors }) => `
-    font: ${fonts.c.weight.bold} ${ms.rem(2)} ${fonts.c.family};
-`}
+  ${({ theme: { ms, fonts } }) => `
+  font: ${fonts.a.weight.bold} ${ms.rem(2)} ${fonts.a.family};
+  `}
+
+  ${media.medium`
+    padding-right: 8vw;
+  `}
 `;
 
 export const ProjectLinks = styled.div<ProjectStyledProps>`

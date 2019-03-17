@@ -9,6 +9,7 @@ import {
 
 interface SlickInputProps {
   label?: string;
+  animated?: boolean; // Animated label position when field is fucussed
   grow?: boolean; // For textarea fields; grow height with lines. similar to how chat apps work
   name: string;
   type: 'textarea' | 'text' | 'email';
@@ -41,6 +42,7 @@ const elementType = (t: SlickInputProps['type']) => {
 const SlickInput: React.FunctionComponent<SlickInputProps> = ({
   label,
   grow = false,
+  animated = false,
   type,
   onChange,
   className
@@ -62,7 +64,10 @@ const SlickInput: React.FunctionComponent<SlickInputProps> = ({
   return (
     <SlickInputFrame className={className}>
       {label && (
-        <SlickInputLabel isHighlighted={active} isBig={!active && !value}>
+        <SlickInputLabel
+          isHighlighted={active}
+          isBig={animated && !active && !value}
+        >
           {label}
         </SlickInputLabel>
       )}
@@ -75,7 +80,6 @@ const SlickInput: React.FunctionComponent<SlickInputProps> = ({
         type={inputType || undefined}
         rows={rowCount || undefined}
       />
-      <SlickFieldUnderline isHighlighted={active} />
     </SlickInputFrame>
   );
 };

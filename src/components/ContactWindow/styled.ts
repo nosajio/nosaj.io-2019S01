@@ -16,7 +16,6 @@ export const ContactForm = styled.form`
   grid-row-gap: ${({ theme }) => theme.ms.rem(1)};
 
   ${media.medium`
-    grid-row-gap: ${({ theme }) => theme.ms.rem(3)};
   `}
 `;
 
@@ -39,15 +38,17 @@ export const ContactH1 = styled.h1`
   `}
 `;
 
+export const ContactP = styled.p`
+  font-size: ${({ theme }) => theme.ms.rem(1)};
+  margin: 0;
+`;
+
 const fieldBaseStyles = css``;
 
 export const NameField = styled(SlickInput)`
   ${fieldBaseStyles}
 `;
 export const EmailField = styled(SlickInput)`
-  ${fieldBaseStyles}
-`;
-export const SubjectField = styled(FormSelector)`
   ${fieldBaseStyles}
 `;
 export const MessageField = styled(SlickInput)``;

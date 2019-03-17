@@ -8,6 +8,7 @@ import {
   ContactForm,
   ContactH1,
   ContactInputs,
+  ContactP,
   ContactSendButton,
   ContactSuccessFrame,
   ContactSuccessMsg,
@@ -16,8 +17,7 @@ import {
   ETA,
   InvalidMsg,
   MessageField,
-  NameField,
-  SubjectField
+  NameField
 } from './styled';
 
 const subjects = [
@@ -40,10 +40,7 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
   const [sentState, setSentState] = React.useState(false);
   const [nameVal, setNameVal] = React.useState('');
   const [emailVal, setEmailVal] = React.useState('');
-  const [subjectVal, setSubjectVal] = React.useState(subjects[0].value);
   const [messageVal, setMessageVal] = React.useState('');
-
-  const subject = subjects.find(s => s.value === subjectVal);
 
   const removeContactFromUrl = !history
     ? noop
@@ -52,7 +49,11 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
       };
 
   const isFormValid = () => {
-    if (!sentState && (!nameVal || !emailVal)) {
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (
+      !sentState &&
+      (!nameVal || !(emailVal && emailRegex.test(emailVal)) || !messageVal)
+    ) {
       return false;
     }
     return true;
@@ -65,7 +66,7 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
       setInvalidState(true);
       return;
     }
-    await sendMessage(nameVal, emailVal, subjectVal, messageVal);
+    await sendMessage(nameVal, emailVal, 'general', messageVal);
     setSentState(true);
     setInvalidState(false);
   };
@@ -101,9 +102,13 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
         <ContactForm>
           <ContactInputs>
             <ContactH1>Hey 👋</ContactH1>
+            <ContactP>
+              I'd love to hear about what you're working on. Or if you just want
+              to say hey, that's fine too :)
+            </ContactP>
             {invalidState && (
               <InvalidMsg>
-                Please make sure the name and email fields are both filled out
+                Please make sure all fields are filled out
               </InvalidMsg>
             )}
             <NameField
@@ -118,33 +123,13 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
               type="email"
               onChange={v => setEmailVal(v)}
             />
-            <SubjectField
-              name="subject"
-              label=""
-              options={subjects}
-              onChange={v => setSubjectVal(String(v.value))}
-            />
             <MessageField
               grow
               name="message"
-              label="Write your message here..."
+              label="Tell me about your project, or just say hey :)"
               type="textarea"
               onChange={v => setMessageVal(v)}
             />
-            {/*
-          <NameField name="name" label="Name" onChange={v => setNameVal(v)} />
-          <EmailField
-            name="email"
-            type="email"
-            label="Email"
-            onChange={v => setEmailVal(v)}
-          />
-          <MessageField
-            name="message"
-            type="textarea"
-            label="Message"
-            onChange={v => setMessageVal(v)}
-          /> */}
           </ContactInputs>
           <ContactActions>
             <ContactSendButton
@@ -152,9 +137,7 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
               onClick={e => handleSubmitForm(e)}
             >
               Send
-              {subject && (
-                <ETA>Estimated response time {subject.responseTime}</ETA>
-              )}
+              <ETA>Estimated response time &lt; 24hrs</ETA>
             </ContactSendButton>
             <DontLikeForms>
               Don’t like forms? You can also find me on{' '}

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from '../../styled/media';
 import { Theme } from '../../styled/theme';
 
 export const BigTestimonialFrame = styled.blockquote`
@@ -11,10 +12,12 @@ export const BigTestimonialFrame = styled.blockquote`
 
 export const BigTestimonialQuote = styled.p`
   margin: 0;
-  ${({ theme }: { theme: Theme }) => `
-    font: ${theme.fonts.c.weight.bold} ${theme.ms.rem(1)} ${
-    theme.fonts.c.family
-  };
+  ${media.medium`
+    ${({ theme }: { theme: Theme }) => `
+      font: ${theme.fonts.a.weight.bold} ${theme.ms.rem(2)} ${
+      theme.fonts.a.family
+    };
+    `}
   `}
 `;
 

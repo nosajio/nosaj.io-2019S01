@@ -12,7 +12,7 @@ export const SelectorLabel = styled.label``;
 export const SelectorOptions = styled.div`
   display: grid;
   grid-column-gap: ${({ theme }: SelectorStyledProps) => theme.ms.rem(2)};
-  grid-auto-columns: 1fr;
+  grid-auto-columns: max-content;
 `;
 export const SelectorSelectable: StyledWithProps<
   SelectorStyledProps

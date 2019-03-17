@@ -28,6 +28,8 @@ const Window: React.FunctionComponent<WindowProps> = ({
   if (lastKeyUp === 'escape') {
     safeOnClose();
   }
+  // Ensure cleanup happens when component is removed from the tree
+  React.useEffect(() => safeOnClose, []);
   return (
     <WindowView>
       <WindowOverlay onClick={() => safeOnClose()} />

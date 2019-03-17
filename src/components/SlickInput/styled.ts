@@ -17,19 +17,21 @@ export const SlickInputFrame = styled.label`
 
 export const SlickInputLabel = styled(FormLabel)<SlickFieldStyledProps>`
   position: absolute;
-  left: 0;
+  left: ${({ theme }) => theme.ms.rem(-1)};
   pointer-events: none;
   transition: all 150ms ease;
 
   ${({ isBig, isHighlighted, theme }) =>
     isBig
       ? `
-      bottom: 10px;
+      bottom: 5px;
       font-size: ${theme.ms.rem(1)};`
       : `
-      font-size: 16px;
+      font-size: 1rem;
       bottom: calc(100% - 2rem);
       color: ${isHighlighted ? theme.colors.purple.bright : 'black'};
+      background: white;
+      padding: 0 ${theme.ms.rem(-1)};
       `}
 `;
 
@@ -38,10 +40,10 @@ export const SlickField = styled(({ withElement, ...rest }) =>
 )`
   color: black;
   background: transparent;
-  border: none;
-  font-size: ${({ theme }) => theme.ms.rem(2)};
+  border: 2px solid ${({ theme }) => theme.colors.blackish};
+  font-size: ${({ theme }) => theme.ms.rem(1)};
   font-weight: ${({ theme }) => theme.fonts.a.weight.bold};
-  padding: ${({ theme }) => theme.ms.rem(-1)} 0;
+  padding: ${({ theme }) => `1rem ${theme.ms.rem(-1)}`};
   width: 100%;
   outline: none;
 

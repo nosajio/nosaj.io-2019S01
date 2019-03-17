@@ -1,11 +1,10 @@
 import * as React from 'react';
+import Button from '../Button';
+import { ButtonSizes } from '../Button/styled';
 import Heading from '../Heading';
 import InterruptBanner from '../InterruptBanner';
 import Project from '../Project';
 import projects from './data/projects';
-import Button from '../Button';
-import theme from '../../styled/theme';
-import { ButtonSizes } from '../Button/styled';
 
 interface FrontProjectsProps {}
 
