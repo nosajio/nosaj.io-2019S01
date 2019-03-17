@@ -14,9 +14,9 @@ export const WindowView = styled.div`
   height: 100vh;
   display: flex;
   flex-flow: row nowrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  /* padding-top: ${({ theme }) => theme.ms.rem(4)}; */
+  padding-top: ${({ theme }) => theme.ms.rem(4)};
   z-index: ${({ theme }) => theme.layers.windows};
   overflow-y: auto;
   overflow-x: hidden;

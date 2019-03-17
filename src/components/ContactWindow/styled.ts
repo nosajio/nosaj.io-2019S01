@@ -4,21 +4,29 @@ import { styled } from '../../styled/theme';
 import FormSelector from '../FormSelector';
 import SlickInput from '../SlickInput';
 
-export interface ContactStyledProps {}
+export interface ContactStyledProps {
+  isHighlighted?: boolean;
+}
 
 export const ContactForm = styled.form`
   display: grid;
-  grid-template-columns: 100%;
-  grid-column-gap: 0;
-  grid-row-gap: ${({ theme }) => theme.ms.rem(-1)};
+  grid-template-columns: 1fr;
   grid-auto-rows: auto;
+  grid-column-gap: 0;
+  grid-row-gap: ${({ theme }) => theme.ms.rem(1)};
 
   ${media.medium`
-    grid-row-gap: ${({ theme }) => theme.ms.rem(1)};
+    grid-row-gap: ${({ theme }) => theme.ms.rem(3)};
   `}
 `;
 
 export const ContactInputs = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  grid-column-gap: 0;
+  grid-row-gap: ${({ theme }) => theme.ms.rem(1)};
+
   ${media.medium`
     padding: ${({ theme }) => theme.ms.rem(2)};
   `}
@@ -27,17 +35,11 @@ export const ContactInputs = styled.div`
 export const ContactH1 = styled.h1`
   text-align: center;
   ${({ theme: { fonts, ms } }) => `
-    margin-bottom: ${ms.rem(2)};
     font: ${fonts.a.weight.heavy} ${ms.rem(2)} ${fonts.a.family};
   `}
 `;
 
-const fieldBaseStyles = css`
-  margin-bottom: ${({ theme }) => theme.ms.rem(1)};
-  ${media.large`
-    margin-bottom: ${({ theme }) => theme.ms.rem(3)};
-  `}
-`;
+const fieldBaseStyles = css``;
 
 export const NameField = styled(SlickInput)`
   ${fieldBaseStyles}
@@ -56,13 +58,15 @@ export const ContactActions = styled.div`
   justify-content: space-between;
 `;
 
-export const ContactSendButton = styled.button`
+export const ContactSendButton = styled.button<ContactStyledProps>`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   padding: 1rem 0;
   width: 100%;
-  background: #dbdbdb;
+  transition: all 200ms ease;
+  background: ${({ isHighlighted, theme }) =>
+    isHighlighted ? theme.colors.purple.neutral : '#dbdbdb'};
   border: none;
   color: black;
   cursor: pointer;
@@ -117,7 +121,6 @@ export const ContactSuccessMsg = styled.h1`
 `;
 
 export const InvalidMsg = styled.div`
-  grid-row: 1;
   ${({ theme: { fonts, colors, ms } }) => `
     font: ${fonts.c.weight.bold} ${ms.rem(1)} ${fonts.c.family};
     color: ${colors.red.bright};

@@ -120,7 +120,7 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
             />
             <SubjectField
               name="subject"
-              label="Which subject describes your message?"
+              label=""
               options={subjects}
               onChange={v => setSubjectVal(String(v.value))}
             />
@@ -147,7 +147,10 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
           /> */}
           </ContactInputs>
           <ContactActions>
-            <ContactSendButton onClick={e => handleSubmitForm(e)}>
+            <ContactSendButton
+              isHighlighted={isFormValid()}
+              onClick={e => handleSubmitForm(e)}
+            >
               Send
               {subject && (
                 <ETA>Estimated response time {subject.responseTime}</ETA>

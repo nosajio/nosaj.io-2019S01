@@ -4,6 +4,10 @@ import media from '../../styled/media';
 export const IBFrame = styled.section`
   ${({ theme }) => theme.mobilegrid()}
 
+  * + & {
+    margin-top: ${({ theme }) => theme.ms.rem(1)};
+  }
+
   ${media.medium`
     ${({ theme }) => `
       ${theme.innergrid(12)}

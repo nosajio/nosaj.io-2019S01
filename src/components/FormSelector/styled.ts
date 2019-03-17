@@ -12,7 +12,7 @@ export const SelectorLabel = styled.label``;
 export const SelectorOptions = styled.div`
   display: grid;
   grid-column-gap: ${({ theme }: SelectorStyledProps) => theme.ms.rem(2)};
-  grid-auto-columns: max-content;
+  grid-auto-columns: 1fr;
 `;
 export const SelectorSelectable: StyledWithProps<
   SelectorStyledProps
@@ -35,7 +35,7 @@ export const SelectorSelectable: StyledWithProps<
       isSelected
         ? `
       color: ${theme.colors.blackish};
-      background: ${theme.colors.purple.neutral};
+      background: ${theme.colors.purple.pastel};
       border-color: transparent;
       
       &:focus { border-color: ${theme.colors.purple.bright} }

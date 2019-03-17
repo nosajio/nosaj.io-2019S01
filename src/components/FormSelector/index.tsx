@@ -29,7 +29,7 @@ const FormSelector: React.FunctionComponent<FormSelectorProps> = ({
   };
   return (
     <SelectorFrame className={className}>
-      <FormLabel>{label}</FormLabel>
+      {label && <FormLabel>{label}</FormLabel>}
       <SelectorOptions>
         {options.map(o => (
           <SelectorSelectable

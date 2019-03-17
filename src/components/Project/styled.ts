@@ -23,6 +23,10 @@ export const ProjectFrame = styled.article<ProjectStyledProps>`
     background: ${getColor(withColors, 'background', 'transparent')};
     color: ${getColor(withColors, 'text', 'white')};
   `}
+
+  & + & {
+    margin-top: ${({ theme }) => theme.ms.rem(1)};
+  }
 `;
 
 export const ProjectClientName = styled.div<ProjectStyledProps>`

@@ -52,7 +52,7 @@ export const SlickField = styled(({ withElement, ...rest }) =>
 
 export const SlickFieldUnderline = styled.div<SlickFieldStyledProps>`
   width: 100%;
-  height: 6px;
+  height: 4px;
   background: ${({ isHighlighted, theme }) =>
-    isHighlighted ? theme.colors.purple.bright : '#dbdbdb'};
+    isHighlighted ? theme.colors.purple.bright : theme.colors.blackish};
 `;
