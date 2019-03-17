@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { WindowFrame, WindowOverlay, WindowView } from './styled';
 import useKeyboardInput from '../../hooks/useKeyboardInput';
+import { addLockClass, removeLockClass } from '../../utils/bodyClassNames';
 import noop from '../../utils/noop';
+import { WindowFrame, WindowOverlay, WindowView } from './styled';
 
 interface WindowProps {
   children: React.ReactNode;
@@ -16,7 +17,13 @@ const Window: React.FunctionComponent<WindowProps> = ({
   padding = 2,
   onClose
 }) => {
-  const safeOnClose = onClose ? onClose : noop;
+  addLockClass();
+  const safeOnClose = () => {
+    removeLockClass();
+    {
+      onClose ? onClose() : noop();
+    }
+  };
   const lastKeyUp = useKeyboardInput();
   if (lastKeyUp === 'escape') {
     safeOnClose();

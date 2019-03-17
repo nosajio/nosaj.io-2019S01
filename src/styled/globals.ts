@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
 
   /* Lock the body */
   body.is-locked {
-    overflow: hidden;
+    overflow-y: hidden;
   }
 
   /* Global link styles - remove the default blue hyperlinks */
