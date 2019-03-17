@@ -25,6 +25,7 @@ export const ContactInputs = styled.div`
   grid-auto-rows: auto;
   grid-column-gap: 0;
   grid-row-gap: ${({ theme }) => theme.ms.rem(1)};
+  padding: ${({ theme }) => theme.ms.rem(1)} 1rem;
 
   ${media.medium`
     padding: ${({ theme }) => theme.ms.rem(2)};
@@ -85,7 +86,8 @@ export const DontLikeForms = styled.div`
   font-family: TradeGothicNextLTPro-Rg;
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.blackish};
-  margin: ${({ theme }) => `1rem 0 ${theme.ms.rem(1)}`};
+  margin: ${({ theme }) => `1rem 1rem ${theme.ms.rem(1)}`};
+  text-align: center;
 
   a {
     color: ${({ theme }) => theme.colors.purple.bright};

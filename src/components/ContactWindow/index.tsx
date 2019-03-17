@@ -66,7 +66,7 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
       setInvalidState(true);
       return;
     }
-    await sendMessage(nameVal, emailVal, 'general', messageVal);
+    await sendMessage(nameVal, emailVal, 'Incoming message from nosaj.io', messageVal);
     setSentState(true);
     setInvalidState(false);
   };
@@ -126,7 +126,7 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
             <MessageField
               grow
               name="message"
-              label="Tell me about your project, or just say hey :)"
+              label="Your message"
               type="textarea"
               onChange={v => setMessageVal(v)}
             />

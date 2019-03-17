@@ -37,8 +37,7 @@ export const WindowOverlay = styled.div`
 export const WindowFrame = styled.div<WindowStyledProps>`
   position: relative;
   width: 100%;
-  max-width: 900px;
-  // background-image: linear-gradient(-180deg, #323242 0%, #08080b 100%);
+  max-width: 800px;
   border: 1px solid ${({ theme }) => theme.colors.blue.offwhite};
   background: white;
   color: black;
