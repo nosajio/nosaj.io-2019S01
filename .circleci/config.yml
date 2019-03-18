@@ -16,6 +16,7 @@ jobs:
           command: |
             echo "export REACT_APP_CDN_URL=$REACT_APP_CDN_URL" >> $BASH_ENV
             echo "export REACT_APP_RMAIL_URL=$REACT_APP_RMAIL_URL" >> $BASH_ENV
+            echo "export REACT_APP_HEAP_ENV=$REACT_APP_HEAP_ENV" >> $BASH_ENV
             echo "export NODE_ENV=production" >> $BASH_ENV
             source $BASH_ENV
       
@@ -31,7 +32,7 @@ jobs:
       - run:
           name: Build the docker image
           command: |
-            docker build --build-arg CDN_URL=$REACT_APP_CDN_URL -t $IMAGE_NAME:latest .
+            docker build --build-arg CDN_URL=$REACT_APP_CDN_URL --build-arg HEAP_ENV=$REACT_APP_HEAP_ENV -t $IMAGE_NAME:latest .
       
       - run:
           name: Save image to an archive
