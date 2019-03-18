@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Build the docker image
           command: |
-            docker build --build-arg CDN_URL=$REACT_APP_CDN_URL --build-arg HEAP_ENV=$REACT_APP_HEAP_ENV -t $IMAGE_NAME:latest .
+            docker build --build-arg CDN_URL=$REACT_APP_CDN_URL --build-arg HEAP_ENV=$REACT_APP_HEAP_ENV --build-arg RMAIL_URL=$REACT_APP_RMAIL_URL -t $IMAGE_NAME:latest .
       
       - run:
           name: Save image to an archive
