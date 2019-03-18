@@ -10,6 +10,7 @@ ARG RMAIL_URL
 ENV PATH /usr/src/www/node_modules/.bin:$PATH
 ENV REACT_APP_CDN_URL=${CDN_URL}
 ENV REACT_APP_RMAIL_URL=${RMAIL_URL}
+ENV REACT_APP_PKG_VERSION="$npm_package_version"
 RUN echo "REACT_APP_RMAIL_URL=${RMAIL_URL}\n" >> .env
 RUN echo "REACT_APP_CDN_URL=${CDN_URL}\n" >> .env
 RUN echo "REACT_APP_HEAP_ENV=${HEAP_ENV}\n" >> .env
