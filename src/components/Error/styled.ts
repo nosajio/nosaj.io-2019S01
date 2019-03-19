@@ -1,6 +1,7 @@
 import { styled } from '../../styled/theme';
 import Page from '../Page';
 import { Link } from 'react-router-dom';
+import media from '../../styled/media';
 
 export const ErrPage = styled(Page)`
   width: 100%;
@@ -21,26 +22,36 @@ export const ErrCode = styled.h1`
       fonts: { c: font },
       ms
     }
-  }) => `${font.weight.bold} ${ms.rem(7)} ${font.family}`};
+  }) => `${font.weight.bold} ${ms.rem(4)} ${font.family}`};
   grid-row: 1;
-  grid-column: mid;
+  grid-column: main / main 2;
   @supports (-webkit-text-fill-color: transparent) {
     background: linear-gradient(to bottom, black 20%, white);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
   }
+
+  ${media.large`
+    font-size: ${({ theme }) => theme.ms.rem(7)};
+  `}
 `;
 
 export const ErrMessage = styled.p`
   grid-row: 2;
   grid-column: mid;
-  font-size: ${({ theme }) => theme.ms.rem(2)};
+  font-size: ${({ theme }) => theme.ms.rem(1)};
+  ${media.large`
+    font-size: ${({ theme }) => theme.ms.rem(2)};
+  `}
 `;
 
 export const ErrLinks = styled.div`
   grid-row: 3;
   grid-column: mid;
-  font-size: ${({ theme }) => theme.ms.rem(2)};
+  font-size: ${({ theme }) => theme.ms.rem(1)};
+  ${media.large`
+    font-size: ${({ theme }) => theme.ms.rem(2)};
+  `}
 `;
 
 export const ErrLink = styled(Link)`

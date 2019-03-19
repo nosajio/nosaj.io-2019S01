@@ -38,6 +38,23 @@ const routes: RoutesType[] = [
     component: Services
   },
   {
+    key: 'blog-route',
+    title: 'Nosaj Blog',
+    path: '/r/*',
+    component: () =>
+      React.createElement(Error, {
+        code: 'Back Soon',
+        message:
+          'My blog is temporarily under maintenance while I refresh my website and its architecture. Please check back in a few days to see the new blog!',
+        links: [
+          {
+            label: 'Go to front page',
+            href: '/'
+          }
+        ]
+      })
+  },
+  {
     key: 'error-404-route',
     title: '404 :(',
     component: () =>

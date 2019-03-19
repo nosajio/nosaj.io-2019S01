@@ -22,8 +22,6 @@ const Error: React.FunctionComponent<ErrorProps> = ({
   links,
   message
 }) => {
-  console.log(links);
-  
   return (
     <ErrPage>
       <ErrFrame>
@@ -31,8 +29,10 @@ const Error: React.FunctionComponent<ErrorProps> = ({
         {message && <ErrMessage>{message}</ErrMessage>}
         {links && (
           <ErrLinks>
-            {links.map(l => (
-              <ErrLink to={l.href}>{l.label}</ErrLink>
+            {links.map((l, i) => (
+              <ErrLink key={`link-${i}`} to={l.href}>
+                {l.label}
+              </ErrLink>
             ))}
           </ErrLinks>
         )}
