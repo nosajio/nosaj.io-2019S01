@@ -1,5 +1,7 @@
+import * as React from 'react';
 import Front from '../Front';
 import Services from '../Services';
+import Error from '../Error';
 import TradespaceProject from '../Tradespace';
 
 const exact = true;
@@ -8,7 +10,7 @@ export interface RoutesType {
   exact?: boolean;
   key: string;
   title?: string;
-  path: string;
+  path?: string;
   component: React.ComponentType<any>;
 }
 
@@ -16,8 +18,8 @@ export interface RoutesType {
 const routes: RoutesType[] = [
   {
     exact,
-    key: 'hello-route',
-    title: 'Hello',
+    key: 'front-route',
+    title: 'Jason helps startups ship great web products',
     path: '/',
     component: Front
   },
@@ -31,9 +33,25 @@ const routes: RoutesType[] = [
   {
     exact,
     key: 'services-route',
-    title: 'Services',
+    title: 'I can help you make your next web application',
     path: '/services',
     component: Services
+  },
+  {
+    key: 'error-404-route',
+    title: '404 :(',
+    component: () =>
+      React.createElement(Error, {
+        message:
+          'This is unfortunate. The page you’re looking for isn’t here any more  :(',
+        code: '404',
+        links: [
+          {
+            label: 'Go to front page',
+            href: '/'
+          }
+        ]
+      })
   }
 ];
 
