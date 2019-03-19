@@ -16,9 +16,9 @@ export const tradeGothic: FontSignature = {
 };
 
 export const tradeGothicCondensed: FontSignature = {
-  family: `trade-gothic-next-condensed, ${tradeGothic.family}`,
+  family: `trade-gothic-next-soft-round, ${tradeGothic.family}`,
   weight: {
-    bold: 700
+    heavy: 800
   }
 };
 

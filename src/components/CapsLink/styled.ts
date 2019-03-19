@@ -8,8 +8,8 @@ export const capsLinkElement = (props: CapsLinkProps): AnyStyledComponent =>
     ({ theme }) => `
   color: black;
   text-transform: uppercase;
-  font: ${theme.fonts.c.weight.heavy} ${theme.ms.rem(1)} ${
-      theme.fonts.c.family
+  font: ${theme.fonts.b.weight.heavy} ${theme.ms.rem(1)} ${
+      theme.fonts.b.family
     };
 `
   );

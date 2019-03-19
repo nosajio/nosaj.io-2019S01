@@ -18,7 +18,7 @@ export const OpenerHR = styled.div`
   background: black;
 
   ${media.medium`
-    width: ${({ theme }) => theme.grid(4)}%;
+    width: ${({ theme }) => theme.grid(2)}%;
   `}
 `;
 
@@ -29,8 +29,8 @@ export const OpenerHeadline = styled.h1`
   line-height: 1;
   ${({ theme: { ms, fonts } }) => `
     font-size: ${ms.rem(3)};
-    font-family: ${fonts.c.family};
-    font-weight: ${fonts.c.weight.heavy};
+    font-family: ${fonts.b.family};
+    font-weight: ${fonts.b.weight.heavy};
   `}
   ${media.large`
     font-size: ${({ theme }) => theme.ms.rem(4)};

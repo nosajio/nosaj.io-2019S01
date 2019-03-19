@@ -47,7 +47,7 @@ const fontSizeforSize = (s: ButtonSizes, ms: ModScale): string => {
 const buttonFontFamily = (condensed: Boolean = false, fonts: Fonts) => {
   switch (condensed) {
     case true:
-      return fonts.c.family;
+      return fonts.b.family;
     default:
       return fonts.a.family;
   }
@@ -55,7 +55,7 @@ const buttonFontFamily = (condensed: Boolean = false, fonts: Fonts) => {
 const buttonFontWeight = (condensed: Boolean = false, fonts: Fonts) => {
   switch (condensed) {
     case true:
-      return fonts.c.weight.heavy;
+      return fonts.b.weight.heavy;
     default:
       return fonts.a.weight.bold;
   }
