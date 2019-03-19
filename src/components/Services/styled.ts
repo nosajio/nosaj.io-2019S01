@@ -111,9 +111,9 @@ export const ServicesBigTextCite = styled.div`
   ${({ theme }) => `
     color: ${theme.colors.blue.bright};
     font: 
-      ${theme.fonts.c.weight.condensed} 
+      ${theme.fonts.b.weight.bold} 
       1rem
-      ${theme.fonts.c.family};
+      ${theme.fonts.b.family};
   `}
 
   ${ServicesBigText} > & {

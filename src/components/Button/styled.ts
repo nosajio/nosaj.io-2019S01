@@ -55,7 +55,7 @@ const buttonFontFamily = (condensed: Boolean = false, fonts: Fonts) => {
 const buttonFontWeight = (condensed: Boolean = false, fonts: Fonts) => {
   switch (condensed) {
     case true:
-      return fonts.c.weight.heavyCondensed;
+      return fonts.c.weight.heavy;
     default:
       return fonts.a.weight.bold;
   }

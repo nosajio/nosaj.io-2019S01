@@ -14,18 +14,20 @@ export const tradeGothic: FontSignature = {
     heavy: 800
   }
 };
-export const tradeGothicCompressed: FontSignature = {
-  family: `trade-gothic-next-compressed, ${tradeGothic.family}`,
+
+export const tradeGothicCondensed: FontSignature = {
+  family: `trade-gothic-next-condensed, ${tradeGothic.family}`,
   weight: {
     bold: 700
   }
 };
-export const tradeGothicRound: FontSignature = {
-  family: `trade-gothic-next-soft-round, ${tradeGothic.family}`,
+
+export const tradeGothicCompressed: FontSignature = {
+  family: `trade-gothic-next-compressed, ${tradeGothic.family}`,
   weight: {
-    condensed: 400,
+    regular: 400,
     bold: 700,
-    heavyCondensed: 800
+    heavy: 800
   }
 };
 
@@ -37,6 +39,6 @@ export type Fonts = {
 
 export const fonts: Fonts = {
   a: tradeGothic,
-  b: tradeGothicCompressed,
-  c: tradeGothicRound
+  b: tradeGothicCondensed,
+  c: tradeGothicCompressed
 };

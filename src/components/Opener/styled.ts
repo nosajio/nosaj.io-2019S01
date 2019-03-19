@@ -30,7 +30,7 @@ export const OpenerHeadline = styled.h1`
   ${({ theme: { ms, fonts } }) => `
     font-size: ${ms.rem(3)};
     font-family: ${fonts.c.family};
-    font-weight: ${fonts.c.weight.heavyCondensed};
+    font-weight: ${fonts.c.weight.heavy};
   `}
   ${media.large`
     font-size: ${({ theme }) => theme.ms.rem(4)};

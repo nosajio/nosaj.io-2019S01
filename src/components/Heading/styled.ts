@@ -23,7 +23,7 @@ export const headingEl: HeadingSelect = (level = 'h1') =>
           ? ms.rem(1)
           : '1rem';
       return `
-      font: ${fonts.c.weight.heavyCondensed} ${fontSize} ${fonts.c.family};
+      font: ${fonts.c.weight.heavy} ${fontSize} ${fonts.c.family};
       text-transform: uppercase;
       margin-bottom: ${marginBottom ? marginBottom : '0'};
       margin-top: ${marginTop ? marginTop : '0'};
