@@ -9,8 +9,6 @@ const TSThanks: React.FunctionComponent<TSThanksProps> = props => {
   return (
     <ThanksFrame>
       <ThanksHeadline>
-        :D
-        <br />
         Thanks for reading
       </ThanksHeadline>
       <ThanksMsg>
