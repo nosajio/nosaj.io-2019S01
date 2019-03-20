@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BulletCardProps } from './BulletCard';
 import { QuoteItem } from '../QuotesCarousel';
+import { Link } from 'react-router-dom';
 
 export const bodyText = [
   <>
@@ -19,6 +20,11 @@ export const bodyText = [
   'Over the years, my broad focus on making products has constantly led me into new disciplines like design, programming, and infrastructure, and more recently into sales, marketing, and entrepreneurship.',
   'My proclivity to switch between design and engineering roles is valuable to startups and solo founders because it usually means they can hire fewer people to solve the same problems.',
   'Hiring fewer people not only gives startups more runway to develop their product, it lowers the risk of mistakes and allows founders to be more involved throughout the process.',
+  <>
+    I'm on the lookout for new projects for spring through summer 2019. So if
+    you're working on something,{' '}
+    <Link to="#contact">I'd love to hear about it!</Link>
+  </>
 ];
 
 export const testimonials: QuoteItem[] = [
@@ -37,7 +43,7 @@ export const whyStartupsHireMe: BulletCardProps['children'] = [
   'Take a project from start to end. Including planning, design, dev and launch.',
   'Join an existing team for an entire project or to fill a temporary skill gap.',
   'Code a new feature or fix bugs.',
-  'UI design and brand design.',
+  'UI design and brand design.'
 ];
 
 export const principles: BulletCardProps['children'] = [
