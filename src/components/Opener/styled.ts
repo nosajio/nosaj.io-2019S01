@@ -2,6 +2,7 @@ import media from '../../styled/media';
 import { styled } from '../../styled/theme';
 import Button from '../Button';
 import CapsLink from '../CapsLink';
+import { css } from 'styled-components';
 
 export const OpenerFrame = styled.div(
   ({ theme }) => `
@@ -47,27 +48,38 @@ export const OpenerLinks = styled.div`
 
   ${media.medium`
     align-items: center;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
+  `}
+
+  ${media.large`
+    flex-wrap: nowrap;
+  `}
+`;
+
+const openerLinksChild = css`
+  margin-top: ${({ theme }) => theme.ms.rem(1)};
+  white-space: nowrap;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  ${media.medium`
+    margin: ${({ theme }) => theme.ms.rem(1)};
+  `}
+
+  ${media.large`
+    ${({ theme }) => `
+      margin: ${theme.ms.rem(2)};
+      font-size: ${theme.ms.rem(1)};
+    `}
   `}
 `;
 
 export const OpenerLink = styled(CapsLink)`
-  * + & {
-    margin-top: ${({ theme }) => theme.ms.rem(1)};
-  }
-  ${media.medium`
-    ${({ theme }) => `* + & { 
-      margin: 0 0 0 ${theme.ms.rem(3)}; 
-      font-size: ${theme.ms.rem(1)};
-    }`}
-  `}
+  ${openerLinksChild};
 `;
 
 export const OpenerButton = styled(Button)`
-  * + & {
-    margin-top: ${({ theme }) => theme.ms.rem(1)};
-  }
-  ${media.medium`
-    ${({ theme }) => `* + & { margin: 0 0 0 ${theme.ms.rem(3)}; }`}
-  `}
+  ${openerLinksChild};
 `;

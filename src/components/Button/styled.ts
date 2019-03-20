@@ -75,8 +75,16 @@ export const RegularButton = styled(
   // Remap the props on Link so the typechecker doesn't complain about
   // unrecognized props. This also allows for switching elements for
   // different types of button behaviours
-  ({ bgColor, fgColor, withCondensedFont, withSize, to, href, withCaps, ...rest }) =>
-    React.createElement(to ? Link : href ? 'a' : 'span', { to, ...rest })
+  ({
+    bgColor,
+    fgColor,
+    withCondensedFont,
+    withSize,
+    to,
+    href,
+    withCaps,
+    ...rest
+  }) => React.createElement(to ? Link : href ? 'a' : 'span', { to, ...rest })
 )(
   ({
     theme,
@@ -95,6 +103,7 @@ export const RegularButton = styled(
     padding: ${paddingForSize(withSize, theme.ms)};
     box-shadow: 0 3px 18px 2px rgba(0, 0, 0, 0.18);
     cursor: pointer;
+    white-space: nowrap;
     font: ${buttonFontWeight(withCondensedFont, theme.fonts)} ${fontSizeforSize(
     withSize,
     theme.ms
