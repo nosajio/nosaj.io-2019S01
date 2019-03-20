@@ -42,7 +42,7 @@ export const whyStartupsHireMe: BulletCardProps['children'] = [
 
 export const principles: BulletCardProps['children'] = [
   'Always be honest. Projects go smoothly when everybody has accurate information.',
-  'Focus on being indespensable to the team.',
+  'Focus on being indispensable to the team.',
   'Stay humble; learn from the founders & team as they know the most about the problem.',
   'Work hard to ensure the project meets its goals on time and on budget.'
 ];
