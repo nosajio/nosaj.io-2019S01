@@ -40,7 +40,11 @@ export const UnderLogoText = styled.div`
   min-width: ${({ theme }) => theme.grid(1)}vw;
   border-top: 1px solid black;
   font: ${({ theme: { fonts } }) =>
-    `${fonts.c.weight.condensed} 15px ${fonts.c.family}`};
+    `${fonts.c.weight.bold} 15px ${fonts.c.family}`};
+
+  ${media.medium`
+    font-size: 15px;
+  `}
 `;
 
 export const ToggleNav = styled.div<TBStyledProps>`
