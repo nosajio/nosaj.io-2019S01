@@ -55,6 +55,7 @@ export const ToggleNav = styled.div<TBStyledProps>`
   &::after {
     content: '${({ withText }) => (withText ? withText : 'Nav')}';
     text-transform: uppercase;
+    color: ${({ isLight }) => (isLight ? 'white' : 'black')};
     font: ${({
       theme: {
         ms,

@@ -35,6 +35,7 @@ const TopBar: React.FunctionComponent<TopBarProps> = ({
       <Media max={mobileNavBp}>
         <ToggleNav
           withText={isNavActive ? 'Close' : 'Nav'}
+          isLight={isNavActive}
           onClick={() => toggleNav()}
         >
           {!isNavActive && <ToggleNavBars />}
