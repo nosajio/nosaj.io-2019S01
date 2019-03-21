@@ -12,13 +12,12 @@ export const BigTestimonialFrame = styled.blockquote`
 
 export const BigTestimonialQuote = styled.p`
   margin: 0;
+  font: ${({ theme }: { theme: Theme }) => `
+     ${theme.fonts.a.weight.bold} ${theme.ms.rem(1)} ${theme.fonts.a.family};
   ${media.medium`
-    ${({ theme }: { theme: Theme }) => `
-      font: ${theme.fonts.a.weight.bold} ${theme.ms.rem(2)} ${
-      theme.fonts.a.family
-    };
-    `}
+    font-size: ${({ theme }) => theme.ms.rem(2)}
   `}
+  `};
 `;
 
 export const BigTestimonialBy = styled.div`

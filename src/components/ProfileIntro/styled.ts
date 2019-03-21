@@ -19,6 +19,10 @@ export const ProfileIntroImg = styled.img`
   top: ${({ theme }) => theme.ms.rem(2)};
 
   ${media.medium`
+    grid-column: 4 / 8;
+  `}
+
+  ${media.large`
     grid-column: 1 / 5;
     top: -${({ theme }) => theme.ms.rem(3)};
   `}
@@ -33,11 +37,13 @@ export const ProfileIntroCard = styled.div`
   color: black;
   box-shadow: 0 6px 25px 5px rgba(0, 0, 0, 0.20);
   border-radius: 12px;
+  text-align: center;
   padding: ${({ theme }) => `calc(${theme.ms.rem(3)} + 1rem) ${theme.ms.rem(2)} ${theme.ms.rem(2)}`};
 
   ${media.large`
     grid-row: 1;
     grid-column: 2 / 11;
+    text-align: left;
     ${({ theme }) => `
       ${theme.innergrid(9)}
       padding: ${theme.ms.rem(3)};
