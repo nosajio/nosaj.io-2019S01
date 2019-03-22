@@ -45,7 +45,7 @@ const Services: React.FunctionComponent<ServicesProps> = props => {
             ))}
           </ServicesBodyText>
           <ServicesContentAside>
-            <BulletCard title="Why do startups usually hire me?">
+            <BulletCard title="Reasons startups hire me">
               {whyStartupsHireMe}
             </BulletCard>
             <BulletCard title="Professional principles">
