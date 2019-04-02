@@ -7,7 +7,10 @@ import {
   ProjectImage,
   ProjectImages,
   ProjectLink,
-  ProjectLinks
+  ProjectLinks,
+  ProjectRoles,
+  ProjectRolesLabel,
+  ProjectRolesRoles
 } from './styled';
 
 export type ProjectLink = {
@@ -28,6 +31,7 @@ export interface ProjectProps {
   clientName?: string;
   links?: Array<ProjectLink>;
   images?: Array<ProjectImage>;
+  roles?: Array<string>;
   paddingBottom?: boolean;
   colors?: {
     background: string;
@@ -43,6 +47,7 @@ const Project: React.FunctionComponent<ProjectProps> = ({
   links,
   images,
   colors,
+  roles = [],
   paddingBottom = true
 }) => {
   return (
@@ -58,6 +63,12 @@ const Project: React.FunctionComponent<ProjectProps> = ({
           </ProjectClientName>
         )}
         <ProjectHeadline>{title}</ProjectHeadline>
+        {roles.length > 0 && (
+          <ProjectRoles>
+            <ProjectRolesLabel>Roles</ProjectRolesLabel>
+            <ProjectRolesRoles>{roles.join(', ')}</ProjectRolesRoles>
+          </ProjectRoles>
+        )}
         {links && (
           <ProjectLinks>
             {links.map(l =>

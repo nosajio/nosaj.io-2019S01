@@ -34,6 +34,7 @@ const projects: Array<FrontProjectsData> = [
         maxWidth: '1227px'
       }
     ],
+    roles: ['UI & Product Design', 'Dev (React, NodeJS, Postgres)'],
     links: [
       {
         label: 'Read Tradespace Case Study',
@@ -49,6 +50,7 @@ const projects: Array<FrontProjectsData> = [
     title:
       'A-Level computer science made easy with Just A-Level — a learning platform for college students.',
     clientName: 'Just A-Level',
+    roles: ['UI & Product Design', 'Dev (React, GraphQL)', 'Branding'],
     images: [
       {
         src: cdnURL('2009S01/work/justalevel/video-page-preview-devices.png'),
@@ -72,6 +74,7 @@ const projects: Array<FrontProjectsData> = [
     title: 'BeachFix: the planet’s best beaches at your fingertips.',
     clientName: 'Beachfix',
     paddingBottom: false,
+    roles: ['Design', 'Dev (React)'],
     images: [
       {
         src: cdnURL('2009S01/work/beachfix/beachfix-mobile-double.png'),
