@@ -69,6 +69,14 @@ const linksAnimDelayCSS = (arr: number[], n = 100): string => {
   return tpl;
 };
 
+export const MobileNavLogo = styled(Link)`
+  animation: ${fadeSlideInYAnim(-30)} 500ms 1 both ${easeOutQuad};
+  width: 77px;
+  height: 64px;
+  background: no-repeat url('/logowhite.svg') center / 100% 100%;
+  ${linksAnimDelayCSS([1], 150)}
+`;
+
 export const MobileNavLink = styled(Link)`
   animation: ${fadeSlideInYAnim(-30)} 500ms 1 both ${easeOutQuad};
   text-transform: uppercase;
@@ -77,7 +85,7 @@ export const MobileNavLink = styled(Link)`
   font: ${({ theme }) =>
     `${theme.fonts.a.weight.heavy} ${theme.ms.rem(2)} ${theme.fonts.a.family}`};
 
-  ${linksAnimDelayCSS([1, 2, 3, 4], 150)}
+  ${linksAnimDelayCSS([2, 3, 4, 5], 150)}
 
   * + & {
     margin-top: ${({ theme }) => theme.ms.rem(2)};

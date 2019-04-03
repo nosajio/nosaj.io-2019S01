@@ -4,7 +4,8 @@ import {
   MobileNavEtc,
   MobileNavFrame,
   MobileNavLink,
-  MobileNavLinks
+  MobileNavLinks,
+  MobileNavLogo
 } from './styled';
 
 interface NavigationMobileProps {
@@ -17,6 +18,10 @@ const NavigationMobile: React.FunctionComponent<NavigationMobileProps> = ({
   return (
     <MobileNavFrame>
       <MobileNavLinks>
+        <MobileNavLogo
+          onClick={e => (onClickLink ? onClickLink(e) : noop())}
+          to="/"
+        />
         <MobileNavLink
           onClick={e => (onClickLink ? onClickLink(e) : noop())}
           to="/#work"
@@ -36,7 +41,9 @@ const NavigationMobile: React.FunctionComponent<NavigationMobileProps> = ({
           Contact
         </MobileNavLink>
       </MobileNavLinks>
-      <MobileNavEtc>NSJ2019S01.{process.env.REACT_APP_PKG_VERSION}</MobileNavEtc>
+      <MobileNavEtc>
+        NSJ2019S01.{process.env.REACT_APP_PKG_VERSION}
+      </MobileNavEtc>
     </MobileNavFrame>
   );
 };
