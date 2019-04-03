@@ -20,9 +20,9 @@ export const bodyText = [
   "Over the course of my ten year career in tech I've always focussed on doing whatever it takes to design and make performant websites, apps and other software, and not on any exclusive part of the process.",
   'Over the years, my broad focus on making products has constantly led me into new disciplines like design, programming, and infrastructure – and in recent years – marketing and entrepreneurship.',
   <>
-    My proclivity to switch between multiple roles is valuable to startups and
-    solo founders because it usually means they can hire fewer people to solve
-    the same problems—
+    My proclivity to switch between roles is valuable to startups and solo
+    founders because it usually means they can hire fewer people to solve the
+    same problems—
     <a
       href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month"
       target="_blank"
@@ -30,12 +30,7 @@ export const bodyText = [
       often more quickly.
     </a>
   </>,
-  'Hiring fewer people not only gives startups more runway to develop their product, it lowers the risk of mistakes and allows founders to be more involved throughout the process.',
-  <>
-    I'm currently accepting new opportunities for spring through summer 2019. If
-    you're working on something{' '}
-    <Link to="#contact">I'd love to hear about it!</Link>
-  </>
+  'Hiring fewer people with broad skillsets not only gives startups more runway to develop their product, it lowers the risk of mistakes and allows founders to be more involved throughout the process.'
 ];
 
 export const testimonials: QuoteItem[] = [

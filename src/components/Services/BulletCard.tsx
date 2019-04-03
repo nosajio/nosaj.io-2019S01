@@ -15,8 +15,8 @@ const BulletCard: React.FunctionComponent<BulletCardProps> = ({
     <BulletCardFrame>
       {title && <BulletCardTitle>{title}</BulletCardTitle>}
       <BulletCardList>
-        {children.map(c => (
-          <li>{c}</li>
+        {children.map((c, i) => (
+          <li key={`bullet-${i}`}>{c}</li>
         ))}
       </BulletCardList>
     </BulletCardFrame>

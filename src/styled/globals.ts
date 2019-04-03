@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { fonts } from './fonts';
 import 'normalize.css';
+import { Theme } from './theme';
 
 const GlobalStyles = createGlobalStyle`
    /* Make everything border-box for logical sizing */
@@ -22,7 +23,8 @@ const GlobalStyles = createGlobalStyle`
 
   /* Global link styles - remove the default blue hyperlinks */
   a { color: #000; }
-  a:hover { color: #0ba; }
+  a:hover { color: ${({ theme }: { theme: Theme }) =>
+    theme.colors.purple.bright}; }
 
   /* Make margins explicit */
   h1, h2, h3, h4 {

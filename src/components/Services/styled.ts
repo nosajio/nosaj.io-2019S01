@@ -1,7 +1,8 @@
-import { Theme, styled } from '../../styled/theme';
+import theme, { Theme, styled } from '../../styled/theme';
 import Page from '../Page';
 import QuotesCarousel from '../QuotesCarousel';
 import media from '../../styled/media';
+import Button from '../Button';
 
 export interface ServicesStyledProps {
   theme: Theme;
@@ -151,4 +152,35 @@ export const ServicesContentAside = styled.aside`
   ${media.medium`
     grid-column: 8 / main 2;
   `}
+`;
+
+// Availability Banner - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+export const ServicesCTAFrame = styled.section`
+  ${({ theme }) => theme.mobilegrid()}
+  margin: ${({ theme }) => theme.ms.rem(4)} 0;
+  text-align: center;
+  ${media.medium`${({ theme }) => theme.innergrid(12)}`}
+`;
+
+export const ServicesCTAHead = styled.h1`
+  grid-column: mid;
+  font-family: ${({ theme }) => theme.fonts.b.family};
+  font-size: ${({ theme }) => theme.ms.rem(3)};
+  text-transform: uppercase;
+  margin-bottom: ${({ theme }) => theme.ms.rem(1)};
+`;
+
+export const ServicesCTAText = styled.div`
+  grid-column: mid;
+  font-size: ${({ theme }) => theme.ms.rem(1)};
+
+  p {
+    margin: 0;
+    margin-bottom: ${({ theme }) => theme.ms.rem(1)};
+  }
+`;
+
+export const ServicesCTABtn = styled(Button)`
+  padding-left: ${({ theme }) => theme.ms.rem(2)};
+  padding-right: ${({ theme }) => theme.ms.rem(2)};
 `;

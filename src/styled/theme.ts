@@ -1,6 +1,7 @@
 import baseStyled, { ThemedStyledInterface } from 'styled-components';
+import { easeInOutQuad, easeOutQuad } from '../styled/animations';
 import { fonts, Fonts } from './fonts';
-import { cssinnergrid, gridcss, gridfn, cssMobileGrid } from './grid';
+import { cssinnergrid, cssMobileGrid, gridcss, gridfn } from './grid';
 import ms, { ModScale } from './modularscale';
 
 // Re export `styled` with ThemedStyledInterface to tell typescript about
@@ -14,6 +15,9 @@ type LayersType = { [K in keyof typeof layers]: typeof layers[K] };
 // Define shape of theme object
 export interface Theme {
   colors: ColorsType;
+  ease: {
+    [name: string]: string;
+  };
   layers: LayersType;
   layout: { maxWidth: number };
   grid(...args: any): number;
@@ -27,6 +31,9 @@ export interface Theme {
 // Define theme values below - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 const colors = {
+  teal: {
+    bright: '#1DCCAF'
+  },
   red: {
     bright: '#ff5e5e'
   },
@@ -44,7 +51,7 @@ const colors = {
     offwhite: '#D7BFFF',
     pastel: '#E7DDF6',
     neutral: '#D9C4FA',
-    bright: '#9355F6'
+    bright: '#571FAF'
   },
   grey: {
     neutral: '#575763',
@@ -65,6 +72,10 @@ const layers = {
 // Assign values to the main theme object
 const theme: Theme = {
   ms,
+  ease: {
+    easeOutQuad,
+    easeInOutQuad
+  },
   layers,
   colors,
   layout: {

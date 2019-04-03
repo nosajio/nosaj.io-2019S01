@@ -20,7 +20,9 @@ const FloatingCTA: React.FunctionComponent<FloatingCTAProps> = ({
       <FloatingCTAFrame>
         {content.map((c, i) =>
           c.type === 'button' ? (
-            <Button {...c.props}>{c.label}</Button>
+            <Button key={`floating-btn-${i}`} {...c.props}>
+              {c.label}
+            </Button>
           ) : (
             <>{c.label}</>
           )

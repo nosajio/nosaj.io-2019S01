@@ -14,7 +14,9 @@ export enum ButtonSizes {
 export interface ButtonBaseProps {
   theme: Theme;
   bgColor?: string;
+  bgHoverColor?: string;
   fgColor?: string;
+  fgHoverColor?: string;
   withSize?: ButtonSizes;
   withCaps?: boolean;
   withCondensedFont: boolean;
@@ -63,11 +65,19 @@ const buttonFontWeight = (condensed: Boolean = false, fonts: Fonts) => {
 
 export const ButtonBase = ({ to }: ButtonBaseProps) =>
   styled(to ? Link : 'a')(
-    ({ theme, bgColor, fgColor }: ButtonBaseProps) => `
+    ({
+      theme,
+      bgColor,
+      fgColor,
+      bgHoverColor,
+      fgHoverColor
+    }: ButtonBaseProps) => `
     display: inline-block;
     border-radius: 50px;
     background: ${bgColor ? bgColor : 'black'};
     color: ${fgColor ? fgColor : 'white'};
+
+ 
   `
   );
 
@@ -77,7 +87,9 @@ export const RegularButton = styled(
   // different types of button behaviours
   ({
     bgColor,
+    bgHoverColor,
     fgColor,
+    fgHoverColor,
     withCondensedFont,
     withSize,
     to,
@@ -90,6 +102,8 @@ export const RegularButton = styled(
     theme,
     bgColor,
     fgColor,
+    bgHoverColor,
+    fgHoverColor,
     withCondensedFont,
     withCaps,
     withSize = ButtonSizes.medium
@@ -104,9 +118,15 @@ export const RegularButton = styled(
     box-shadow: 0 3px 18px 2px rgba(0, 0, 0, 0.18);
     cursor: pointer;
     white-space: nowrap;
+    transition: all 200ms ${theme.ease.easeOutQuad};
     font: ${buttonFontWeight(withCondensedFont, theme.fonts)} ${fontSizeforSize(
     withSize,
     theme.ms
   )} ${buttonFontFamily(withCondensedFont, theme.fonts)};
+
+   &:hover {
+      color: ${fgHoverColor ? fgHoverColor : theme.colors.blue.pastel};
+      background: ${bgHoverColor ? bgHoverColor : theme.colors.purple.bright};
+    }
 `
 );

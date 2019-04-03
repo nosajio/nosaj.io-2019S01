@@ -3,8 +3,14 @@ import theme from '../../styled/theme';
 import FloatingCTA from '../FloatingCTA';
 import Page from '../Page';
 import TopBar from '../TopBar';
+import AvailableCTA from './AvailableCTA';
 import BulletCard from './BulletCard';
-import { principles, testimonials, whyStartupsHireMe, bodyText } from './content';
+import {
+  bodyText,
+  principles,
+  testimonials,
+  whyStartupsHireMe
+} from './content';
 import ServicesLogos from './Logos';
 import ServicesOpener from './Opener';
 import {
@@ -54,11 +60,16 @@ const Services: React.FunctionComponent<ServicesProps> = props => {
           </ServicesContentAside>
         </Page.Section>
       </SplatBGSection>
+      <AvailableCTA
+        title="Good news"
+        text="I'm on the lookout for new projects over spring / summer 2019. If you're working on something I'd love to hear about it!"
+        button="Contact me"
+      />
       <FloatingCTA
         content={[
           {
             type: 'button',
-            label: 'Send Jason a message',
+            label: 'Contact me',
             props: { to: '#contact' }
           }
         ]}
