@@ -42,8 +42,7 @@ const TradespaceProject: React.FunctionComponent<
       <TSHero>
         <Page.Grid>
           <TSHeadline>
-            Building the world's largest Intellectual Property analysis and
-            trading platform.
+            Building the world's largest patent analysis and trading platform.
           </TSHeadline>
           <TSHeroMeta>
             <TSHeroMetaItem>

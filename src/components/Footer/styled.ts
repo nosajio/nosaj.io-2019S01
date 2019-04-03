@@ -1,5 +1,6 @@
 import media from '../../styled/media';
 import { styled } from '../../styled/theme';
+import borderUnderline from '../../styled/border-underline';
 
 export const FooterFrame = styled.footer`
   ${({ theme }) => theme.mobilegrid()}
@@ -13,8 +14,23 @@ export const FooterFrame = styled.footer`
   line-height: 2;
 `;
 
+export const FooterLinks = styled.div`
+  grid-column: main / main 2;
+  grid-row: 1;
+`;
+
+export const FooterLink = styled.a`
+  font-size: 1rem;
+  text-decoration: none;
+  ${({ theme }) => borderUnderline(theme.colors.grey.neutral)};
+
+  & + & {
+    margin-left: ${({ theme }) => theme.ms.rem(1)};
+  }
+`;
+
 export const FooterLogo = styled.div`
-  grid-row: 2;
+  grid-row: 3;
   width: 51px;
   height: 42px;
   background: no-repeat url('/logoblack.svg') center / 100% auto;
@@ -27,12 +43,12 @@ export const FooterLogo = styled.div`
 `;
 
 export const FooterCopyright = styled.div`
-  grid-row: 1;
+  grid-row: 2;
   grid-column: main / main 2;
 `;
 
 export const FooterMadeInEngland = styled.div`
-  grid-row: 2;
+  grid-row: 3;
   grid-column: main;
   padding-top: 8px;
 
