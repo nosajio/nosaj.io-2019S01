@@ -85,6 +85,10 @@ export const ProjectLink = styled(
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
+
+  &:hover {
+    color: ${({ withColors }) => getColor(withColors, 'text', 'white')};
+  }
 `;
 
 export const ProjectImages = styled.div<ProjectStyledProps>`
