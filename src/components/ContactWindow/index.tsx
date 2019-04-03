@@ -66,7 +66,12 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
       setInvalidState(true);
       return;
     }
-    await sendMessage(nameVal, emailVal, 'Incoming message from nosaj.io', messageVal);
+    await sendMessage(
+      nameVal,
+      emailVal,
+      'Incoming message from nosaj.io',
+      messageVal
+    );
     setSentState(true);
     setInvalidState(false);
   };
@@ -103,9 +108,13 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
           <ContactInputs>
             <ContactH1>Hey 👋</ContactH1>
             <ContactP>
-              I'd love to hear about what you're working on. Or if you just want
-              to say hey, that's fine too :)
+              I'd love to hear about what you're working on. Or, if you just
+              want to say hey, that's fine too :)
             </ContactP>
+            <DontLikeForms>
+              Don’t like forms? You can also email me:{' '}
+              <a href="mailto:jason@nosaj.io">jason(at)nosaj.io</a>
+            </DontLikeForms>
             {invalidState && (
               <InvalidMsg>
                 Please make sure all fields are filled out
@@ -136,19 +145,9 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
               isHighlighted={isFormValid()}
               onClick={e => handleSubmitForm(e)}
             >
-              Send
-              <ETA>Estimated response time &lt; 24hrs</ETA>
+              <span>Send</span>
+              {isFormValid() && <ETA>Estimated response time &lt; 24hrs</ETA>}
             </ContactSendButton>
-            <DontLikeForms>
-              Don’t like forms? You can also find me on{' '}
-              <a href="https://twitter.com/__nosaj" target="_blank">
-                Twitter
-              </a>{' '}
-              and{' '}
-              <a href="https://github.com/nosajio" target="_blank">
-                GitHub
-              </a>
-            </DontLikeForms>
           </ContactActions>
         </ContactForm>
       </Window>

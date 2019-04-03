@@ -1,5 +1,5 @@
-import { styled } from '../../styled/theme';
 import media from '../../styled/media';
+import { styled } from '../../styled/theme';
 
 type WindowStyledProps = {
   withPadding?: string | number;
@@ -38,12 +38,13 @@ export const WindowFrame = styled.div<WindowStyledProps>`
   position: relative;
   width: 100%;
   max-width: 800px;
-  border: 1px solid ${({ theme }) => theme.colors.blue.offwhite};
+  border: 3px solid ${({ theme }) => theme.colors.blackish};
   background: white;
   color: black;
   box-shadow: 0 7px 40px 3px rgba(49, 31, 75, 0.49);
   border-radius: 12px;
   transition: all 300ms;
+  overflow: hidden;
   padding: ${({ theme, withPadding }) =>
     typeof withPadding === 'number'
       ? withPadding === 0
@@ -60,7 +61,6 @@ export const WindowFrame = styled.div<WindowStyledProps>`
       : ''}
 
   ${media.medium<WindowStyledProps>`
-    border-radius: 24px;
     padding: ${({ theme, withPadding }) =>
       typeof withPadding === 'number'
         ? withPadding === 0

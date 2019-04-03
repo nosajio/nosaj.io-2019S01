@@ -1,7 +1,6 @@
 import { css, keyframes } from 'styled-components';
 import media from '../../styled/media';
 import { styled } from '../../styled/theme';
-import FormSelector from '../FormSelector';
 import SlickInput from '../SlickInput';
 
 export interface ContactStyledProps {
@@ -42,6 +41,7 @@ export const ContactH1 = styled.h1`
 export const ContactP = styled.p`
   font-size: ${({ theme }) => theme.ms.rem(1)};
   margin: 0;
+  text-align: center;
 `;
 
 const fieldBaseStyles = css``;
@@ -64,29 +64,31 @@ export const ContactSendButton = styled.button<ContactStyledProps>`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  justify-content: center;
+  min-height: 93px;
   padding: 1rem 0;
   width: 100%;
   transition: all 200ms ease;
   background: ${({ isHighlighted, theme }) =>
-    isHighlighted ? theme.colors.purple.neutral : '#dbdbdb'};
+    isHighlighted ? theme.colors.teal.bright : '#dbdbdb'};
   border: none;
-  color: black;
+  color: ${({ theme }) => theme.colors.blackish};
   cursor: pointer;
   font: ${({ theme: { ms, fonts } }) =>
-    `${fonts.a.weight.bold} ${ms.rem(2)} ${fonts.a.family}`};
+    `${fonts.a.weight.bold} ${ms.rem(1)} ${fonts.a.family}`};
 `;
 
-export const ETA = styled.span`
+export const ETA = styled.div`
   font-size: 1rem;
   font-weight: ${({ theme }) => theme.fonts.a.weight.regular};
-  color: #818181;
+  color: ${({ theme }) => theme.colors.blackish};
+  margin-top: ${({ theme }) => theme.ms.rem(-2)};
 `;
 
 export const DontLikeForms = styled.div`
   font-family: TradeGothicNextLTPro-Rg;
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.blackish};
-  margin: ${({ theme }) => `1rem 1rem ${theme.ms.rem(1)}`};
   text-align: center;
 
   a {
@@ -125,6 +127,7 @@ export const ContactSuccessMsg = styled.h1`
 
 export const InvalidMsg = styled.div`
   ${({ theme: { fonts, colors, ms } }) => `
+    text-align: center;
     font: ${fonts.c.weight.bold} ${ms.rem(1)} ${fonts.c.family};
     color: ${colors.red.bright};
   `}

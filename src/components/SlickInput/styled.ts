@@ -41,6 +41,7 @@ export const SlickField = styled(({ withElement, ...rest }) =>
   color: black;
   background: transparent;
   border: 2px solid ${({ theme }) => theme.colors.blackish};
+  border-radius: 3px;
   font-size: ${({ theme }) => theme.ms.rem(1)};
   font-weight: ${({ theme }) => theme.fonts.a.weight.bold};
   padding: ${({ theme }) => `1rem ${theme.ms.rem(-1)}`};
