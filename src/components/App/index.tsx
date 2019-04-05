@@ -13,7 +13,13 @@ import HashRoute from '../HashRoute';
 import NavigationMobile from '../NavigationMobile';
 import ScrollToTopAuto from '../ScrollToTopAuto';
 import routes from './routes';
+import OnRouteChangeEvent from '../OnRouteChangeEvent';
 
+declare global {
+  interface Window {
+    qp: any;
+  }
+}
 export interface AppProps {}
 
 class App extends React.Component<AppProps, any> {
@@ -24,6 +30,14 @@ class App extends React.Component<AppProps, any> {
           <ScrollProvider>
             <NavigationDisplayProvider>
               <ScrollToTopAuto />
+              <OnRouteChangeEvent
+                onRouteChange={() => {
+                  // Pinterest tracking
+                  if (window.qp) {
+                    window.qp('track', 'Generic');
+                  }
+                }}
+              />
               <GlobalStyle />
               <Switch>
                 {routes.map(r => (
