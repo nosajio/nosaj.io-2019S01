@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import NavigationDisplayProvider, {
@@ -11,9 +11,9 @@ import ContactWindow from '../ContactWindow';
 import Footer from '../Footer';
 import HashRoute from '../HashRoute';
 import NavigationMobile from '../NavigationMobile';
+import OnRouteChangeEvent from '../OnRouteChangeEvent';
 import ScrollToTopAuto from '../ScrollToTopAuto';
 import routes from './routes';
-import OnRouteChangeEvent from '../OnRouteChangeEvent';
 
 declare global {
   interface Window {

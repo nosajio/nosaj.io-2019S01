@@ -3,6 +3,7 @@ import Front from '../Front';
 import Services from '../Services';
 import Error from '../Error';
 import TradespaceProject from '../Tradespace';
+import abTest from '../../hocs/ABTest';
 
 const exact = true;
 
@@ -21,7 +22,7 @@ const routes: RoutesType[] = [
     key: 'front-route',
     title: 'Jason helps startups ship great web products',
     path: '/',
-    component: Front
+    component: abTest('/', [Front])
   },
   {
     exact,
