@@ -28,11 +28,11 @@ const Front: React.FunctionComponent<FrontProps> = () => {
         <BigTestimonial column={['mid']} quotes={testimonials} />
       </Page.Section>
       <Page.Grid topGap={5}>
+        <a id="work-anchor" />
         <H type="h2" column={[smallScreen ? 'main' : 1, 'main 2']}>
           Selected Works
         </H>
       </Page.Grid>
-      <a id="work-anchor" />
       <FrontProjects />
     </FrontMain>
   );

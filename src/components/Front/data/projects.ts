@@ -34,13 +34,13 @@ const projects: Array<FrontProjectsData> = [
         maxWidth: '1227px'
       }
     ],
-    roles: ['UI & Product Design', 'Dev (React, NodeJS, Postgres)'],
-    links: [
-      {
-        label: 'Read Tradespace Case Study',
-        path: '/project/tradespace'
-      }
-    ]
+    roles: ['UI & Product Design', 'Dev (React, NodeJS, Postgres)']
+    // links: [
+    //   {
+    //     label: 'Read Tradespace Case Study',
+    //     path: '/project/tradespace'
+    //   }
+    // ]
   },
   {
     colors: {
