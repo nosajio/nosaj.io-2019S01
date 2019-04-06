@@ -65,7 +65,7 @@ const Project: React.FunctionComponent<ProjectProps> = ({
         <ProjectHeadline>{title}</ProjectHeadline>
         {roles.length > 0 && (
           <ProjectRoles>
-            <ProjectRolesLabel>Roles</ProjectRolesLabel>
+            <ProjectRolesLabel>Roles:</ProjectRolesLabel>
             <ProjectRolesRoles>{roles.join(', ')}</ProjectRolesRoles>
           </ProjectRoles>
         )}
