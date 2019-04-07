@@ -11,7 +11,7 @@ export const FrontAB = experiment(
         {...props}
         headline="I help companies design & build cutting edge web apps"
         hireMeLink="Contact me"
-        servicesLink="What can I do?"
+        servicesLink="What I can do for you"
       />
     )
   ],
