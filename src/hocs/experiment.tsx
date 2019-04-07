@@ -1,5 +1,5 @@
 import { ComponentType, FunctionComponent } from 'react';
-import { trackHeapEvent } from '../utils/tracking';
+import { trackHeapEvent, trackGAEvent } from '../utils/tracking';
 
 const randomSelectIndex = (len: number): number =>
   Math.round(Math.random() * (len - 1));
@@ -45,11 +45,11 @@ const experiment = (
     env === 'production'
       ? timeModulatedIndex(componentCount, cycleMinutes)
       : randomSelectIndex(componentCount);
-  console.log('show component: %s', versions[randomIndex]);
   trackHeapEvent('Experiment', {
     path,
     version: versions[randomIndex]
   });
+  trackGAEvent('Experiment', path, versions[randomIndex]);
   return components[randomIndex];
 };
 
