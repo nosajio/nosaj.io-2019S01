@@ -21,7 +21,7 @@ const NavigationDesktop: React.FunctionComponent<NavigationDesktopProps> = ({
         onClick={e => (onClickLink ? onClickLink(e) : noop())}
         to="/services"
       >
-        Services for startups
+        Services
       </NavLink>
       <NavLink
         onClick={e => (onClickLink ? onClickLink(e) : noop())}

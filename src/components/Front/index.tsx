@@ -10,16 +10,33 @@ import { FrontMain, NosajIntro, FrontWaves } from './styled';
 import useMedia from '../../hooks/useMedia';
 import { mediaRules } from '../../styled/media';
 
-export interface FrontProps {}
+export interface FrontProps {
+  headline?: string;
+  servicesLink?: string;
+  hireMeLink?: string;
+  workLink?: string;
+}
 
-const Front: React.FunctionComponent<FrontProps> = () => {
+const Front: React.FunctionComponent<FrontProps> = ({
+  headline,
+  servicesLink,
+  hireMeLink,
+  workLink
+}) => {
   const smallScreen = useMedia({ max: mediaRules[1].min });
   return (
     <FrontMain>
       <FrontWaves />
       <TopBar />
       <Page.Section>
-        <Opener headline="I help startups solve problems & forge great software" />
+        <Opener
+          headline={
+            headline || 'I help startups solve problems & forge great software'
+          }
+          servicesLink={servicesLink || 'How I help startups'}
+          hireMeLink={hireMeLink || 'Hire me for your next project'}
+          workLink={workLink || 'Explore my work'}
+        />
       </Page.Section>
       <Page.Section topGap={smallScreen ? 3 : 6}>
         <NosajIntro />

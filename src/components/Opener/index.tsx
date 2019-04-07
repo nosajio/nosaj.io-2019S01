@@ -13,9 +13,17 @@ import { mediaRules } from '../../styled/media';
 
 interface OpenerProps {
   headline: string;
+  hireMeLink: string;
+  servicesLink: string;
+  workLink: string;
 }
 
-const Opener: React.FunctionComponent<OpenerProps> = ({ headline }) => {
+const Opener: React.FunctionComponent<OpenerProps> = ({
+  headline,
+  servicesLink,
+  hireMeLink,
+  workLink
+}) => {
   const mediaMin = mediaRules[0].min ? mediaRules[0].min : 1000;
   return (
     <OpenerFrame>
@@ -23,15 +31,15 @@ const Opener: React.FunctionComponent<OpenerProps> = ({ headline }) => {
       <OpenerHeadline>{headline}</OpenerHeadline>
       <OpenerLinks>
         <Media min={mediaMin + 1}>
-          <OpenerLink to="#work">Explore my work</OpenerLink>
-          <OpenerLink to="/services">How I help startups</OpenerLink>
+          <OpenerLink to="/services">{servicesLink}</OpenerLink>
+          <OpenerLink to="#work">{workLink}</OpenerLink>
           <OpenerButton caps condensed size={ButtonSizes.large} to="/#contact">
-            Hire me for your next project
+            {hireMeLink}
           </OpenerButton>
         </Media>
         <Media max={mediaMin}>
+          <OpenerLink to="/services">{servicesLink}</OpenerLink>
           <OpenerLink to="#work">My work</OpenerLink>
-          <OpenerLink to="/services">How I help startups</OpenerLink>
           <OpenerButton caps condensed size={ButtonSizes.large} to="/#contact">
             Hire me
           </OpenerButton>

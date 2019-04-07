@@ -1,9 +1,8 @@
 import * as React from 'react';
-import Front from '../Front';
-import Services from '../Services';
 import Error from '../Error';
+import Services from '../Services';
 import TradespaceProject from '../Tradespace';
-import abTest from '../../hocs/ABTest';
+import { FrontAB } from './Experiments';
 
 const exact = true;
 
@@ -12,7 +11,7 @@ export interface RoutesType {
   key: string;
   title?: string;
   path?: string;
-  component: React.ComponentType<any>;
+  component: React.ComponentType<any> | React.FunctionComponent<any>;
 }
 
 // The following routes will be mapped onto <Route /> components as props
@@ -22,7 +21,7 @@ const routes: RoutesType[] = [
     key: 'front-route',
     title: 'Jason helps startups ship great web products',
     path: '/',
-    component: abTest('/', [Front])
+    component: FrontAB
   },
   {
     exact,
