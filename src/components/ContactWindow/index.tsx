@@ -19,6 +19,7 @@ import {
   MessageField,
   NameField
 } from './styled';
+import { trackGAEvent } from '../../utils/tracking';
 
 const subjects = [
   {
@@ -38,6 +39,7 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
 }) => {
   const [invalidState, setInvalidState] = React.useState(false);
   const [sentState, setSentState] = React.useState(false);
+  const [sendingState, setSendingState] = React.useState(false);
   const [nameVal, setNameVal] = React.useState('');
   const [emailVal, setEmailVal] = React.useState('');
   const [messageVal, setMessageVal] = React.useState('');
@@ -59,21 +61,33 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
     return true;
   };
 
-  const handleSubmitForm = async (e: React.MouseEvent): Promise<void> => {
+  const handleSubmitForm = async (
+    e: React.MouseEvent,
+    sending: boolean
+  ): Promise<void> => {
     e.preventDefault();
     e.stopPropagation();
+    if (sending) {
+      return;
+    }
     if (!isFormValid()) {
       setInvalidState(true);
       return;
     }
+    setSendingState(true);
     await sendMessage(
       nameVal,
       emailVal,
       'Incoming message from nosaj.io',
       messageVal
     );
+    setSendingState(false);
     setSentState(true);
     setInvalidState(false);
+    // Google ads conversion track
+    trackGAEvent('conversion', {
+      send_to: 'AW-752254843/kOACCMTatZgBEPv-2eYC'
+    });
   };
 
   // Automatically close the contact route after n seconds. Used after the form
@@ -143,9 +157,9 @@ const ContactWindow: React.FunctionComponent<RouteComponentProps> = ({
           <ContactActions>
             <ContactSendButton
               isHighlighted={isFormValid()}
-              onClick={e => handleSubmitForm(e)}
+              onClick={e => handleSubmitForm(e, sendingState)}
             >
-              <span>Send</span>
+              <span>{sendingState ? 'Sending...' : 'Send'}</span>
               {isFormValid() && <ETA>Estimated response time &lt; 24hrs</ETA>}
             </ContactSendButton>
           </ContactActions>
