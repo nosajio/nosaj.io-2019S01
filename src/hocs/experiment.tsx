@@ -45,11 +45,12 @@ const experiment = (
     env === 'production'
       ? timeModulatedIndex(componentCount, cycleMinutes)
       : randomSelectIndex(componentCount);
-  trackHeapEvent('Experiment', {
+  const trackData = {
     path,
     version: versions[randomIndex]
-  });
-  trackGAEvent('Experiment', path, versions[randomIndex]);
+  };
+  trackHeapEvent('Experiment', trackData);
+  trackGAEvent('Experiment', trackData);
   return components[randomIndex];
 };
 

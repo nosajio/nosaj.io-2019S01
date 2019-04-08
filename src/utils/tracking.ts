@@ -2,24 +2,24 @@
 declare global {
   interface Window {
     heap: { track: any };
-    ga: (...args: string[]) => void;
+    gtag: (t: string, n: string, d?: object) => void;
   }
 }
 
-export const trackHeapEvent = (name: string, data?: object): void => {
+interface TrackingFn {
+  (name: string, data?: object): void;
+}
+
+export const trackHeapEvent: TrackingFn = (name, data): void => {
   if (!window.heap) {
     return;
   }
   window.heap.track(name, data);
 };
 
-export const trackGAEvent = (
-  name: string,
-  label: string,
-  value: string
-): void => {
-  if (!window.ga) {
+export const trackGAEvent: TrackingFn = (name, data): void => {
+  if (!window.gtag) {
     return;
   }
-  window.ga('send', 'event', name, label, value);
+  window.gtag('event', name, data);
 };
