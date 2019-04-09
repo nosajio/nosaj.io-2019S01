@@ -1,17 +1,6 @@
 import * as React from 'react';
 import Page from '../Page';
-import {
-  ProjectClientName,
-  ProjectFrame,
-  ProjectHeadline,
-  ProjectImage,
-  ProjectImages,
-  ProjectLink,
-  ProjectLinks,
-  ProjectRoles,
-  ProjectRolesLabel,
-  ProjectRolesRoles
-} from './styled';
+import { ProjectClientName, ProjectFrame, ProjectHeadline, ProjectImage, ProjectImages, ProjectLink, ProjectLinks, ProjectRoles, ProjectRolesRoles } from './styled';
 
 export type ProjectLink = {
   label: string;
@@ -65,7 +54,6 @@ const Project: React.FunctionComponent<ProjectProps> = ({
         <ProjectHeadline>{title}</ProjectHeadline>
         {roles.length > 0 && (
           <ProjectRoles>
-            <ProjectRolesLabel>Roles:</ProjectRolesLabel>
             <ProjectRolesRoles>{roles.join(', ')}</ProjectRolesRoles>
           </ProjectRoles>
         )}

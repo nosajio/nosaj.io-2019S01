@@ -13,11 +13,20 @@ export const BigTestimonialFrame = styled.blockquote`
 export const BigTestimonialQuote = styled.p`
   margin: 0;
   font: ${({ theme }: { theme: Theme }) => `
-     ${theme.fonts.a.weight.bold} ${theme.ms.rem(1)} ${theme.fonts.a.family};
+     ${theme.fonts.a.weight.regular} ${theme.ms.rem(1)} ${theme.fonts.a.family};
+  `};
   ${media.medium`
     font-size: ${({ theme }) => theme.ms.rem(2)}
   `}
-  `};
+
+  &::before {
+    content: '';
+    display: block;
+    margin: 0 auto ${({ theme }) => theme.ms.rem(3)};
+    background: no-repeat url('/quote-small-blackish.svg') center / 100% auto;
+    width: 26px;
+    height: 20px;
+  }
 `;
 
 export const BigTestimonialBy = styled.div`

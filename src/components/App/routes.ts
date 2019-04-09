@@ -2,7 +2,7 @@ import * as React from 'react';
 import Error from '../Error';
 import Services from '../Services';
 import TradespaceProject from '../Tradespace';
-import { FrontAB } from './Experiments';
+import Front from '../Front';
 
 const exact = true;
 
@@ -21,7 +21,7 @@ const routes: RoutesType[] = [
     key: 'front-route',
     title: 'Jason helps startups ship great web products',
     path: '/',
-    component: FrontAB
+    component: Front
   },
   {
     exact,

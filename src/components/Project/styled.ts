@@ -113,9 +113,6 @@ export const ProjectRoles = styled.div`
   margin-top: ${({ theme }) => theme.ms.rem(1)};
   font-size: 1rem;
 `;
-export const ProjectRolesLabel = styled.span`
-  font-weight: ${({ theme }) => theme.fonts.a.weight.bold};
-`;
 export const ProjectRolesRoles = styled.span`
   display: inline-block;
   margin-left: ${({ theme }) => theme.ms.rem(-2)};

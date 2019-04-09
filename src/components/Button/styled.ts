@@ -73,11 +73,9 @@ export const ButtonBase = ({ to }: ButtonBaseProps) =>
       fgHoverColor
     }: ButtonBaseProps) => `
     display: inline-block;
-    border-radius: 50px;
+    border-radius: 12px;
     background: ${bgColor ? bgColor : 'black'};
     color: ${fgColor ? fgColor : 'white'};
-
- 
   `
   );
 
@@ -111,7 +109,7 @@ export const RegularButton = styled(
     display: inline-block;
     background: ${bgColor ? bgColor : 'black'};
     color: ${fgColor ? fgColor : 'white'};
-    border-radius: 50px;
+    border-radius: 12px;
     ${withCaps ? `text-transform: uppercase;` : ''}
     text-decoration: none;
     padding: ${paddingForSize(withSize, theme.ms)};

@@ -55,6 +55,7 @@ export const cssinnergrid = (
     display: grid;
     grid-template-columns: ${colsValue};
     grid-auto-rows: auto;
+    grid-auto-flow: row;
     grid-column-gap: ${fullMarginPrcnt}${unit};
   `;
 };
@@ -63,5 +64,6 @@ export const cssMobileGrid = (): string => `
   display: grid;
   grid-template-columns: 1rem [main mid] 1fr [mid main] 1rem;
   grid-auto-rows: auto;
+  grid-auto-flow: row;
   grid-column-gap: 0;
 `;

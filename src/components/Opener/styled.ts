@@ -9,6 +9,7 @@ export const OpenerFrame = styled.div(
   grid-column: main / main 2;
   position: relative;
   margin-top: 14vh;
+  color: ${theme.colors.blackish};
 `
 );
 
@@ -26,28 +27,36 @@ export const OpenerHR = styled.div`
 export const OpenerHeadline = styled.h1`
   position: relative;
   width: 100%;
-  text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.2;
+  text-align: center;
   ${({ theme: { ms, fonts } }) => `
-    font-size: ${ms.rem(3)};
-    font-family: ${fonts.b.family};
-    font-weight: ${fonts.b.weight.heavy};
+    font-size: ${ms.rem(2)};
+    font-family: ${fonts.a.family};
+    font-weight: ${fonts.a.weight.bold};
   `}
   ${media.large`
-    font-size: ${({ theme }) => theme.ms.rem(4)};
+    font-size: ${({ theme }) => theme.ms.rem(3)};
     max-width: ${({ theme }) => theme.grid(7)}vw;
   `};
+
+  &::after {
+    content: '';
+    display: block;
+    background: no-repeat url('/***.svg') center / 100% auto;
+    width: 49px;
+    height: 10px;
+    margin: ${({ theme }) => theme.ms.rem(2)} auto 0;
+  }
 `;
 
 export const OpenerLinks = styled.div`
   grid-column: main / main 2;
   display: flex;
   flex-flow: column nowrap;
-  margin-top: ${({ theme }) => theme.ms.rem(2)};
-  align-items: flex-start;
+  align-items: center;
 
   ${media.medium`
-    align-items: center;
+    justify-content: center;
     flex-flow: row wrap;
   `}
 

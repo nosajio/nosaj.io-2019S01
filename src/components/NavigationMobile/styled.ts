@@ -44,11 +44,12 @@ export const MobileNavLinks = styled.nav`
   text-align: center;
   width: 100%;
   height: 100%;
+  border-radius: 12px;
   border: 1px solid white;
 
   /* The "/" after the links */
   &::after {
-    animation: ${fadeSlideInYAnim(-30)} 500ms 550ms 1 both ${easeOutQuad};
+    animation: ${fadeSlideInYAnim(-30)} 500ms 450ms 1 both ${easeOutQuad};
     content: '/';
     display: block;
     margin-top: ${({ theme }) => theme.ms.rem(2)};
@@ -59,9 +60,9 @@ export const MobileNavLinks = styled.nav`
 
 const linksAnimDelayCSS = (arr: number[], n = 100): string => {
   let tpl = ``;
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 1; i < arr.length; i++) {
     tpl += `
-      &:nth-child(${i}n) {
+      &:nth-child(${arr[i]}n) {
         animation-delay: ${n * i}ms;
       }
     `;
@@ -74,7 +75,6 @@ export const MobileNavLogo = styled(Link)`
   width: 77px;
   height: 64px;
   background: no-repeat url('/logowhite.svg') center / 100% 100%;
-  ${linksAnimDelayCSS([1], 150)}
 `;
 
 export const MobileNavLink = styled(Link)`
@@ -85,7 +85,7 @@ export const MobileNavLink = styled(Link)`
   font: ${({ theme }) =>
     `${theme.fonts.a.weight.heavy} ${theme.ms.rem(2)} ${theme.fonts.a.family}`};
 
-  ${linksAnimDelayCSS([2, 3, 4, 5], 150)}
+  ${linksAnimDelayCSS([2, 3, 4, 5, 6], 150)}
 
   * + & {
     margin-top: ${({ theme }) => theme.ms.rem(2)};

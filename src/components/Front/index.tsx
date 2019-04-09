@@ -9,6 +9,7 @@ import FrontProjects from './Projects';
 import { FrontMain, NosajIntro, FrontWaves } from './styled';
 import useMedia from '../../hooks/useMedia';
 import { mediaRules } from '../../styled/media';
+import Process from './Process';
 
 export interface FrontProps {
   headline?: string;
@@ -31,24 +32,26 @@ const Front: React.FunctionComponent<FrontProps> = ({
       <Page.Section>
         <Opener
           headline={
-            headline || 'I help startups solve problems & forge great software'
+            headline ||
+            'I partner with startups & corporations to create effective web software.'
           }
-          servicesLink={servicesLink || 'How I help startups'}
-          hireMeLink={hireMeLink || 'Hire me for your next project'}
-          workLink={workLink || 'Explore my work'}
+          servicesLink={servicesLink || 'What I do'}
+          hireMeLink={hireMeLink || "Hire me"}
+          workLink={workLink || 'Work'}
         />
       </Page.Section>
-      <Page.Section topGap={smallScreen ? 3 : 6}>
+      <Page.Section
+        topGap={smallScreen ? 3 : 6}
+        bottomGap={smallScreen ? 2 : 5}
+      >
         <NosajIntro />
       </Page.Section>
+      <Process />
       <Page.Section topGap={5}>
         <BigTestimonial column={['mid']} quotes={testimonials} />
       </Page.Section>
       <Page.Grid topGap={5}>
         <a id="work-anchor" />
-        <H type="h2" column={[smallScreen ? 'main' : 1, 'main 2']}>
-          Selected Works
-        </H>
       </Page.Grid>
       <FrontProjects />
     </FrontMain>

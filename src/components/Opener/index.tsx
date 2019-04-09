@@ -27,7 +27,6 @@ const Opener: React.FunctionComponent<OpenerProps> = ({
   const mediaMin = mediaRules[0].min ? mediaRules[0].min : 1000;
   return (
     <OpenerFrame>
-      <OpenerHR />
       <OpenerHeadline>{headline}</OpenerHeadline>
       <OpenerLinks>
         <Media min={mediaMin + 1}>

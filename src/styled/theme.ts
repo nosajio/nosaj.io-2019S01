@@ -38,7 +38,8 @@ const colors = {
     bright: '#ff5e5e'
   },
   yellow: {
-    bright: '#FFE793'
+    bright: '#FFE793',
+    muted: '#FFD08C'
   },
   blue: {
     offwhite: '#EDEBF9',
