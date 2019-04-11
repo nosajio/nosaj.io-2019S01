@@ -36,7 +36,6 @@ export const OpenerHeadline = styled.h1`
   `}
   ${media.large`
     font-size: ${({ theme }) => theme.ms.rem(3)};
-    max-width: ${({ theme }) => theme.grid(7)}vw;
   `};
 
   &::after {
@@ -68,10 +67,6 @@ export const OpenerLinks = styled.div`
 const openerLinksChild = css`
   margin-top: ${({ theme }) => theme.ms.rem(1)};
   white-space: nowrap;
-
-  &:first-child {
-    margin-left: 0;
-  }
 
   ${media.medium`
     margin: ${({ theme }) => theme.ms.rem(1)};
